@@ -1,5 +1,8 @@
 <div class="shop-page">
-  <h1>Shop Page</h1>
+  <h1>{{ 'shopPage.title' | translate }}</h1>
+  <div [translate]="'app.hello'" [translateParams]="{ name: 'John' }"></div>
+  <button (click)="changeLanguage('en')">EN</button>
+  <button (click)="changeLanguage('fr')">FR</button>
   <app-products-list></app-products-list>
   <router-outlet></router-outlet>
 </div>

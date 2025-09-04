@@ -1,0 +1,14 @@
+{
+  "app": {
+    "hello": "hello {{name}}",
+    "title": "Translation Demo"
+  },
+  "shopPage": {
+    "title": "Shop Page"
+  },
+  "product": {
+    "one": "Product 1",
+    "two": "Product 2",
+    "three": "Product 3"
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
   standalone: true,
 })
-export class App {
-  protected readonly title = signal('angular-online-store');
-}
+export class App {}
