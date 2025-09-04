@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'tailwindcss';
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Libertinus+Mono&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@layer base {
+  :root {
+    --font-roboto: 'Roboto', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-roboto);
+  }
+}
+
+h1 {
+  @apply text-3xl font-bold mb-6 text-gray-900 leading-tight;
+}
+
+h2 {
+  @apply text-2xl font-semibold mb-4 text-gray-800 leading-tight;
+}
+
+h3 {
+  @apply text-xl font-medium mb-3 text-gray-800 leading-snug;
+}
+
+h4 {
+  @apply text-lg font-medium mb-2 text-gray-700 leading-snug;
+}
+
+h5 {
+  @apply text-base font-medium mb-2 text-gray-700 leading-normal;
+}
+
+h6 {
+  @apply text-sm font-medium mb-1 text-gray-600 uppercase tracking-wide;
+}
+
+p {
+  @apply text-base text-gray-600 leading-relaxed mb-4;
+}
+
+a {
+  @apply text-blue-600 hover:text-blue-800 transition-colors duration-200;
+}
