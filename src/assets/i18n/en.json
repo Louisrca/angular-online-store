@@ -12,6 +12,15 @@
   "product": {
     "one": "Product 1",
     "two": "Product 2",
-    "three": "Product 3"
+    "three": "Product 3",
+    "four": "Product 4",
+    "five": "Product 5",
+    "six": "Product 6",
+    "seven": "Product 7",
+    "eight": "Product 8"
+  },
+  "productElement": {
+    "title": "Product Detail Page",
+    "add": "Add to Cart"
   }
 }
