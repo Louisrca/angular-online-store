@@ -6,6 +6,9 @@
   "shopPage": {
     "title": "Shop Page"
   },
+  "cartPage": {
+    "title": "Cart Page"
+  },
   "product": {
     "one": "Product 1",
     "two": "Product 2",

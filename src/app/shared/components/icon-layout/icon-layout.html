@@ -1,0 +1,13 @@
+<style>
+  .icon {
+    transition: transform 1s;
+  }
+  .icon:hover {
+    transform: scale(1.1);
+  }
+</style>
+<li>
+  <a [routerLink]="route" class="flex items-center"
+    ><ng-icon size="24" color="black" [name]="iconName" class="icon"></ng-icon
+  ></a>
+</li>

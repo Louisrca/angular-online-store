@@ -6,6 +6,9 @@
   "shopPage": {
     "title": "Page de boutique"
   },
+  "cartPage": {
+    "title": "Page de panier"
+  },
   "product": {
     "one": "Produit 1",
     "two": "Produit 2",
