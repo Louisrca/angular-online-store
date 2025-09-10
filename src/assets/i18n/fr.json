@@ -10,14 +10,20 @@
     "title": "Page de panier"
   },
   "product": {
-    "one": "Produit 1",
-    "two": "Produit 2",
-    "three": "Produit 3",
-    "four": "Produit 4",
-    "five": "Produit 5",
-    "six": "Produit 6",
-    "seven": "Produit 7",
-    "eight": "Produit 8"
+    "type": {
+      "shirt": "Chemise",
+      "pants": "Pantalon",
+      "shoes": "Chaussures",
+      "hat": "Chapeau",
+      "accessory": "Accessoire",
+      "jacket": "Veste",
+      "t-shirt": "T-shirt"
+    },
+    "gender": {
+      "male": "Homme",
+      "female": "Femme",
+      "unisex": "Unisexe"
+    }
   },
   "productElement": {
     "title": "Page de détail du produit",

@@ -4,18 +4,25 @@
   }
 
   .image:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 </style>
 
 <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
   @for (product of products; track $index) {
-    <li class="flex flex-col">
+    <li class="flex flex-col gap-2">
       <img [src]="product.imageUrl" [alt]="product.name | translate" class="image" />
-      <span>{{ product.name | translate }}</span>
+      <span> {{ product.name }} - {{ product.type | translate }} </span>
+      <div class="flex flex-row overflow-hidden gap-2">
+        @for (size of product.availabledSize; track $index) {
+          <button class="border border-black text-xs px-2 py-1 w-content w-fit cursor-pointer">
+            {{ size }}
+          </button>
+        }
+      </div>
       <span>{{ product.price }} </span>
       <button
-        class="py-3 bg-[#10fb30] border border-black hover:outline hover:outline hover:outline-black"
+        class="py-3 bg-[#10fb30] border border-black hover:outline hover:outline hover:outline-black cursor-pointer"
       >
         {{ 'productElement.add' | translate }}
       </button>
