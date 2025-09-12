@@ -8,4 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
   standalone: true,
 })
-export class App {}
+export class App {
+  constructor() {
+    window.addEventListener('offline', () => {
+      window.location.href = '/offline.html';
+    });
+  }
+}
