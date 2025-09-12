@@ -38,7 +38,7 @@ export class AuthServices {
         };
 
         localStorage.setItem('user', JSON.stringify(authUser));
-        this.route.navigate(['/shop']);
+        this.route.navigate(['/']);
 
         return true;
       }
