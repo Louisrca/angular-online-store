@@ -15,7 +15,7 @@
       }
     },
     "registerPage": {
-      "title": "Créér un compte",
+      "title": "Créer un compte",
       "description": "Créez un nouveau compte en remplissant les informations ci-dessous.",
       "button": "Créer votre compte",
       "label": {
