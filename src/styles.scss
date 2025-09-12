@@ -36,6 +36,13 @@ h6 {
   @apply text-sm font-medium mb-1 text-gray-600 uppercase tracking-wide;
 }
 
-p {
-  @apply text-base text-gray-600 leading-relaxed mb-4;
+span,
+a,
+p,
+button {
+  @apply leading-relaxed font-medium;
+}
+
+input {
+  @apply leading-relaxed font-normal;
 }

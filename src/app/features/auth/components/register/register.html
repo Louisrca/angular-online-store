@@ -1,1 +1,60 @@
-<p>register works!</p>
+<form
+  class="flex flex-col gap-4 p-4 mt-2 max-w-lg mx-auto"
+  novalidate
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+>
+  <app-input
+    name="firstName"
+    [label]="'connexionPage.registerPage.label.firstName' | translate"
+    formControlName="firstName"
+    [required]="true"
+    [hasError]="isFieldInvalid('firstName')"
+    [errorMessage]="getFormError('firstName') | translate"
+  ></app-input>
+
+  <app-input
+    name="lastName"
+    [label]="'connexionPage.registerPage.label.lastName' | translate"
+    formControlName="lastName"
+    [required]="true"
+    [hasError]="isFieldInvalid('lastName')"
+    [errorMessage]="getFormError('lastName') | translate"
+  ></app-input>
+
+  <app-input
+    name="email"
+    [label]="'connexionPage.registerPage.label.email' | translate"
+    formControlName="email"
+    [required]="true"
+    [hasError]="isFieldInvalid('email')"
+    [errorMessage]="getFormError('email') | translate"
+  ></app-input>
+
+  <app-input
+    name="password"
+    type="password"
+    [label]="'connexionPage.registerPage.label.password' | translate"
+    [required]="true"
+    formControlName="password"
+    [hasError]="isFieldInvalid('password')"
+    [errorMessage]="getFormError('password') | translate"
+  ></app-input>
+
+  <app-input
+    name="confirmPassword"
+    type="password"
+    [label]="'connexionPage.registerPage.label.confirmPassword' | translate"
+    [required]="true"
+    formControlName="confirmPassword"
+    [hasError]="isFieldInvalid('confirmPassword') || registerForm.hasError('passwordMismatch')"
+    [errorMessage]="getFormError('confirmPassword') | translate"
+  ></app-input>
+
+  <button
+    type="submit"
+    class="py-3 bg-[#10fb30] border border-black hover:outline hover:outline hover:outline-black cursor-pointer disabled:opacity-50"
+  >
+    {{ 'connexionPage.registerPage.button' | translate }}
+  </button>
+</form>

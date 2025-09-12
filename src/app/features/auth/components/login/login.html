@@ -1,1 +1,35 @@
-<p>login works!</p>
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4 p-4 mt-2 max-w-lg mx-auto"
+  novalidate
+>
+  <app-input
+    id="email"
+    [label]="'connexionPage.loginPage.label.email' | translate"
+    name="email"
+    [required]="true"
+    type="email"
+    formControlName="email"
+    [hasError]="isFieldInvalid('email')"
+    [errorMessage]="getFormError('email') | translate"
+  ></app-input>
+
+  <app-input
+    id="password"
+    [label]="'connexionPage.loginPage.label.password' | translate"
+    name="password"
+    [required]="true"
+    type="password"
+    formControlName="password"
+    [hasError]="isFieldInvalid('password')"
+    [errorMessage]="getFormError('password') | translate"
+  ></app-input>
+
+  <button
+    type="submit"
+    class="py-3 bg-[#10fb30] border border-black hover:outline hover:outline hover:outline-black cursor-pointer disabled:opacity-50"
+  >
+    {{ 'connexionPage.loginPage.button' | translate }}
+  </button>
+</form>

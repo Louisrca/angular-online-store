@@ -1,6 +1,95 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { Users } from '../../../infrastructures/mocks/users';
+import { LoginCredentials, RegisterCredentials } from '../models/auth.model';
+import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {}
+export class AuthServices {
+  users = Users;
+  route = inject(Router);
+  constructor() {
+    if (!localStorage.getItem('users')) {
+      localStorage.setItem('users', JSON.stringify(this.users));
+    }
+  }
+
+  isAuthenticated(): boolean {
+    const user = localStorage.getItem('user');
+    if (user) {
+      return true;
+    }
+    return false;
+  }
+
+  login({ email, password }: LoginCredentials): boolean {
+    if (email && password) {
+      const user = this.users.find((user) => user.email === email && user.password === password);
+
+      if (user) {
+        const authUser = {
+          email: email,
+          firstName: user?.firstName,
+          lastName: user?.lastName,
+          id: user?.id,
+          token: user?.token,
+        };
+
+        localStorage.setItem('user', JSON.stringify(authUser));
+        this.route.navigate(['/shop']);
+
+        return true;
+      }
+    } else {
+      throw new Error('Email and password are required');
+    }
+    throw new Error('Invalid email or password');
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+  }
+
+  register({
+    firstName,
+    lastName,
+    password,
+    confirmPassword,
+    email,
+  }: RegisterCredentials): boolean {
+    if (firstName && lastName && password && confirmPassword && email) {
+      if (password !== confirmPassword) {
+        throw new Error('Passwords do not match');
+      }
+
+      const existingUser = this.users.find((user) => user.email === email);
+      if (existingUser) {
+        throw new Error('Email is already in use');
+      }
+
+      const newUser = {
+        id: uuidv4(),
+        email,
+        password,
+        firstName,
+        lastName,
+        token: `token${this.users.length + 1}`,
+      };
+      this.users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(this.users));
+      this.route.navigate(['/auth/login']);
+      return true;
+    }
+    throw new Error('All fields are required');
+  }
+
+  getCurrentUser() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      return JSON.parse(user);
+    }
+    return null;
+  }
+}

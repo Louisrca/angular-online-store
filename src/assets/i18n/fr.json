@@ -3,6 +3,35 @@
     "hello": "Bonjour {{name}}",
     "title": "Démonstration de traduction"
   },
+
+  "connexionPage": {
+    "loginPage": {
+      "title": "Se Connecter",
+      "description": "Veuillez entrer vos identifiants pour vous connecter.",
+      "button": "Valider",
+      "label": {
+        "email": "Mail",
+        "password": "Mot de passe"
+      }
+    },
+    "registerPage": {
+      "title": "Créér un compte",
+      "description": "Créez un nouveau compte en remplissant les informations ci-dessous.",
+      "button": "Créer votre compte",
+      "label": {
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "Mail",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe"
+      }
+    },
+    "requiredField": "Ce champ est requis",
+    "invalidEmailFormat": "Format d'email invalide",
+    "minimumCharacters": "Minimum 6 caractères requis",
+    "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
+
   "shopPage": {
     "title": "Page de boutique"
   },
@@ -23,6 +52,20 @@
       "male": "Homme",
       "female": "Femme",
       "unisex": "Unisexe"
+    },
+    "color": {
+      "red": "Rouge",
+      "blue": "Bleu",
+      "green": "Vert",
+      "black": "Noir",
+      "white": "Blanc",
+      "yellow": "Jaune",
+      "gray": "Gris",
+      "pink": "Rose",
+      "purple": "Violet",
+      "orange": "Orange",
+      "brown": "Marron",
+      "maroon": "Bordeaux"
     }
   },
   "productElement": {

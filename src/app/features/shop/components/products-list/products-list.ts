@@ -1,22 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { ShopServices } from '../../services/shop.services';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.html',
   styleUrl: './products-list.scss',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, ...TRANSLATE_IMPORTS],
 })
-export class ProductsList {
+export class ProductsList extends BaseComponent {
   productsServices = inject(ShopServices);
-  private translate = inject(TranslateService);
-
-  constructor() {
-    this.translate.addLangs(['en', 'fr']);
-    this.translate.setFallbackLang('en');
-    this.translate.use('en');
-  }
 
   products = this.productsServices.getProducts();
 }
