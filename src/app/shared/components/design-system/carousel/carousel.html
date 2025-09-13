@@ -1,0 +1,39 @@
+<div class="hidden md:block lg:block relative w-full overflow-hidden">
+  <!-- Images -->
+  <div
+    class="flex transition-transform duration-700 ease-in-out"
+    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+  >
+    @for (image of images; track $index) {
+      <div class="relative min-w-full">
+        <img
+          [src]="image.img"
+          [alt]="image.promoTag + ' ' + image.img"
+          class="w-full h-136 object-cover flex-shrink-0 p-4"
+        />
+        <span
+          class="absolute bottom-0 right-16 text-white px-1 py-1 text-[6rem] font-bold"
+          style="-webkit-text-stroke: 1px black"
+        >
+          {{ image.promoTag }}
+        </span>
+      </div>
+    }
+  </div>
+
+  <!-- Boutons -->
+  <button
+    (click)="prevSlide()"
+    class="absolute top-1/2 left-4 -translate-y-1/2 text-[8rem]"
+    style="-webkit-text-stroke: 1px white"
+  >
+    ‹
+  </button>
+  <button
+    (click)="nextSlide()"
+    class="absolute top-1/2 right-4 -translate-y-1/2 text-[8rem]"
+    style="-webkit-text-stroke: 1px white"
+  >
+    ›
+  </button>
+</div>

@@ -1,6 +1,6 @@
 {
-  "name": "OnStore",
-  "short_name": "OnStore",
+  "name": "InStore",
+  "short_name": "InStore",
   "description": "Une PWA Angular de démonstration pour le e-commerce",
   "start_url": "/",
   "display": "standalone",
