@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { InputComponent } from '../../../../shared/components/input/input';
+import { InputComponent } from '../../../../shared/components/design-system/input/input';
 import {
   FormBuilder,
   FormControl,

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { ProductsList } from '../components/products-list/products-list';
 import { BaseComponent } from '../../../shared/components/base-translate/base-translate';
 import { TRANSLATE_IMPORTS } from '../../../shared/imports/translate-imports';
-import { Layout } from '../../../shared/components/layout/layout';
+import { ShopLayout } from '../../../shared/components/layout/shop-layout/shop-layout';
 
 @Component({
   selector: 'app-shop-page',
   templateUrl: './shop-page.html',
-  imports: [...TRANSLATE_IMPORTS, ProductsList, Layout],
+  imports: [...TRANSLATE_IMPORTS, ProductsList, ShopLayout],
 })
 export class ShopPage extends BaseComponent {
   name = 'Louis';

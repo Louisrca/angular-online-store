@@ -1,0 +1,15 @@
+<style>
+  .active {
+    background-color: black;
+    color: white;
+  }
+</style>
+
+<li
+  class="hover:text-white hover:bg-black rounded-[1rem] transition-colors duration-200"
+  [class.active]="isActiveLink(link)"
+>
+  <a routerLink="{{ link }}" class="flex items-center justify-center p-2">
+    <ng-icon name="{{ name }}" size="24px"></ng-icon>
+  </a>
+</li>

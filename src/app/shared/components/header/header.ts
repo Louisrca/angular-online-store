@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { BaseComponent } from '../base-translate/base-translate';
 import { provideIcons } from '@ng-icons/core';
 import { hugeShoppingBag02, hugeUser } from '@ng-icons/huge-icons';
-import { IconLayout } from '../icon-layout/icon-layout';
-import { TranslateButtons } from '../translate-buttons/translate-buttons';
+import { IconLayout } from '../layout/icon-layout/icon-layout';
+import { TranslateButtons } from '../design-system/translate-buttons/translate-buttons';
 import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 

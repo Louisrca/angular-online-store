@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../base-translate/base-translate';
-import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
+import { BaseComponent } from '../../base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '../../../imports/translate-imports';
 
 @Component({
   selector: 'app-translate-buttons',
