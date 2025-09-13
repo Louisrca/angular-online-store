@@ -16,12 +16,20 @@ export class AuthServices {
     }
   }
 
-  isAuthenticated(): boolean {
+  isLoggedIn(): boolean {
     const user = localStorage.getItem('user');
-    if (user) {
-      return true;
+    if (!user) {
+      return false;
     }
-    return false;
+    return !!JSON.parse(user).token;
+  }
+
+  getToken(): string | null {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      return null;
+    }
+    return JSON.parse(user).token || null;
   }
 
   login({ email, password }: LoginCredentials): boolean {

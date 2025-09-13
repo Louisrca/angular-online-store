@@ -9,7 +9,10 @@
   <div class="flex flex-row items-center gap-4">
     <ul class="flex flex-row place-items-center gap-4 h-auto">
       <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
-      <app-icon-layout iconName="hugeUser" route="/auth/login"></app-icon-layout>
+      <app-icon-layout
+        iconName="hugeUser"
+        [route]="auth.isLoggedIn() ? '/account' : '/auth/login'"
+      ></app-icon-layout>
     </ul>
     <app-translate-buttons></app-translate-buttons>
   </div>
