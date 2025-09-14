@@ -6,13 +6,12 @@ import { IconLayout } from '../layout/icon-layout/icon-layout';
 import { TranslateButtons } from '../design-system/translate-buttons/translate-buttons';
 import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
-import { NgClass } from '@angular/common';
 import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  imports: [IconLayout, TranslateButtons, RouterLink, NgClass, ...TRANSLATE_IMPORTS],
+  imports: [IconLayout, TranslateButtons, RouterLink, ...TRANSLATE_IMPORTS],
   viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
 })
 export class Header extends BaseComponent {
