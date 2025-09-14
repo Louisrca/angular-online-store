@@ -1,21 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { BaseComponent } from '../base-translate/base-translate';
 import { provideIcons } from '@ng-icons/core';
-import { hugeShoppingBag02, hugeUser } from '@ng-icons/huge-icons';
+import { hugeShoppingBag02, hugeUser, hugeMenu09 } from '@ng-icons/huge-icons';
 import { IconLayout } from '../layout/icon-layout/icon-layout';
 import { TranslateButtons } from '../design-system/translate-buttons/translate-buttons';
 import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
+import { NgClass } from '@angular/common';
+import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  imports: [IconLayout, TranslateButtons, RouterLink],
-  viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser })],
+  imports: [IconLayout, TranslateButtons, RouterLink, NgClass, ...TRANSLATE_IMPORTS],
+  viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
 })
 export class Header extends BaseComponent {
   hugeShoppingBag02 = 'hugeShoppingBag02';
   hugeUser = 'hugeUser';
+  hugeMenu09 = 'hugeMenu09';
+
+  isDisplayBlock = false;
 
   auth = inject(AuthServices);
   router = inject(Router);
@@ -26,5 +31,9 @@ export class Header extends BaseComponent {
     } else {
       this.router.navigate(['/auth/login']);
     }
+  }
+
+  toggleMobileMenu() {
+    this.isDisplayBlock = !this.isDisplayBlock;
   }
 }

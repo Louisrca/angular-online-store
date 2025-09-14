@@ -12,6 +12,7 @@ export const Products: Product[] = [
     price: '100 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/61/0/8218610.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 12,
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const Products: Product[] = [
     price: '85 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/12/5/8386125.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 8,
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ export const Products: Product[] = [
     price: '250 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/18/3/8288183.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 5,
   },
   {
     id: 4,
@@ -48,6 +51,7 @@ export const Products: Product[] = [
     price: '110 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/34/3/6364343.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 20,
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ export const Products: Product[] = [
     price: '250 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/18/3/8288183.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 5,
   },
   {
     id: 6,
@@ -72,6 +77,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 30,
   },
   {
     id: 7,
@@ -84,6 +90,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 30,
   },
   {
     id: 8,
@@ -96,6 +103,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 23,
   },
   {
     id: 9,
@@ -108,6 +116,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 12,
   },
   {
     id: 10,
@@ -120,6 +129,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 8,
   },
   {
     id: 11,
@@ -132,6 +142,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 15,
   },
   {
     id: 12,
@@ -144,6 +155,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 19,
   },
   {
     id: 13,
@@ -156,6 +168,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 7,
   },
   {
     id: 14,
@@ -168,6 +181,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 30,
   },
   {
     id: 15,
@@ -180,6 +194,7 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 38,
   },
   {
     id: 16,
@@ -192,5 +207,6 @@ export const Products: Product[] = [
     price: '75 €',
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
+    quantity: 10,
   },
 ];

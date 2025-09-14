@@ -9,8 +9,4 @@ import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
   templateUrl: './auth-header.html',
   imports: [RouterLink, TranslateButtons, ...TRANSLATE_IMPORTS],
 })
-export class AuthHeader extends BaseComponent {
-  isActiveLink = (url: string) => {
-    return window.location.pathname === url;
-  };
-}
+export class AuthHeader extends BaseComponent {}

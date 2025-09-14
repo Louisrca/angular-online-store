@@ -1,19 +1,82 @@
 <nav
-  class="flex flex-row justify-between py-6 px-12 gap-4 sticky top-0 bg-white z-10 overflow-hidden border-b border-black"
+  class="flex flex-row justify-between items-center py-6 px-12 gap-4 sticky top-0 bg-white z-10 overflow-hidden border-b border-black"
 >
   <div>
     <a routerLink="/" class="text-2xl uppercase font-bold hover:text-[#FF8300] cursor-pointer"
       >InStore</a
     >
   </div>
-  <div class="flex flex-row items-center gap-4">
-    <ul class="flex flex-row place-items-center gap-4 h-auto">
+  <div class="hidden md:block lg:block">
+    <ul class="flex flex-row place-items-center gap-4 h-auto uppercase">
+      <li>
+        <a href="?hommes" class="hover:text-[#FF8300] hover:underline">{{
+          'app.navigation.filters.man' | translate
+        }}</a>
+      </li>
+      <li>
+        <a href="?femmes" class="hover:text-[#FF8300] hover:underline">{{
+          'app.navigation.filters.woman' | translate
+        }}</a>
+      </li>
+      <li>
+        <a href="?sneakers" class="hover:text-[#FF8300] hover:underline">{{
+          'app.navigation.filters.sneakers' | translate
+        }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="hidden md:flex lg:flex flex-row items-center gap-4">
+    <ul class="flex flex-row flex-0 place-items-center gap-4 h-auto">
       <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
       <app-icon-layout
         iconName="hugeUser"
         [route]="auth.isLoggedIn() ? '/account' : '/auth/login'"
       ></app-icon-layout>
     </ul>
+
     <app-translate-buttons></app-translate-buttons>
   </div>
+
+  <div class="block md:hidden lg:hidden">
+    <ul>
+      <app-icon-layout
+        iconName="hugeMenu09"
+        class="cursor-pointer"
+        (click)="toggleMobileMenu()"
+      ></app-icon-layout>
+    </ul>
+  </div>
 </nav>
+@if (isDisplayBlock) {
+  <div
+    class="bg-white w-full h-screen w-full overflow-hidden z-10 flex flex-col gap-12 p-6 items-start border-b border-black"
+  >
+    <div class="flex flex-row w-full gap-8 justify-between">
+      <app-translate-buttons></app-translate-buttons>
+      <ul class="flex flex-row place-items-center gap-8 h-auto">
+        <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
+        <app-icon-layout
+          iconName="hugeUser"
+          [route]="auth.isLoggedIn() ? '/account' : '/auth/login'"
+        ></app-icon-layout>
+      </ul>
+    </div>
+    <ul class="flex flex-col w-full place-items-start gap-4 h-auto uppercase">
+      <li>
+        <a href="?hommes" class="hover:text-[#FF8300] hover:underline w-full">{{
+          'app.navigation.filters.man' | translate
+        }}</a>
+      </li>
+      <li>
+        <a href="?femmes" class="hover:text-[#FF8300] hover:underline w-full">{{
+          'app.navigation.filters.woman' | translate
+        }}</a>
+      </li>
+      <li>
+        <a href="?sneakers" class="hover:text-[#FF8300] hover:underline w-full">{{
+          'app.navigation.filters.sneakers' | translate
+        }}</a>
+      </li>
+    </ul>
+  </div>
+}

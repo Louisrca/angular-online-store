@@ -9,5 +9,5 @@ import { NgIcon } from '@ng-icons/core';
 })
 export class IconLayout {
   @Input() iconName!: string;
-  @Input() route = '/';
+  @Input() route!: string;
 }

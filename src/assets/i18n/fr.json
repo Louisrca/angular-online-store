@@ -1,7 +1,14 @@
 {
   "app": {
     "hello": "Bonjour {{name}}",
-    "title": "Démonstration de traduction"
+    "title": "Démonstration de traduction",
+    "navigation": {
+      "filters": {
+        "man": "Hommes",
+        "woman": "Femmes",
+        "sneakers": "Sneakers"
+      }
+    }
   },
 
   "connexionPage": {

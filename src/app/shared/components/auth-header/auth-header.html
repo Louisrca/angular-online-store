@@ -14,17 +14,3 @@
     <app-translate-buttons></app-translate-buttons>
   </div>
 </nav>
-<div class="flex justify-center gap-4 p-4 mt-8 max-w-lg mx-auto">
-  <a
-    routerLink="/auth/login"
-    [class.active]="isActiveLink('/auth/login')"
-    class="flex justify-center items-center text-xs py-3 px-4 border border-black w-full hover:outline hover:outline hover:outline-black cursor-pointer uppercase"
-    >{{ 'connexionPage.loginPage.title' | translate }}</a
-  >
-  <a
-    routerLink="/auth/register"
-    [class.active]="isActiveLink('/auth/register')"
-    class="flex justify-center items-center text-xs py-3 px-6 border border-black w-full hover:outline hover:outline hover:outline-black cursor-pointer uppercase"
-    >{{ 'connexionPage.registerPage.title' | translate }}</a
-  >
-</div>
