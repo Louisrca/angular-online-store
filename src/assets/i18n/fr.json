@@ -78,5 +78,28 @@
   "productElement": {
     "title": "Page de détail du produit",
     "add": "Ajouter au panier"
+  },
+  "productDetails": {
+    "description": "Description",
+    "availableSizes": "Tailles disponibles",
+    "price": "Prix",
+    "addToCart": "Ajouter au panier",
+    "selectSize": "Sélectionnez une taille",
+    "size": "Taille",
+    "legalMention": "Mentions légales",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "contact": "Contactez-nous",
+    "delivryInfo": "Informations de livraison",
+    "returnPolicy": {
+      "title": "Politique de retour",
+      "content": "Vous pouvez retourner les articles non portés dans les 10 jours suivant la réception pour un remboursement complet."
+    },
+    "origin": "Origine",
+    "productSize": "Taille du produit",
+    "modelHeight": "Taille du modèle",
+    "sizeGuide": "Guide des tailles",
+    "fit": "Coupe",
+    "compositionAndCare": "Composition et entretien"
   }
 }

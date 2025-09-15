@@ -6,7 +6,14 @@ import { Products } from '../../../infrastructures/mocks/produts';
   providedIn: 'root',
 })
 export class ShopServices {
-  getProducts(): Product[] {
-    return Products;
+  getProducts(limit: number): Product[] {
+    return Products.slice(0, limit);
+  }
+  getProductById(id: string): Product | undefined {
+    return Products.find((product) => product.id === id);
+  }
+
+  getProductLength(): number {
+    return Products.length;
   }
 }

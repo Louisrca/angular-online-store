@@ -80,5 +80,27 @@
   "productElement": {
     "title": "Product Detail Page",
     "add": "Add to Cart"
+  },
+  "productDetails": {
+    "description": "Description",
+    "availableSizes": "Available Sizes",
+    "price": "Price",
+    "addToCart": "Add to Cart",
+    "selectSize": "Select a size",
+    "size": "Size",
+    "legalMention": "Legal Mention",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contact": "Contact Us",
+    "deliveryInfo": "Delivery Information",
+    "returnPolicy": {
+      "title": "Return Policy",
+      "content": "Returns or exchanges offered within 10 days, from the date of shipment of your package"
+    },
+    "origin": "Origin",
+    "productSize": "Product Size",
+    "modelHeight": "Model Height",
+    "fit": "Fit",
+    "compositionAndCare": "Composition and Care"
   }
 }

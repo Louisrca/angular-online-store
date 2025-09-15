@@ -1,11 +1,19 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
+  subName?: string;
   type: string;
   gender?: string;
   availabledSize: string[];
   color?: string;
-  description: string;
+  description: {
+    composition?: string;
+    care?: string;
+    origin?: string;
+    fit?: string;
+    productSize?: string;
+    modelHeight?: string;
+  };
   price: string;
   imageUrl: string;
   imageUrls?: string[];

@@ -10,39 +10,48 @@
   html {
     font-family: var(--font-roboto);
   }
-}
+  ::selection {
+    @apply text-white; // couleur du texte
+    background-color: #ff8300; // couleur du surlignage
+  }
 
-h1 {
-  @apply text-3xl font-bold mb-6 text-gray-900 leading-tight;
-}
+  h1 {
+    @apply text-3xl font-bold mb-6 text-gray-900 leading-tight;
+  }
 
-h2 {
-  @apply text-2xl font-semibold mb-4 text-gray-800 leading-tight;
-}
+  h2 {
+    @apply text-2xl font-semibold mb-4 text-gray-800 leading-tight;
+  }
 
-h3 {
-  @apply text-xl font-medium mb-3 text-gray-800 leading-snug;
-}
+  h3 {
+    @apply text-xl font-medium mb-3 text-gray-800 leading-snug;
+  }
 
-h4 {
-  @apply text-lg font-medium mb-2 text-gray-700 leading-snug;
-}
+  h4 {
+    @apply text-lg font-medium mb-2 text-gray-700 leading-snug;
+  }
 
-h5 {
-  @apply text-base font-medium mb-2 text-gray-700 leading-normal;
-}
+  h5 {
+    @apply text-base font-medium mb-2 text-gray-700 leading-normal;
+  }
 
-h6 {
-  @apply text-sm font-medium mb-1 text-gray-600 uppercase tracking-wide;
-}
+  h6 {
+    @apply text-sm font-medium mb-1 text-gray-600 uppercase tracking-wide;
+  }
 
-span,
-a,
-p,
-button {
-  @apply leading-relaxed font-medium;
-}
+  span,
+  a,
+  p,
+  button {
+    @apply font-medium;
+    @apply focus-visible:outline focus-visible:outline-[#FF8300];
+  }
 
-input {
-  @apply leading-relaxed font-normal;
+  select {
+    @apply focus-visible:outline focus-visible:outline-[#FF8300];
+  }
+
+  input {
+    @apply leading-relaxed font-normal;
+  }
 }
