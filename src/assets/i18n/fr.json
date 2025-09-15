@@ -8,7 +8,9 @@
         "woman": "Femmes",
         "sneakers": "Sneakers"
       }
-    }
+    },
+    "loadMore": "Charger plus",
+    "noMoreProducts": "Plus aucun produit à charger."
   },
 
   "connexionPage": {

@@ -9,7 +9,9 @@
         "woman": "Women",
         "sneakers": "Sneakers"
       }
-    }
+    },
+    "loadMore": "Load More",
+    "noMoreProducts": "No more products to load."
   },
 
   "connexionPage": {
