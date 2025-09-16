@@ -43,10 +43,13 @@ export class AuthServices {
           lastName: user?.lastName,
           id: user?.id,
           token: user?.token,
+          role: user?.role,
         };
 
         localStorage.setItem('user', JSON.stringify(authUser));
-        this.route.navigate(['/']);
+
+        if (user.role !== 'customer') this.route.navigate(['/admin']);
+        else this.route.navigate(['/']);
 
         return true;
       }
@@ -66,6 +69,7 @@ export class AuthServices {
     password,
     confirmPassword,
     email,
+    role,
   }: RegisterCredentials): boolean {
     if (firstName && lastName && password && confirmPassword && email) {
       if (password !== confirmPassword) {
@@ -84,6 +88,7 @@ export class AuthServices {
         firstName,
         lastName,
         token: `token${this.users.length + 1}`,
+        role: role || 'customer',
       };
       this.users.push(newUser);
       localStorage.setItem('users', JSON.stringify(this.users));
@@ -99,5 +104,14 @@ export class AuthServices {
       return JSON.parse(user);
     }
     return null;
+  }
+
+  isCustomerUser(): boolean {
+    const user = this.getCurrentUser();
+    if (user) {
+      const foundUser = this.users.find((u) => u.email === user.email);
+      return foundUser ? foundUser.role === 'customer' : false;
+    }
+    return false;
   }
 }

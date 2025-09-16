@@ -1,7 +1,5 @@
 {
-  "app": {
-    "hello": "Bonjour {{name}}",
-    "title": "Démonstration de traduction",
+  "shopPage": {
     "navigation": {
       "filters": {
         "man": "Hommes",
@@ -11,6 +9,35 @@
     },
     "loadMore": "Charger plus",
     "noMoreProducts": "Plus aucun produit à charger."
+  },
+
+  "dashboardPage": {
+    "title": "Bienvenue",
+    "subtitle": "Aperçu",
+    "saleOverviewTitle": "Aperçu des ventes",
+    "totalOrders": "Total des commandes",
+    "returns": "Retours",
+    "sales": "Ventes",
+    "expenses": "Dépenses",
+    "customers": {
+      "customerId": "ID Client",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Mail"
+    },
+    "order": {
+      "recentOrders": "Commandes récentes",
+      "orderId": "ID Commande",
+      "product": "Produit",
+      "customer": "Client",
+      "date": "Date",
+      "orderAmount": "Montant commande",
+      "quantity": "Quantité"
+    },
+    "utils": {
+      "detailsButton": "Détails",
+      "goBackToShop": "Retourner à la boutique"
+    }
   },
 
   "connexionPage": {
@@ -41,9 +68,6 @@
     "passwordMismatch": "Les mots de passe ne correspondent pas"
   },
 
-  "shopPage": {
-    "title": "Page de boutique"
-  },
   "cartPage": {
     "title": "Page de panier"
   },

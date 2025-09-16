@@ -15,8 +15,8 @@
       <a [routerLink]="'/product/' + product.id">
         <img [src]="product.imageUrl" [alt]="product.name | translate" class="image" />
       </a>
-      <span> {{ product.name }} - {{ product.type | translate }} </span>
-      <span class="uppercase text-xs font-bold">{{ product.color | translate }} </span>
+      <span class="font-semibold"> {{ product.name }} - {{ product.type | translate }} </span>
+      <span class="uppercase text-[0.75rem] font-medium">{{ product.color | translate }} </span>
       <span>{{ product.price }} </span>
       <div class="flex flex-row overflow-hidden gap-2">
         @for (size of product.availabledSize; track $index) {
@@ -40,11 +40,11 @@
       (click)="loadMore()"
       class="w-full py-3 bg-white border-2 border-[#FF8300] hover:outline hover:outline-[#FF8300] text-[#FF8300] cursor-pointer uppercase font-medium col-span-full md:w-1/3 lg:1/3 justify-self-center mt-16"
     >
-      {{ 'app.loadMore' | translate }}
+      {{ 'shopPage.loadMore' | translate }}
     </button>
   } @else {
     <span class="col-span-full text-center mt-16 uppercase">{{
-      'app.noMoreProducts' | translate
+      'shopPage.noMoreProducts' | translate
     }}</span>
   }
 </ul>

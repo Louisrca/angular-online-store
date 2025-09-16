@@ -1,0 +1,39 @@
+<div class="border border-[#e2e8f0] rounded-lg shadow-xs p-8">
+  <h3 class="text-lg font-bold mb-4">{{ 'dashboardPage.order.recentOrders' | translate }}</h3>
+  <p-table [value]="orders$">
+    <ng-template #header>
+      <tr>
+        <th>{{ 'dashboardPage.customers.customerId' | translate }}</th>
+        <th>{{ 'dashboardPage.customers.email' | translate }}</th>
+        <th>{{ 'dashboardPage.order.orderAmount' | translate }}</th>
+        <th>{{ 'dashboardPage.order.quantity' | translate }}</th>
+        <th>{{ 'dashboardPage.order.date' | translate }}</th>
+        <th class="flex justify-center">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-order>
+      <tr>
+        <td>
+          {{ order.customerId }}
+        </td>
+        <td>
+          {{ order.customerEmail }}
+        </td>
+        <td>{{ order.amount }} €</td>
+        <td>
+          {{ order.items.length }}
+        </td>
+        <td>
+          {{ order.date | date: 'shortDate' }}
+        </td>
+        <td class="flex justify-center">
+          <button
+            class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+          >
+            {{ 'dashboardPage.utils.detailsButton' | translate }}
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

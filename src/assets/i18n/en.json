@@ -1,5 +1,5 @@
 {
-  "app": {
+  "shopPage": {
     "description": "This is a sample application",
     "hello": "hello {{name}}",
     "title": "Translation Demo",
@@ -12,6 +12,35 @@
     },
     "loadMore": "Load More",
     "noMoreProducts": "No more products to load."
+  },
+
+  "dashboardPage": {
+    "title": "Welcome",
+    "subtitle": "Overview",
+    "saleOverviewTitle": "Sales Overview",
+    "totalOrders": "Total Orders",
+    "returns": "Returns",
+    "sales": "Sales",
+    "expenses": "Expenses",
+    "customers": {
+      "customerId": "Customer ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email"
+    },
+    "order": {
+      "recentOrders": "Recent Orders",
+      "orderId": "Order ID",
+      "product": "Product",
+      "customer": "Customer",
+      "date": "Date",
+      "orderAmount": "Order amount",
+      "quantity": "Quantity"
+    },
+    "utils": {
+      "detailsButton": "Details",
+      "goBackToShop": "Go back to shop"
+    }
   },
 
   "connexionPage": {
@@ -43,9 +72,6 @@
     "passwordMismatch": "Passwords do not match"
   },
 
-  "shopPage": {
-    "title": "Shop Page"
-  },
   "cartPage": {
     "title": "Cart Page"
   },

@@ -3,16 +3,16 @@ import { CanActivate, Router } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 
 @Injectable({ providedIn: 'root' })
-export class GuestGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   router = inject(Router);
   auth = inject(AuthServices);
 
   canActivate(): boolean {
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate(['/']);
-      return false;
+    if (this.auth.isLoggedIn() && !this.auth.isCustomerUser()) {
+      return true;
     }
 
-    return true;
+    this.router.navigate(['/']);
+    return false;
   }
 }

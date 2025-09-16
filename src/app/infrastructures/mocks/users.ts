@@ -1,19 +1,23 @@
-export const Users = [
+import { User } from '../../features/auth/models/auth.model';
+
+export const Users: User[] = [
   {
     id: '621a43f6-1f7e-4f08-81e7-e909cfabae18',
     email: 'user1@example.com',
     password: 'password1',
-    firstName: 'John',
+    firstName: 'Jane',
     lastName: 'Doe',
     token: 'token1',
+    role: 'customer',
   },
   {
     id: 'ad8e7f0b-7335-453b-8944-df50c1c67720',
-    email: 'user2@example.com',
-    password: 'password2',
-    firstName: 'Jane',
+    email: 'admin@example.com',
+    password: 'admin1',
+    firstName: 'John',
     lastName: 'Doe',
     token: 'token2',
+    role: 'admin',
   },
   {
     id: '8eb415ed-6b18-4a42-9d22-57199d8957f3',
@@ -22,5 +26,6 @@ export const Users = [
     firstName: 'Jim',
     lastName: 'Beam',
     token: 'token3',
+    role: 'worker',
   },
 ];

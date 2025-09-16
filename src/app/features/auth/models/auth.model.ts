@@ -10,7 +10,10 @@ export interface User {
 
 export type LoginCredentials = Pick<User, 'email' | 'password'>;
 
-export type RegisterCredentials = Pick<User, 'firstName' | 'lastName' | 'email' | 'password'> & {
+export type RegisterCredentials = Pick<
+  User,
+  'firstName' | 'lastName' | 'email' | 'password' | 'role'
+> & {
   confirmPassword: string;
 };
 

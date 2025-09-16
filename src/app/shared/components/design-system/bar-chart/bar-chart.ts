@@ -40,18 +40,7 @@ export class BarChart implements OnInit {
           borderRadius: '12.8',
           barPercentage: 0.5,
           categoryPercentage: 0.5,
-          hoverBackgroundColor: [
-            'rgb(249, 115, 22)',
-            'rgb(6, 182, 212)',
-            'rgba(117, 169, 3, 1)',
-            'rgb(139, 92, 246)',
-          ],
-          hoverBorderColor: [
-            'rgb(249, 115, 22)',
-            'rgb(6, 182, 212)',
-            'rgb(107, 114, 128)',
-            'rgb(139, 92, 246)',
-          ],
+          hoverBackgroundColor: ['rgb(255, 131, 22)'],
         },
         {
           label: 'Expenses',
@@ -65,18 +54,7 @@ export class BarChart implements OnInit {
           borderRadius: '12.8',
           barPercentage: 0.5,
           categoryPercentage: 0.5,
-          hoverBackgroundColor: [
-            'rgba(249, 116, 22, 0.5)',
-            'rgb(6, 182, 212,0.5)',
-            'rgba(117, 169, 3, 0.5)',
-            'rgb(139, 92, 246,0.5)',
-          ],
-          hoverBorderColor: [
-            'rgb(249, 115, 22)',
-            'rgb(6, 182, 212)',
-            'rgb(107, 114, 128)',
-            'rgb(139, 92, 246)',
-          ],
+          hoverBackgroundColor: ['rgb(255, 179, 112)'],
         },
         {
           label: 'Returns',
@@ -90,18 +68,7 @@ export class BarChart implements OnInit {
           borderRadius: '12.8',
           barPercentage: 0.5,
           categoryPercentage: 0.5,
-          hoverBackgroundColor: [
-            'rgba(249, 116, 22, 0.5)',
-            'rgb(6, 182, 212,0.5)',
-            'rgba(117, 169, 3, 0.5)',
-            'rgb(139, 92, 246,0.5)',
-          ],
-          hoverBorderColor: [
-            'rgb(249, 115, 22)',
-            'rgb(6, 182, 212)',
-            'rgb(107, 114, 128)',
-            'rgb(139, 92, 246)',
-          ],
+          hoverBackgroundColor: ['rgba(255, 211, 173)'],
         },
       ],
     };
@@ -123,6 +90,7 @@ export class BarChart implements OnInit {
           font: {
             size: 18,
             weight: 'bold',
+            family: 'Inter',
           },
         },
         legend: {

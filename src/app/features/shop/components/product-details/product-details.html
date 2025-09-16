@@ -14,12 +14,12 @@
       </p>
       <div class="flex flex-row gap-2">
         @if (getProductDetails()?.subName) {
-          <p class="font-thin">{{ getProductDetails()?.subName }}</p>
-          <span class="font-thin">-</span>
+          <p class="font-[300]">{{ getProductDetails()?.subName }}</p>
+          <span class="font-[300]">-</span>
         }
-        <p class="font-thin">{{ getProductDetails()?.type | translate }}</p>
-        <span class="font-thin">|</span>
-        <p class="font-thin">{{ getProductDetails()?.color | translate }}</p>
+        <p class="font-[300]">{{ getProductDetails()?.type | translate }}</p>
+        <span class="font-[300]">|</span>
+        <p class="font-[300]">{{ getProductDetails()?.color | translate }}</p>
       </div>
       <p>{{ getProductDetails()?.price }}</p>
     </div>

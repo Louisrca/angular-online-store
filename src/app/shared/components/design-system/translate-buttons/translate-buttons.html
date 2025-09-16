@@ -1,4 +1,7 @@
-<div class="flex flex-row gap-2">
+<div
+  class="flex gap-2"
+  [ngClass]="{ 'flex-row': direction === 'row', 'flex-col': direction === 'col' }"
+>
   <button
     class="cursor-pointer hover:text-[#FF8300] hover:underline"
     (click)="changeLanguage('en')"
