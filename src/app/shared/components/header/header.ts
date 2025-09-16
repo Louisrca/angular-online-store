@@ -15,14 +15,14 @@ import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
   viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
 })
 export class Header extends BaseComponent {
+  auth = inject(AuthServices);
+  router = inject(Router);
+
   hugeShoppingBag02 = 'hugeShoppingBag02';
   hugeUser = 'hugeUser';
   hugeMenu09 = 'hugeMenu09';
 
   isDisplayBlock = false;
-
-  auth = inject(AuthServices);
-  router = inject(Router);
 
   goToAccount() {
     if (this.auth.isLoggedIn()) {

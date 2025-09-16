@@ -27,13 +27,16 @@
   </div>
   <div class="hidden md:flex lg:flex flex-row items-center gap-4">
     <ul class="flex flex-row flex-0 place-items-center gap-4 h-auto">
-      <div>
-        <a
-          [routerLink]="'/admin'"
-          class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
-          >admin</a
-        >
-      </div>
+      @if (auth.isAdmin()) {
+        <div>
+          <a
+            [routerLink]="'/admin'"
+            class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+            >admin</a
+          >
+        </div>
+      }
+
       <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
       <app-icon-layout
         iconName="hugeUser"

@@ -106,12 +106,10 @@ export class AuthServices {
     return null;
   }
 
-  isCustomerUser(): boolean {
+  isAdmin(): boolean {
     const user = this.getCurrentUser();
-    if (user) {
-      const foundUser = this.users.find((u) => u.email === user.email);
-      return foundUser ? foundUser.role === 'customer' : false;
-    }
-    return false;
+    if (!user) return false;
+    const foundUser = this.users.find((u) => u.email === user.email);
+    return foundUser ? foundUser.role !== 'customer' : false;
   }
 }
