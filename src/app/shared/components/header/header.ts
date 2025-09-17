@@ -7,6 +7,7 @@ import { TranslateButtons } from '../design-system/translate-buttons/translate-b
 import { Router, RouterLink } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
+import { CartServices } from '../../../features/cart/services/cart.services';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +18,26 @@ import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 export class Header extends BaseComponent {
   auth = inject(AuthServices);
   router = inject(Router);
+  cartServices = inject(CartServices);
 
   hugeShoppingBag02 = 'hugeShoppingBag02';
   hugeUser = 'hugeUser';
   hugeMenu09 = 'hugeMenu09';
 
   isDisplayBlock = false;
+
+  isCartNotEmpty(): boolean {
+    return this.cartServices.getItems().length > 0;
+  }
+
+  itemsInCart(): number | string {
+    const cartLength = this.cartServices.getItems().length;
+    if (cartLength < 10) {
+      return this.cartServices.getItems().length;
+    } else {
+      return '9+';
+    }
+  }
 
   goToAccount() {
     if (this.auth.isLoggedIn()) {

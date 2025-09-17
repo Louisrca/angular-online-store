@@ -6,8 +6,27 @@
     transform: scale(1.1);
   }
 </style>
-<li>
-  <a [routerLink]="route" class="flex items-center"
+<li class="relative">
+  <a
+    [routerLink]="route"
+    class="flex items-center"
+    (mouseenter)="toggleModal()"
+    (mouseleave)="toggleModal()"
     ><ng-icon size="24" color="black" [name]="iconName" class="icon"></ng-icon
   ></a>
+  @if (isBadgeVisible) {
+    <div
+      class="absolute flex items-center justify-center top-3 p-2 left-2 bg-[#FF8300] text-white text-xs rounded-full w-5 h-5 cursor-pointer"
+      (mouseenter)="toggleModal()"
+      (mouseleave)="toggleModal()"
+      [routerLink]="route"
+    >
+      {{ itemQuantity }}
+    </div>
+  }
+  @if (isModalVisible) {
+    <div class="fixed top-22 right-8 z-50 w-80">
+      <app-cart-details></app-cart-details>
+    </div>
+  }
 </li>

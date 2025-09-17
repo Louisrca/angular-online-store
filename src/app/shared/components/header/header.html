@@ -37,7 +37,13 @@
         </div>
       }
 
-      <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
+      <app-icon-layout
+        iconName="hugeShoppingBag02"
+        [isBadgeVisible]="isCartNotEmpty()"
+        [itemQuantity]="itemsInCart()"
+        route="/cart"
+        [hasModal]="isCartNotEmpty()"
+      ></app-icon-layout>
       <app-icon-layout
         iconName="hugeUser"
         [route]="auth.isLoggedIn() ? '/account' : '/auth/login'"

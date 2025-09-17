@@ -4,6 +4,7 @@ import { BaseComponent } from '../../../../shared/components/base-translate/base
 import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../models/products.model';
+import { CartServices } from '../../../cart/services/cart.services';
 
 @Component({
   selector: 'app-products-list',
@@ -12,6 +13,7 @@ import { Product } from '../../models/products.model';
 })
 export class ProductsList extends BaseComponent implements OnInit {
   productsServices = inject(ShopServices);
+  cartServices = inject(CartServices);
   products: Product[] = [];
   limit = 8;
 
@@ -26,5 +28,10 @@ export class ProductsList extends BaseComponent implements OnInit {
 
   hasMoreProducts(): boolean {
     return this.products.length < this.productsServices.getProductLength();
+  }
+
+  addToCart(product: Product) {
+    const { id, name, type, color, price, imageUrl } = product;
+    this.cartServices.addItem({ id, name, type, color, price, imageUrl });
   }
 }
