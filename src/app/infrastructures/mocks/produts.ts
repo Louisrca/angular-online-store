@@ -17,7 +17,7 @@ export const Products: Product[] = [
     },
     gender: 'product.gender.male',
     availabledSize: ['S', 'M', 'L', 'XL'],
-    price: '100 €',
+    price: 100,
     imageUrl:
       'https://media-cdn.citadium.com/image/61/0/8218610.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 12,
@@ -37,7 +37,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '85 €',
+    price: 85,
     imageUrl:
       'https://media-cdn.citadium.com/image/12/5/8386125.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 8,
@@ -57,7 +57,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '250 €',
+    price: 250,
     imageUrl:
       'https://media-cdn.citadium.com/image/18/3/8288183.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 5,
@@ -77,7 +77,7 @@ export const Products: Product[] = [
       productSize: '42',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '110 €',
+    price: 110,
     imageUrl:
       'https://media-cdn.citadium.com/image/34/3/6364343.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 20,
@@ -97,7 +97,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '250 €',
+    price: 250,
     imageUrl:
       'https://media-cdn.citadium.com/image/18/3/8288183.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 5,
@@ -117,7 +117,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 30,
@@ -137,7 +137,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 30,
@@ -157,7 +157,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 23,
@@ -177,7 +177,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 12,
@@ -197,7 +197,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 8,
@@ -217,7 +217,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 15,
@@ -237,7 +237,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 19,
@@ -257,7 +257,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 7,
@@ -277,7 +277,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 30,
@@ -297,7 +297,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 38,
@@ -317,7 +317,7 @@ export const Products: Product[] = [
       productSize: 'M',
       modelHeight: '6ft 1in (185 cm)',
     },
-    price: '75 €',
+    price: 75,
     imageUrl:
       'https://media-cdn.citadium.com/image/59/0/8333590.png?fit=bounds&bg-color=EBEDEF&width=500&height=750&canvas=500-750',
     quantity: 10,

@@ -1,8 +1,8 @@
-export interface CART_ITEM {
+export interface CartItem {
   id: string;
   name: string;
   type: string;
   color?: string;
-  price?: string;
+  price: number;
   imageUrl: string;
 }

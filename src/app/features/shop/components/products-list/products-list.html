@@ -17,7 +17,7 @@
       </a>
       <span class="font-semibold"> {{ product.name }} - {{ product.type | translate }} </span>
       <span class="uppercase text-[0.75rem] font-medium">{{ product.color | translate }} </span>
-      <span>{{ product.price }} </span>
+      <span>{{ product.price }} €</span>
       <div class="flex flex-row overflow-hidden gap-2">
         @for (size of product.availabledSize; track $index) {
           <a

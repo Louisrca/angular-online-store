@@ -3,7 +3,7 @@
   <p-table [value]="orders$">
     <ng-template #header>
       <tr>
-        <th>{{ 'dashboardPage.customers.customerId' | translate }}</th>
+        <th>{{ 'dashboardPage.customers.orderId' | translate }}</th>
         <th>{{ 'dashboardPage.customers.email' | translate }}</th>
         <th>{{ 'dashboardPage.order.orderAmount' | translate }}</th>
         <th>{{ 'dashboardPage.order.quantity' | translate }}</th>
@@ -14,7 +14,7 @@
     <ng-template #body let-order>
       <tr>
         <td>
-          {{ order.customerId }}
+          {{ order.id }}
         </td>
         <td>
           {{ order.customerEmail }}

@@ -2,6 +2,23 @@
   <app-shop-layout>
     <p>
       {{ 'cartPage.title' | translate }}
+      @for (item of getCartItems(); track $index) {
+        <div class="flex flex-row justify-between items-center mb-4">
+          <img [src]="item.imageUrl" [alt]="item.name | translate" class="w-16 h-16 object-cover" />
+          <div class="flex flex-col flex-grow ml-4">
+            <span class="font-semibold">{{ item.name }} - {{ item.type | translate }}</span>
+            <span class="text-sm text-gray-600 uppercase">{{ item.color | translate }}</span>
+
+            <span class="text-sm">{{ item.price }} x {{ getItemQuantity(item) }}</span>
+          </div>
+        </div>
+      }
+      <button
+        class="ml-4 py-1 px-2 bg-[#FF8300] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium"
+        (click)="buy()"
+      >
+        Buy Now
+      </button>
     </p>
   </app-shop-layout>
 </div>

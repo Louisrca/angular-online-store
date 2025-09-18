@@ -14,7 +14,7 @@ export interface Product {
     productSize?: string;
     modelHeight?: string;
   };
-  price: string;
+  price: number;
   imageUrl: string;
   imageUrls?: string[];
   quantity?: number;

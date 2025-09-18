@@ -23,7 +23,8 @@
       "customerId": "ID Client",
       "firstName": "Prénom",
       "lastName": "Nom",
-      "email": "Mail"
+      "email": "Mail",
+      "orderId": "ID Commande"
     },
     "order": {
       "recentOrders": "Commandes récentes",

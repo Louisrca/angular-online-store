@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CART_ITEM } from '../models/cart.model';
+import { CartItem } from '../models/cart.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartServices {
-  private items: CART_ITEM[] = [];
+  private items: CartItem[] = [];
 
-  addItem(item: CART_ITEM) {
+  addItem(item: CartItem) {
     const items = localStorage.getItem('cartItems');
     if (items) {
       this.items = JSON.parse(items);
@@ -16,7 +16,7 @@ export class CartServices {
     localStorage.setItem('cartItems', JSON.stringify(this.items));
   }
 
-  removeItem(item: CART_ITEM) {
+  removeItem(item: CartItem) {
     const index = localStorage.getItem('cartItems')?.indexOf(JSON.stringify(item)) as number;
     if (index > -1) {
       this.items.splice(index, 1);
