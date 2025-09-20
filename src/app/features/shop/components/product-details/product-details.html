@@ -1,4 +1,48 @@
+<style>
+  ::ng-deep .p-toast-message {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 0 !important;
+    border: 2px solid #000000 !important;
+  }
+
+  ::ng-deep .p-toast-message-content {
+    gap: 0 !important;
+  }
+
+  ::ng-deep .p-toast-close-icon {
+    color: #000000 !important;
+  }
+
+  ::ng-deep .p-toast-close-button {
+    background: #ffffff !important;
+    border-radius: 0;
+    border: 1px solid #000000 !important;
+  }
+
+  ::ng-deep .p-toast-close-button:hover {
+    background: #47fc00 !important;
+    border-radius: 0;
+    outline: 2px solid #000000 !important;
+  }
+</style>
+
 <div class="flex flex-col gap-12 md:flex-row md:gap-16 lg:flex-row lg:gap-16 sm:flex-col">
+  <p-toast>
+    <ng-template let-message pTemplate="message" class="w-full">
+      <div class="flex flex-col gap-4 justify-end items-end w-full pl-4">
+        <div class="flex-1 w-full">{{ message.detail | translate }}</div>
+        <a
+          [routerLink]="'/auth/login'"
+          type="button"
+          class="border bg-[#47fc00] w-auto text-center text-sm py-2 px-3 hover:outline hover:outline-black cursor-pointer uppercase font-medium"
+        >
+          {{ 'productElement.toast.goToLogin' | translate }}
+        </a>
+      </div>
+    </ng-template>
+  </p-toast>
+
   <div>
     <img
       [src]="getProductDetails()?.imageUrl"
@@ -21,7 +65,7 @@
         <span class="font-[300]">|</span>
         <p class="font-[300]">{{ getProductDetails()?.color | translate }}</p>
       </div>
-      <p>{{ getProductDetails()?.price }}</p>
+      <p>{{ getProductDetails()?.price }} €</p>
     </div>
     <!-- Size Selection -->
     <div class="flex flex-col gap-2 uppercase font-medium">
@@ -43,7 +87,8 @@
     <!-- Add to Cart Button -->
     <div class="flex flex-col">
       <button
-        class="py-3 bg-[#FF8300] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium md:w-2/3 lg:w-2/3"
+        class="py-3 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium md:w-2/3 lg:w-2/3"
+        (click)="addToCart()"
       >
         {{ 'productElement.add' | translate }}
       </button>

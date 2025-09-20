@@ -5,4 +5,5 @@ export interface CartItem {
   color?: string;
   price: number;
   imageUrl: string;
+  userId: string;
 }

@@ -12,7 +12,7 @@
   }
   ::selection {
     @apply text-white; // couleur du texte
-    background-color: #ff8300; // couleur du surlignage
+    background-color: #47fc00; // couleur du surlignage
   }
 
   h1 {
@@ -44,11 +44,11 @@
   p,
   button {
     @apply font-medium;
-    @apply focus-visible:outline focus-visible:outline-[#FF8300];
+    @apply focus-visible:outline focus-visible:outline-[#47fc00];
   }
 
   select {
-    @apply focus-visible:outline focus-visible:outline-[#FF8300];
+    @apply focus-visible:outline focus-visible:outline-[#47fc00];
   }
 
   input {

@@ -27,13 +27,19 @@ export class Header extends BaseComponent {
   isDisplayBlock = false;
 
   isCartNotEmpty(): boolean {
-    return this.cartServices.getItems().length > 0;
+    if (!this.auth.isLoggedIn()) {
+      return false;
+    }
+    return this.cartServices.getItemsByUser(this.auth.getCurrentUser().id).length > 0;
   }
 
   itemsInCart(): number | string {
-    const cartLength = this.cartServices.getItems().length;
+    if (!this.auth.isLoggedIn()) {
+      return 0;
+    }
+    const cartLength = this.cartServices.getItemsByUser(this.auth.getCurrentUser().id).length;
     if (cartLength < 10) {
-      return this.cartServices.getItems().length;
+      return cartLength;
     } else {
       return '9+';
     }

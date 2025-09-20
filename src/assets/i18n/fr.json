@@ -41,6 +41,11 @@
     }
   },
 
+  "catalogPage": {
+    "title": "Modifier le catalogue",
+    "description": "Gérez vos produits"
+  },
+
   "connexionPage": {
     "loginPage": {
       "title": "Se Connecter",
@@ -104,7 +109,11 @@
   },
   "productElement": {
     "title": "Page de détail du produit",
-    "add": "Ajouter au panier"
+    "add": "Ajouter au panier",
+    "toast": {
+      "loginToAddProducts": "Veuillez vous connecter pour ajouter des articles à votre panier.",
+      "goToLogin": "Se connecter"
+    }
   },
   "productDetails": {
     "description": "Description",
@@ -128,5 +137,8 @@
     "sizeGuide": "Guide des tailles",
     "fit": "Coupe",
     "compositionAndCare": "Composition et entretien"
+  },
+  "footer": {
+    "AllRightsReserved": "Tous droits réservés"
   }
 }

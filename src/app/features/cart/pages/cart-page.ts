@@ -22,16 +22,18 @@ export class CartPage extends BaseComponent {
   orderId = ulid();
 
   getCartItems(): CartItem[] {
-    return this.cartServices.getItems();
+    return this.cartServices.getItemsByUser(this.authServices.getCurrentUser().id);
   }
 
   getItemQuantity(item: CartItem): number {
-    return this.cartServices.getItems().filter((i: CartItem) => i.id === item.id).length;
+    return this.cartServices
+      .getItemsByUser(this.authServices.getCurrentUser().id)
+      .filter((i: CartItem) => i.id === item.id).length;
   }
 
   totalAmount(): number {
     return this.cartServices
-      .getItems()
+      .getItemsByUser(this.authServices.getCurrentUser().id)
       .reduce((total: number, item: CartItem) => total + Number(item.price), 0);
   }
 
@@ -42,7 +44,7 @@ export class CartPage extends BaseComponent {
       amount: this.totalAmount(),
       items: [
         this.cartServices
-          .getItems()
+          .getItemsByUser(this.authServices.getCurrentUser().id)
           .map((item: CartItem) => ({ id: item.id, name: item.name, price: item.price })),
       ],
       saleType: 'sale',
@@ -54,14 +56,18 @@ export class CartPage extends BaseComponent {
       customerEmail: this.authServices.getCurrentUser().email,
       customerAddress: '123 Main St, City, Country',
       date: new Date(),
-      items: this.cartServices.getItems().map((item: CartItem) => ({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: this.getItemQuantity(item),
-      })),
+      items: this.cartServices
+        .getItemsByUser(this.authServices.getCurrentUser().id)
+        .map((item: CartItem) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: this.getItemQuantity(item),
+          userId: item.userId,
+        })),
       amount: this.totalAmount(),
       type: 'purchase',
     });
+    this.cartServices.clearCart(this.authServices.getCurrentUser().id);
   }
 }

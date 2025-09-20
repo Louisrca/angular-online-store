@@ -47,7 +47,7 @@ export class Register extends BaseComponent {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(6)]),
         confirmPassword: new FormControl('', [Validators.required]),
-        role: new FormControl('user'),
+        role: new FormControl('customer'),
       },
       { validators: passwordMatchValidator },
     );

@@ -43,6 +43,10 @@
       "goBackToShop": "Go back to shop"
     }
   },
+  "catalogPage": {
+    "title": "Edit Catalog",
+    "description": "Manage your product"
+  },
 
   "connexionPage": {
     "loginPage": {
@@ -108,7 +112,11 @@
   },
   "productElement": {
     "title": "Product Detail Page",
-    "add": "Add to Cart"
+    "add": "Add to Cart",
+    "toast": {
+      "loginToAddProducts": "Please log in to add items to your cart.",
+      "goToLogin": "Log In"
+    }
   },
   "productDetails": {
     "description": "Description",
@@ -131,5 +139,9 @@
     "modelHeight": "Model Height",
     "fit": "Fit",
     "compositionAndCare": "Composition and Care"
+  },
+
+  "footer": {
+    "AllRightsReserved": "All Rights Reserved"
   }
 }

@@ -1,1 +1,19 @@
-<p>Catalog Page works!</p>
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <span class="text-gray-400 font-[300] text-xl">{{
+        'catalogPage.description' | translate
+      }}</span>
+      <h2 class="text-3xl font-bold mb-6">
+        {{ 'catalogPage.title' | translate }}
+      </h2>
+    </div>
+    <div>
+      <a
+        [routerLink]="'/'"
+        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        >{{ 'dashboardPage.utils.goBackToShop' | translate }}</a
+      >
+    </div>
+  </div>
+</div>

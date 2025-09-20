@@ -24,12 +24,13 @@ export class CartServices {
     }
   }
 
-  getItems() {
-    return JSON.parse(localStorage.getItem('cartItems') || '[]');
+  getItemsByUser(userId: string) {
+    const allItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    return allItems.filter((item: CartItem) => item.userId === userId);
   }
 
-  clearCart() {
-    this.items = [];
-    localStorage.removeItem('cartItems');
+  clearCart(userId: string) {
+    this.items = this.items.filter((item) => item.userId !== userId);
+    localStorage.setItem('cartItems', JSON.stringify(this.items));
   }
 }
