@@ -31,7 +31,7 @@ export class ProductsList extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.queryParams$.subscribe((params) => {
-      const typeFilter = params['type'];
+      const typeFilter = params['filter'];
       if (typeFilter) {
         this.products.set(this.productsServices.getProducts(this.limit, typeFilter));
         return;
@@ -45,7 +45,7 @@ export class ProductsList extends BaseComponent implements OnInit {
     this.products.set(
       this.productsServices.getProducts(
         this.limit,
-        this.route.snapshot.queryParamMap.get('type') || '',
+        this.route.snapshot.queryParamMap.get('filter') || '',
       ),
     );
   }
@@ -53,7 +53,7 @@ export class ProductsList extends BaseComponent implements OnInit {
   hasMoreProducts(): boolean {
     return (
       this.products().length <
-      this.productsServices.getProductLength(this.route.snapshot.queryParamMap.get('type') || '')
+      this.productsServices.getProductLength(this.route.snapshot.queryParamMap.get('filter') || '')
     );
   }
 

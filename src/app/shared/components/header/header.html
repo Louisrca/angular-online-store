@@ -11,7 +11,7 @@
       <li>
         <a
           [routerLink]="['/']"
-          [queryParams]="{ type: 'men' }"
+          [queryParams]="{ filter: 'men' }"
           routerLinkActive="active"
           class="hover:text-[#47fc00] hover:underline"
           >{{ 'shopPage.navigation.filters.man' | translate }}</a
@@ -20,7 +20,7 @@
       <li>
         <a
           [routerLink]="['/']"
-          [queryParams]="{ type: 'women' }"
+          [queryParams]="{ filter: 'women' }"
           routerLinkActive="active"
           class="hover:text-[#47fc00] hover:underline"
           >{{ 'shopPage.navigation.filters.woman' | translate }}</a
@@ -29,7 +29,7 @@
       <li>
         <a
           [routerLink]="['/']"
-          [queryParams]="{ type: 'sneakers' }"
+          [queryParams]="{ filter: 'sneakers' }"
           routerLinkActive="active"
           class="hover:text-[#47fc00] hover:underline"
           >{{ 'shopPage.navigation.filters.sneakers' | translate }}</a
@@ -89,19 +89,34 @@
     </div>
     <ul class="flex flex-col w-full place-items-start gap-4 h-auto uppercase">
       <li>
-        <a href="?hommes" class="hover:text-[#47fc00] hover:underline w-full">{{
-          'shopPage.navigation.filters.man' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ filter: 'men' }"
+          routerLinkActive="active"
+          (click)="toggleMobileMenu()"
+          class="hover:text-[#47fc00] hover:underline w-full"
+          >{{ 'shopPage.navigation.filters.man' | translate }}</a
+        >
       </li>
       <li>
-        <a href="?femmes" class="hover:text-[#47fc00] hover:underline w-full">{{
-          'shopPage.navigation.filters.woman' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ filter: 'women' }"
+          routerLinkActive="active"
+          (click)="toggleMobileMenu()"
+          class="hover:text-[#47fc00] hover:underline w-full"
+          >{{ 'shopPage.navigation.filters.woman' | translate }}</a
+        >
       </li>
       <li>
-        <a href="?sneakers" class="hover:text-[#47fc00] hover:underline w-full">{{
-          'shopPage.navigation.filters.sneakers' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ filter: 'sneakers' }"
+          routerLinkActive="active"
+          (click)="toggleMobileMenu()"
+          class="hover:text-[#47fc00] hover:underline w-full"
+          >{{ 'shopPage.navigation.filters.sneakers' | translate }}</a
+        >
       </li>
     </ul>
   </div>
