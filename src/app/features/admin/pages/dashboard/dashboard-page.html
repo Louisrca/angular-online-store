@@ -2,10 +2,10 @@
   <div class="flex items-center justify-between mb-8">
     <div>
       <span class="text-gray-400 font-[300] text-xl">{{
-        'dashboardPage.subtitle' | translate
+        'admin.dashboardPage.subtitle' | translate
       }}</span>
       <h2 class="text-3xl font-bold mb-6">
-        {{ 'dashboardPage.title' | translate }}
+        {{ 'admin.dashboardPage.title' | translate }}
         <span class="capitalize font-bold">{{ currentUser?.firstName }}</span>
       </h2>
     </div>
@@ -13,7 +13,7 @@
       <a
         [routerLink]="'/'"
         class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
-        >{{ 'dashboardPage.utils.goBackToShop' | translate }}</a
+        >{{ 'admin.dashboardPage.utils.goBackToShop' | translate }}</a
       >
     </div>
   </div>

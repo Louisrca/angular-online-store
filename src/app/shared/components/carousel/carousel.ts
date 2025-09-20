@@ -21,8 +21,7 @@ export class Carousel implements OnInit, OnDestroy {
   ];
 
   currentIndex = 0;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  intervalId: any;
+  intervalId!: NodeJS.Timeout;
 
   ngOnInit() {
     this.startAutoSlide();

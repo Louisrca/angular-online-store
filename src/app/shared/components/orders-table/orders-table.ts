@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import { OrdersService } from '../../../../core/services/orders/orders.services';
 import { DatePipe } from '@angular/common';
-import { TRANSLATE_IMPORTS } from '../../../imports/translate-imports';
-import { BaseComponent } from '../../base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
+import { BaseComponent } from '../base-translate/base-translate';
+import { OrdersService } from '../../../core/services/orders/orders.services';
 
 @Component({
   selector: 'app-orders-table',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
-import { hugeDashboardBrowsing, hugeCatalogue } from '@ng-icons/huge-icons';
+import { hugeDashboardBrowsing, hugeCatalogue, hugeUserMultiple } from '@ng-icons/huge-icons';
 import { AdminNavLink } from '../design-system/admin-nav-link/admin-nav-link';
 import { TranslateButtons } from '../design-system/translate-buttons/translate-buttons';
 
@@ -8,9 +8,10 @@ import { TranslateButtons } from '../design-system/translate-buttons/translate-b
   selector: 'app-admin-nav',
   templateUrl: './admin-nav.html',
   imports: [AdminNavLink, TranslateButtons, TranslateButtons],
-  viewProviders: [provideIcons({ hugeDashboardBrowsing, hugeCatalogue })],
+  viewProviders: [provideIcons({ hugeDashboardBrowsing, hugeCatalogue, hugeUserMultiple })],
 })
 export class AdminNav {
   hugeDashboardBrowsing = 'hugeDashboardBrowsing';
   hugeCatalogue = 'hugeCatalogue';
+  hugeUserMultiple = 'hugeUserMultiple';
 }

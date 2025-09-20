@@ -8,7 +8,7 @@ export class AdminGuard implements CanActivate {
   auth = inject(AuthServices);
 
   canActivate(): boolean {
-    if (this.auth.isLoggedIn() && this.auth.isAdmin()) {
+    if (this.auth.isLoggedIn() && this.auth.isWorker()) {
       return true;
     }
 

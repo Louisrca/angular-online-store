@@ -11,39 +11,46 @@
     "noMoreProducts": "Plus aucun produit à charger."
   },
 
-  "dashboardPage": {
-    "title": "Bienvenue",
-    "subtitle": "Aperçu",
-    "saleOverviewTitle": "Aperçu des ventes",
-    "totalOrders": "Total des commandes",
-    "returns": "Retours",
-    "sales": "Ventes",
-    "expenses": "Dépenses",
-    "customers": {
-      "customerId": "ID Client",
-      "firstName": "Prénom",
-      "lastName": "Nom",
-      "email": "Mail",
-      "orderId": "ID Commande"
+  "admin": {
+    "dashboardPage": {
+      "title": "Bienvenue",
+      "subtitle": "Aperçu",
+      "saleOverviewTitle": "Aperçu des ventes",
+      "totalOrders": "Total des commandes",
+      "returns": "Retours",
+      "sales": "Ventes",
+      "expenses": "Dépenses",
+      "customers": {
+        "customerId": "ID Client",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "Mail",
+        "orderId": "ID Commande"
+      },
+      "order": {
+        "recentOrders": "Commandes récentes",
+        "orderId": "ID Commande",
+        "product": "Produit",
+        "customer": "Client",
+        "date": "Date",
+        "orderAmount": "Montant commande",
+        "quantity": "Quantité"
+      },
+      "utils": {
+        "detailsButton": "Détails",
+        "goBackToShop": "Retourner à la boutique"
+      }
     },
-    "order": {
-      "recentOrders": "Commandes récentes",
-      "orderId": "ID Commande",
-      "product": "Produit",
-      "customer": "Client",
-      "date": "Date",
-      "orderAmount": "Montant commande",
-      "quantity": "Quantité"
-    },
-    "utils": {
-      "detailsButton": "Détails",
-      "goBackToShop": "Retourner à la boutique"
-    }
-  },
 
-  "catalogPage": {
-    "title": "Modifier le catalogue",
-    "description": "Gérez vos produits"
+    "catalogPage": {
+      "title": "Modifier le catalogue",
+      "description": "Gérez vos produits"
+    },
+
+    "userPage": {
+      "title": "Gestion des utilisateurs",
+      "description": "Gérez vos utilisateurs"
+    }
   },
 
   "connexionPage": {

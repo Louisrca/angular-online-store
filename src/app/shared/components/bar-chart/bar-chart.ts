@@ -1,8 +1,24 @@
 import { ChangeDetectorRef, Component, effect, inject } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
-import { SalesService } from '../../../../core/services/sales/sales.services';
-import { BaseComponent } from '../../base-translate/base-translate';
-import { TRANSLATE_IMPORTS } from '../../../imports/translate-imports';
+import { BaseComponent } from '../base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
+import { SalesService } from '../../../core/services/sales/sales.services';
+
+type BarChartProps = BaseComponent & {
+  basicData: {
+    labels: string[];
+    datasets: {
+      label: string;
+      data: number[];
+      backgroundColor: string[];
+      borderRadius: string;
+      barPercentage: number;
+      categoryPercentage: number;
+      hoverBackgroundColor: string[];
+    }[];
+  };
+  basicOptions: object;
+};
 
 @Component({
   selector: 'app-bar-chart',
@@ -10,10 +26,9 @@ import { TRANSLATE_IMPORTS } from '../../../imports/translate-imports';
   imports: [ChartModule, ...TRANSLATE_IMPORTS],
 })
 export class BarChart extends BaseComponent {
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  basicData: any;
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  basicOptions: any;
+  basicData!: BarChartProps['basicData'];
+
+  basicOptions!: BarChartProps['basicOptions'];
   sales = inject(SalesService);
   currentYear = new Date().getFullYear();
 
@@ -84,8 +99,7 @@ export class BarChart extends BaseComponent {
           footerColor: '#000000ff',
           backgroundColor: '#e2e8f0',
           callbacks: {
-            //eslint-disable-next-line @typescript-eslint/no-explicit-any
-            label: function (context: any) {
+            label: function (context: { dataset: { label: string }; raw: number }) {
               const label = context.dataset.label || '';
               const value = context.raw || 0;
               return `${label}: ${value} €`;

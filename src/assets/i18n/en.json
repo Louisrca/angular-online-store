@@ -14,38 +14,45 @@
     "noMoreProducts": "No more products to load."
   },
 
-  "dashboardPage": {
-    "title": "Welcome",
-    "subtitle": "Overview",
-    "saleOverviewTitle": "Sales Overview",
-    "totalOrders": "Total Orders",
-    "returns": "Returns",
-    "sales": "Sales",
-    "expenses": "Expenses",
-    "customers": {
-      "customerId": "Customer ID",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "orderId": "Order ID"
+  "admin": {
+    "dashboardPage": {
+      "title": "Welcome",
+      "subtitle": "Overview",
+      "saleOverviewTitle": "Sales Overview",
+      "totalOrders": "Total Orders",
+      "returns": "Returns",
+      "sales": "Sales",
+      "expenses": "Expenses",
+      "customers": {
+        "customerId": "Customer ID",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "orderId": "Order ID"
+      },
+      "order": {
+        "recentOrders": "Recent Orders",
+        "orderId": "Order ID",
+        "product": "Product",
+        "customer": "Customer",
+        "date": "Date",
+        "orderAmount": "Order amount",
+        "quantity": "Quantity"
+      },
+      "utils": {
+        "detailsButton": "Details",
+        "goBackToShop": "Go back to shop"
+      }
     },
-    "order": {
-      "recentOrders": "Recent Orders",
-      "orderId": "Order ID",
-      "product": "Product",
-      "customer": "Customer",
-      "date": "Date",
-      "orderAmount": "Order amount",
-      "quantity": "Quantity"
+    "catalogPage": {
+      "title": "Edit Catalog",
+      "description": "Manage your product"
     },
-    "utils": {
-      "detailsButton": "Details",
-      "goBackToShop": "Go back to shop"
+
+    "userPage": {
+      "title": "User Management",
+      "description": "Manage your users"
     }
-  },
-  "catalogPage": {
-    "title": "Edit Catalog",
-    "description": "Manage your product"
   },
 
   "connexionPage": {

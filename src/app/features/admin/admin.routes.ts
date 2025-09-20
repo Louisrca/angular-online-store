@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AdminPage } from './pages/admin-page';
 import { DashboardPage } from './pages/dashboard/dashboard-page';
 import { CatalogPage } from './pages/catalog/catalog-page';
+import { UsersPage } from './pages/users/users-page';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -15,6 +16,10 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'catalog',
         component: CatalogPage,
+      },
+      {
+        path: 'users',
+        component: UsersPage,
       },
     ],
   },

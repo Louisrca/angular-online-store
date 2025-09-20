@@ -1,13 +1,13 @@
 <div class="border border-[#e2e8f0] rounded-lg shadow-xs p-8">
-  <h3 class="text-lg font-bold mb-4">{{ 'dashboardPage.order.recentOrders' | translate }}</h3>
+  <h3 class="text-lg font-bold mb-4">{{ 'admin.dashboardPage.order.recentOrders' | translate }}</h3>
   <p-table [value]="orders$">
     <ng-template #header>
       <tr>
-        <th>{{ 'dashboardPage.customers.orderId' | translate }}</th>
-        <th>{{ 'dashboardPage.customers.email' | translate }}</th>
-        <th>{{ 'dashboardPage.order.orderAmount' | translate }}</th>
-        <th>{{ 'dashboardPage.order.quantity' | translate }}</th>
-        <th>{{ 'dashboardPage.order.date' | translate }}</th>
+        <th>{{ 'admin.dashboardPage.customers.orderId' | translate }}</th>
+        <th>{{ 'admin.dashboardPage.customers.email' | translate }}</th>
+        <th>{{ 'admin.dashboardPage.order.orderAmount' | translate }}</th>
+        <th>{{ 'admin.dashboardPage.order.quantity' | translate }}</th>
+        <th>{{ 'admin.dashboardPage.order.date' | translate }}</th>
         <th class="flex justify-center">Actions</th>
       </tr>
     </ng-template>
@@ -30,7 +30,7 @@
           <button
             class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
           >
-            {{ 'dashboardPage.utils.detailsButton' | translate }}
+            {{ 'admin.dashboardPage.utils.detailsButton' | translate }}
           </button>
         </td>
       </tr>

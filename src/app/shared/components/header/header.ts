@@ -8,11 +8,20 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 import { CartServices } from '../../../features/cart/services/cart.services';
+import { AdminOnlyDirective } from '../../directives/admin-only/admin-only.directive';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  imports: [IconLayout, TranslateButtons, RouterLink, ...TRANSLATE_IMPORTS, RouterLinkActive],
+  imports: [
+    IconLayout,
+    TranslateButtons,
+    RouterLink,
+    ...TRANSLATE_IMPORTS,
+    RouterLinkActive,
+    AdminOnlyDirective,
+  ],
+  standalone: true,
   viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
 })
 export class Header extends BaseComponent {
