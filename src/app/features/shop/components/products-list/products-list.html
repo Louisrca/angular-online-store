@@ -51,7 +51,7 @@
     </ng-template>
   </p-toast>
 
-  @for (product of products; track $index) {
+  @for (product of products(); track $index) {
     <li class="flex flex-col gap-2">
       <a [routerLink]="'/product/' + product.id">
         <img [src]="product.imageUrl" [alt]="product.name | translate" class="image" />

@@ -4,7 +4,7 @@ import { provideIcons } from '@ng-icons/core';
 import { hugeShoppingBag02, hugeUser, hugeMenu09 } from '@ng-icons/huge-icons';
 import { IconLayout } from '../layout/icon-layout/icon-layout';
 import { TranslateButtons } from '../design-system/translate-buttons/translate-buttons';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 import { CartServices } from '../../../features/cart/services/cart.services';
@@ -12,7 +12,7 @@ import { CartServices } from '../../../features/cart/services/cart.services';
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  imports: [IconLayout, TranslateButtons, RouterLink, ...TRANSLATE_IMPORTS],
+  imports: [IconLayout, TranslateButtons, RouterLink, ...TRANSLATE_IMPORTS, RouterLinkActive],
   viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
 })
 export class Header extends BaseComponent {

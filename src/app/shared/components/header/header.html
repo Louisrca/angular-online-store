@@ -9,19 +9,31 @@
   <div class="hidden md:block lg:block">
     <ul class="flex flex-row place-items-center gap-4 h-auto uppercase">
       <li>
-        <a href="?hommes" class="hover:text-[#47fc00] hover:underline">{{
-          'shopPage.navigation.filters.man' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ type: 'men' }"
+          routerLinkActive="active"
+          class="hover:text-[#47fc00] hover:underline"
+          >{{ 'shopPage.navigation.filters.man' | translate }}</a
+        >
       </li>
       <li>
-        <a href="?femmes" class="hover:text-[#47fc00] hover:underline">{{
-          'shopPage.navigation.filters.woman' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ type: 'women' }"
+          routerLinkActive="active"
+          class="hover:text-[#47fc00] hover:underline"
+          >{{ 'shopPage.navigation.filters.woman' | translate }}</a
+        >
       </li>
       <li>
-        <a href="?sneakers" class="hover:text-[#47fc00] hover:underline">{{
-          'shopPage.navigation.filters.sneakers' | translate
-        }}</a>
+        <a
+          [routerLink]="['/']"
+          [queryParams]="{ type: 'sneakers' }"
+          routerLinkActive="active"
+          class="hover:text-[#47fc00] hover:underline"
+          >{{ 'shopPage.navigation.filters.sneakers' | translate }}</a
+        >
       </li>
     </ul>
   </div>

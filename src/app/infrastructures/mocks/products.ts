@@ -86,7 +86,7 @@ export const Products: Product[] = [
     id: '468dcb1f-77e5-44e1-83ab-d9e1d9a8e998',
     name: 'Adidas',
     type: 'product.type.jacket',
-    gender: 'product.gender.male',
+    gender: 'product.gender.female',
     color: 'product.color.black',
     availabledSize: ['S', 'M', 'L', 'XL'],
     description: {
@@ -307,7 +307,7 @@ export const Products: Product[] = [
     name: 'Adidas',
     type: 'product.type.t-shirt',
     color: 'product.color.yellow',
-    gender: 'product.gender.male',
+    gender: 'product.gender.female',
     availabledSize: ['S', 'M', 'L', 'XL'],
     description: {
       composition: '100% Polyester',

@@ -1,13 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShopServices } from '../../services/shop.services';
 import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
 import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '../../models/products.model';
 import { CartServices } from '../../../cart/services/cart.services';
 import { AuthServices } from '../../../auth/services/auth';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -19,22 +20,41 @@ export class ProductsList extends BaseComponent implements OnInit {
   productsServices = inject(ShopServices);
   cartServices = inject(CartServices);
   authServices = inject(AuthServices);
-  products: Product[] = [];
+  products = signal<Product[]>([]);
   limit = 8;
+
+  private route = inject(ActivatedRoute);
+
+  queryParams$: Observable<Record<string, string>> = this.route.queryParams;
 
   messageService = inject(MessageService);
 
   ngOnInit() {
-    this.products = this.productsServices.getProducts(this.limit);
+    this.queryParams$.subscribe((params) => {
+      const typeFilter = params['type'];
+      if (typeFilter) {
+        this.products.set(this.productsServices.getProducts(this.limit, typeFilter));
+        return;
+      }
+      this.products.set(this.productsServices.getProducts(this.limit));
+    });
   }
 
   loadMore() {
     this.limit += 10;
-    this.products = this.productsServices.getProducts(this.limit);
+    this.products.set(
+      this.productsServices.getProducts(
+        this.limit,
+        this.route.snapshot.queryParamMap.get('type') || '',
+      ),
+    );
   }
 
   hasMoreProducts(): boolean {
-    return this.products.length < this.productsServices.getProductLength();
+    return (
+      this.products().length <
+      this.productsServices.getProductLength(this.route.snapshot.queryParamMap.get('type') || '')
+    );
   }
 
   showAuthToast() {
