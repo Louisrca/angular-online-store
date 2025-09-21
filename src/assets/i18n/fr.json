@@ -86,7 +86,8 @@
     "moreItems": "...et {{count}} articles supplémentaires",
     "amount": "Montant",
     "buyButton": "Acheter maintenant",
-    "emptyCartMessage": "Votre panier est vide."
+    "emptyCartMessage": "Votre panier est vide.",
+    "continueShopping": "Continuer vos achats"
   },
   "product": {
     "type": {

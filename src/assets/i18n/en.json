@@ -89,7 +89,8 @@
     "moreItems": "...and {{count}} more items",
     "amount": "Amount",
     "buyButton": "Buy Now",
-    "emptyCartMessage": "Your cart is empty."
+    "emptyCartMessage": "Your cart is empty.",
+    "continueShopping": "Continue Shopping"
   },
   "product": {
     "type": {

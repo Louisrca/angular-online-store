@@ -7,12 +7,25 @@ import { CartServices } from '../services/cart.services';
 import { CartItem } from '../models/cart.model';
 import { OrdersService } from '../../../core/services/orders/orders.services';
 import { ulid } from 'ulid';
+import { v4 as uuidv4 } from 'uuid';
 import { AuthServices } from '../../auth/services/auth';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { CartItemsList } from '../components/cart-items-list/cart-items-list';
+import { EmptyCartDirective } from '../../../shared/directives/empty-cart/empty-cart.directive';
+import { NotEmptyCartDirective } from '../../../shared/directives/not-empty-cart/not-empty-cart.directive';
+import { EmptyCart } from '../components/empty-cart/empty-cart';
 @Component({
   selector: 'app-cart-page',
-  imports: [...TRANSLATE_IMPORTS, ShopLayout, ToastModule],
+  imports: [
+    ...TRANSLATE_IMPORTS,
+    ShopLayout,
+    ToastModule,
+    CartItemsList,
+    EmptyCart,
+    EmptyCartDirective,
+    NotEmptyCartDirective,
+  ],
   templateUrl: './cart-page.html',
   providers: [MessageService],
 })
@@ -24,6 +37,7 @@ export class CartPage extends BaseComponent {
   messageService = inject(MessageService);
 
   orderId = ulid();
+  salesId = uuidv4();
 
   getCartItems(): CartItem[] {
     const cart = this.cartServices.getItemsByUser(this.authServices.getCurrentUser().id);
@@ -62,7 +76,7 @@ export class CartPage extends BaseComponent {
 
   buy() {
     this.salesServices.postSales({
-      id: 'acb-321c12ab2-1a3b-4c5d-9e6f-7g8h9i0j1k2l',
+      id: this.salesId,
       date: new Date(),
       amount: this.totalAmount(),
       items: [
@@ -73,7 +87,7 @@ export class CartPage extends BaseComponent {
       saleType: 'sale',
     });
     this.ordersServices.postOrder({
-      id: this.orderId,
+      id: `ORDER_${this.orderId}`,
       customerId: this.authServices.getCurrentUser().id,
       customerName: this.authServices.getCurrentUser().name,
       customerEmail: this.authServices.getCurrentUser().email,
