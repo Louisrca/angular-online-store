@@ -29,13 +29,13 @@
         <img
           src="{{ getImageUrl() }}"
           alt="Product Image"
-          class="w-1/4 h-auto rounded-2xl mb-4 mx-auto"
+          class="w-1/4 h-78 object-cover rounded-xl mb-4 mx-auto"
         />
       } @else {
         <div
-          class="w-1/4 h-64 rounded-2xl mb-4 mx-auto bg-gray-200 flex justify-center items-center"
+          class="w-1/4 h-78 rounded-xl mb-4 mx-auto bg-gray-200 flex justify-center items-center"
         >
-          no image yet
+          <ng-icon size="48" name="hugeImage02" class="w-1/2 h-1/2" color="#8794A7" />
         </div>
       }
       <div>

@@ -15,11 +15,21 @@ import {
 import { ShopServices } from '../../../shop/services/shop.services';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { provideIcons, NgIcon } from '@ng-icons/core';
+import { hugeImage02 } from '@ng-icons/huge-icons';
 
 @Component({
   selector: 'app-catalog-page',
   templateUrl: './catalog-page.html',
-  imports: [...TRANSLATE_IMPORTS, RouterLink, FormsModule, ReactiveFormsModule, ToastModule],
+  imports: [
+    ...TRANSLATE_IMPORTS,
+    RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastModule,
+    NgIcon,
+  ],
+  viewProviders: [provideIcons({ hugeImage02 })],
   providers: [MessageService],
 })
 export class CatalogPage extends BaseComponent implements OnInit {
@@ -31,11 +41,13 @@ export class CatalogPage extends BaseComponent implements OnInit {
   productField = productField;
   productForm: FormGroup;
 
+  hugeImage02 = 'hugeImage02';
+
   currentUser = this.authService.getCurrentUser();
 
   ngOnInit() {
     this.productForm.get('type')?.valueChanges.subscribe((type) => {
-      if (type === 'shoes') {
+      if (type === 'product.type.shoes') {
         this.productForm.get('availabledSize')?.setValue(['39', '40', '41', '42', '43']);
       } else {
         this.productForm.get('availabledSize')?.setValue(['XS', 'S', 'M', 'L', 'XL']);
@@ -64,11 +76,6 @@ export class CatalogPage extends BaseComponent implements OnInit {
       availabledSize: new FormControl([], [Validators.required]),
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
     });
-    if (this.productForm.get('type')?.value === 'shoes') {
-      this.productForm.patchValue({ availableSizes: ['39', '40', '41', '42', '43'] });
-    } else {
-      this.productForm.patchValue({ availableSizes: ['XS', 'S', 'M', 'L', 'XL'] });
-    }
   }
 
   getImageUrl() {
