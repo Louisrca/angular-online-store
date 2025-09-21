@@ -21,7 +21,7 @@
       (mouseleave)="toggleModal()"
       [routerLink]="route"
     >
-      {{ itemQuantity }}
+      {{ itemQuantity | badgeValue }}
     </div>
   }
   @if (isModalVisible) {

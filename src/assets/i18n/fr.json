@@ -82,7 +82,11 @@
   },
 
   "cartPage": {
-    "title": "Page de panier"
+    "title": "Votre Panier",
+    "moreItems": "...et {{count}} articles supplémentaires",
+    "amount": "Montant",
+    "buyButton": "Acheter maintenant",
+    "emptyCartMessage": "Votre panier est vide."
   },
   "product": {
     "type": {

@@ -2,10 +2,10 @@ import { Directive, inject, TemplateRef, ViewContainerRef } from '@angular/core'
 import { AuthServices } from '../../../features/auth/services/auth';
 
 @Directive({
-  selector: '[appAdminOnly]',
+  selector: '[appWorkerOnly]',
   standalone: true,
 })
-export class AdminOnlyDirective {
+export class WorkerOnlyDirective {
   private authService = inject(AuthServices);
   private viewContainer = inject(ViewContainerRef);
   private templateRef = inject(TemplateRef<unknown>);
@@ -14,7 +14,7 @@ export class AdminOnlyDirective {
   }
 
   private updateView() {
-    if (this.authService.isAdmin()) {
+    if (this.authService.isWorker()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();

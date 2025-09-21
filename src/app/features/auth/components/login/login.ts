@@ -18,7 +18,6 @@ import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports'
   selector: 'app-login',
   imports: [InputComponent, ReactiveFormsModule, FormsModule, ...TRANSLATE_IMPORTS],
   templateUrl: './login.html',
-  styleUrl: './login.scss',
 })
 export class Login extends BaseComponent {
   private fb = inject(FormBuilder);

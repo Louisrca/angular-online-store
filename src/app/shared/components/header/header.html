@@ -39,11 +39,11 @@
   </div>
   <div class="hidden md:flex lg:flex flex-row items-center gap-4">
     <ul class="flex flex-row flex-0 place-items-center gap-4 h-auto">
-      <div *appAdminOnly>
+      <div *appWorkerOnly>
         <a
           [routerLink]="'/admin'"
           class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
-          >admin</a
+          >dashboard</a
         >
       </div>
 
@@ -80,7 +80,13 @@
     <div class="flex flex-row w-full gap-8 justify-between">
       <app-translate-buttons></app-translate-buttons>
       <ul class="flex flex-row place-items-center gap-8 h-auto">
-        <app-icon-layout iconName="hugeShoppingBag02" route="/cart"></app-icon-layout>
+        <app-icon-layout
+          iconName="hugeShoppingBag02"
+          [isBadgeVisible]="isCartNotEmpty()"
+          [itemQuantity]="itemsInCart()"
+          (click)="toggleMobileMenu()"
+          route="/cart"
+        ></app-icon-layout>
         <app-icon-layout
           iconName="hugeUser"
           [route]="auth.isLoggedIn() ? '/account' : '/auth/login'"

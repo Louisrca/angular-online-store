@@ -21,7 +21,7 @@ export class Carousel implements OnInit, OnDestroy {
   ];
 
   currentIndex = 0;
-  intervalId!: NodeJS.Timeout;
+  intervalId!: ReturnType<typeof setInterval>;
 
   ngOnInit() {
     this.startAutoSlide();

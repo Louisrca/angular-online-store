@@ -12,7 +12,9 @@
   }
   <div>
     @if (getItems().length > 5) {
-      <span class="text-sm text-gray-600">...and {{ getItems().length - 5 }} more items</span>
+      <span class="text-sm text-gray-600">{{
+        'cartPage.moreItems' | translate: { count: getItems().length - 5 }
+      }}</span>
     }
   </div>
 </div>

@@ -8,7 +8,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthServices } from '../../../features/auth/services/auth';
 import { TRANSLATE_IMPORTS } from '../../imports/translate-imports';
 import { CartServices } from '../../../features/cart/services/cart.services';
-import { AdminOnlyDirective } from '../../directives/admin-only/admin-only.directive';
+import { WorkerOnlyDirective } from '../../directives/worker-only/worker-only.directive';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,7 @@ import { AdminOnlyDirective } from '../../directives/admin-only/admin-only.direc
     RouterLink,
     ...TRANSLATE_IMPORTS,
     RouterLinkActive,
-    AdminOnlyDirective,
+    WorkerOnlyDirective,
   ],
   standalone: true,
   viewProviders: [provideIcons({ hugeShoppingBag02, hugeUser, hugeMenu09 })],
@@ -42,16 +42,12 @@ export class Header extends BaseComponent {
     return this.cartServices.getItemsByUser(this.auth.getCurrentUser().id).length > 0;
   }
 
-  itemsInCart(): number | string {
+  itemsInCart(): number {
     if (!this.auth.isLoggedIn()) {
       return 0;
     }
     const cartLength = this.cartServices.getItemsByUser(this.auth.getCurrentUser().id).length;
-    if (cartLength < 10) {
-      return cartLength;
-    } else {
-      return '9+';
-    }
+    return cartLength;
   }
 
   goToAccount() {

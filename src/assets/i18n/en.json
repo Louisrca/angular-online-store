@@ -85,7 +85,11 @@
   },
 
   "cartPage": {
-    "title": "Cart Page"
+    "title": "Your Cart",
+    "moreItems": "...and {{count}} more items",
+    "amount": "Amount",
+    "buyButton": "Buy Now",
+    "emptyCartMessage": "Your cart is empty."
   },
   "product": {
     "type": {

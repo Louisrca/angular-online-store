@@ -4,7 +4,11 @@
   <ul class="flex flex-col gap-4 flex-1">
     <app-admin-nav-link link="/admin" name="hugeDashboardBrowsing"></app-admin-nav-link>
     <app-admin-nav-link link="/admin/catalog" name="hugeCatalogue"></app-admin-nav-link>
-    <app-admin-nav-link link="/admin/users" name="hugeUserMultiple"></app-admin-nav-link>
+    <app-admin-nav-link
+      *appAdminOnly
+      link="/admin/users"
+      name="hugeUserMultiple"
+    ></app-admin-nav-link>
   </ul>
 
   <div class="mt-auto">
