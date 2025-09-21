@@ -52,9 +52,15 @@
   </p-toast>
 
   @for (product of products(); track $index) {
-    <li class="flex flex-col gap-2">
+    <li class="flex flex-col gap-2 h-min-container">
       <a [routerLink]="'/product/' + product.id">
-        <img [src]="product.imageUrl" [alt]="product.name | translate" class="image" />
+        <div class="w-full h-124 flex items-center justify-center overflow-hidden bg-transparent">
+          <img
+            [src]="product.imageUrl"
+            [alt]="product.name | translate"
+            class="h-full w-full object-contain image"
+          />
+        </div>
       </a>
       <span class="font-semibold"> {{ product.name }} - {{ product.type | translate }} </span>
       <span class="uppercase text-[0.75rem] font-medium">{{ product.color | translate }} </span>

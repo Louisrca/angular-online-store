@@ -119,7 +119,8 @@
     "add": "Ajouter au panier",
     "toast": {
       "loginToAddProducts": "Veuillez vous connecter pour ajouter des articles à votre panier.",
-      "goToLogin": "Se connecter"
+      "goToLogin": "Se connecter",
+      "productAdded": "Le produit a été ajouté avec succès. ✅"
     }
   },
   "productDetails": {

@@ -122,7 +122,8 @@
     "add": "Add to Cart",
     "toast": {
       "loginToAddProducts": "Please log in to add items to your cart.",
-      "goToLogin": "Log In"
+      "goToLogin": "Log In",
+      "productAdded": "The product has been successfully added. ✅"
     }
   },
   "productDetails": {
