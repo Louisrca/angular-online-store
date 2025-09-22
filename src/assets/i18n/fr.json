@@ -2,8 +2,8 @@
   "shopPage": {
     "navigation": {
       "filters": {
-        "man": "Hommes",
-        "woman": "Femmes",
+        "men": "Hommes",
+        "women": "Femmes",
         "sneakers": "Sneakers"
       }
     },
@@ -44,7 +44,13 @@
 
     "catalogPage": {
       "title": "Modifier le catalogue",
-      "description": "Gérez vos produits"
+      "description": "Gérez vos produits",
+      "filters": {
+        "men": "Hommes",
+        "women": "Femmes",
+        "sneakers": "Sneakers"
+      },
+      "filterBy": "Filtrer par"
     },
 
     "userPage": {

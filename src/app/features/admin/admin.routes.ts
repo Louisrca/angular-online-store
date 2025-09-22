@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
-import { AdminPage } from './pages/admin-page';
-import { DashboardPage } from './pages/dashboard/dashboard-page';
-import { CatalogPage } from './pages/catalog/catalog-page';
-import { UsersPage } from './pages/users/users-page';
-import { AdminGuard } from '../../core/guards/admin/admin-guard';
+import { AdminPage } from './admin-page';
+import { DashboardPage } from './dashboard/pages/dashboard-page';
+import { UsersPage } from './users/pages/users-page';
+import { AdminGuard } from '@Core/guards/admin/admin-guard';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -16,7 +15,8 @@ export const ADMIN_ROUTES: Routes = [
       },
       {
         path: 'catalog',
-        component: CatalogPage,
+        loadChildren: () => import('./catalog/catalog.routes').then((m) => m.CATALOG_ROUTES),
+        canActivate: [AdminGuard],
       },
       {
         path: 'users',

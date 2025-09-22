@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
-import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
+import { BaseComponent } from '@Shared/components/base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '@Shared/imports/translate-imports';
 import { RouterLink } from '@angular/router';
 
 @Component({

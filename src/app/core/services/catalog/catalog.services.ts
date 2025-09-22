@@ -1,6 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { Product } from '../models/products.model';
-import { Products } from '../../../infrastructures/mocks/products';
+import { Product } from '@Features/shop/models/products.model';
+import { Products } from '@Infrastructures/mocks/products';
 
 @Injectable({
   providedIn: 'root',

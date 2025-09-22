@@ -5,8 +5,8 @@
     "title": "Translation Demo",
     "navigation": {
       "filters": {
-        "man": "Men",
-        "woman": "Women",
+        "men": "Men",
+        "women": "Women",
         "sneakers": "Sneakers"
       }
     },
@@ -46,7 +46,14 @@
     },
     "catalogPage": {
       "title": "Edit Catalog",
-      "description": "Manage your product"
+      "description": "Manage your product",
+
+      "filters": {
+        "men": "Men",
+        "women": "Women",
+        "sneakers": "Sneakers"
+      },
+      "filterBy": "Filter by"
     },
 
     "userPage": {

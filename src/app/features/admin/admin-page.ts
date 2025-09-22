@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminLayout } from '../../../shared/components/layout/admin-layout/admin-layout';
+import { AdminLayout } from '@Shared/components/layout/admin-layout/admin-layout';
 
 @Component({
   selector: 'app-admin-page',

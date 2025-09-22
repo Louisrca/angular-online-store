@@ -1,0 +1,113 @@
+<div class="max-w-7xl mx-auto">
+  <p-toast>
+    <ng-template let-message pTemplate="message" class="w-full">
+      <div class="flex flex-col gap-4 justify-end items-end w-full pl-4">
+        <div class="flex-1 w-full">{{ message.detail | translate }}</div>
+      </div>
+    </ng-template>
+  </p-toast>
+
+  <div>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="mx-auto">
+      @if (getImageUrl() !== '') {
+        <img
+          src="{{ getImageUrl() }}"
+          alt="Product Image"
+          class="w-1/4 h-78 object-cover rounded-xl mb-4 mx-auto"
+        />
+      } @else {
+        <div
+          class="w-1/4 h-78 rounded-xl mb-4 mx-auto bg-gray-200 flex justify-center items-center"
+        >
+          <ng-icon size="48" name="hugeImage02" class="w-1/2 h-1/2" color="#8794A7" />
+        </div>
+      }
+      <div>
+        <input
+          type="text"
+          placeholder="Image URL"
+          class="border border-black px-2 py-1 w-full mb-4"
+          formControlName="imageUrl"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Product Name"
+          class="border border-black px-2 py-1 w-full mb-4"
+          formControlName="name"
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Sub Name"
+          class="border border-black px-2 py-1 w-full mb-4"
+          formControlName="subName"
+        />
+      </div>
+      <div>
+        <input
+          type="number"
+          placeholder="Product Price"
+          class="border border-black px-2 py-1 w-full mb-4"
+          formControlName="price"
+        />
+      </div>
+      <div>
+        <input
+          type="number"
+          placeholder="Product Quantity"
+          class="border border-black px-2 py-1 w-full mb-4"
+          formControlName="quantity"
+        />
+      </div>
+      <div>
+        <select
+          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          formControlName="type"
+          id="type"
+        >
+          <option value="" disabled selected>Select Category</option>
+          @for (productType of getProductTypedKeys(); track $index) {
+            <option [value]="`product.type.${productType}`">
+              {{ `product.type.${productType}` | translate }}
+            </option>
+          }
+        </select>
+      </div>
+      <div>
+        <select
+          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          formControlName="gender"
+        >
+          <option value="" disabled selected>Select Gender</option>
+          @for (productGender of getProductGenderKeys(); track $index) {
+            <option [value]="`product.gender.${productGender}`">
+              {{ `product.gender.${productGender}` | translate }}
+            </option>
+          }
+        </select>
+      </div>
+      <div>
+        <select
+          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          formControlName="color"
+        >
+          <option value="" disabled selected>Select Color</option>
+          @for (productColor of getProductColorKeys(); track $index) {
+            <option [value]="`product.color.${productColor}`">
+              {{ `product.color.${productColor}` | translate }}
+            </option>
+          }
+        </select>
+      </div>
+      <button
+        class="py-3 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
+        type="submit"
+      >
+        ajouter le produit
+      </button>
+    </form>
+  </div>
+</div>

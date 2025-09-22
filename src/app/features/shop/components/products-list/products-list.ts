@@ -33,27 +33,27 @@ export class ProductsList extends BaseComponent implements OnInit {
     this.queryParams$.subscribe((params) => {
       const typeFilter = params['filter'];
       if (typeFilter) {
-        this.products.set(this.productsServices.getProducts(this.limit, typeFilter));
+        this.products.set(this.productsServices.productsByFilter(this.limit, typeFilter)());
         return;
       }
-      this.products.set(this.productsServices.getProducts(this.limit));
+      this.products.set(this.productsServices.productsByFilter(this.limit, typeFilter)());
     });
   }
 
   loadMore() {
     this.limit += 10;
     this.products.set(
-      this.productsServices.getProducts(
+      this.productsServices.productsByFilter(
         this.limit,
         this.route.snapshot.queryParamMap.get('filter') || '',
-      ),
+      )(),
     );
   }
 
   hasMoreProducts(): boolean {
     return (
       this.products().length <
-      this.productsServices.getProductLength(this.route.snapshot.queryParamMap.get('filter') || '')
+      this.productsServices.productsLength(this.route.snapshot.queryParamMap.get('filter') || '')()
     );
   }
 
