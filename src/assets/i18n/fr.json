@@ -43,7 +43,8 @@
     },
 
     "catalogPage": {
-      "title": "Modifier le catalogue",
+      "mainTitle": "Liste des produits",
+      "addProductTitle": "Ajouter un produit",
       "description": "Gérez vos produits",
       "loadMore": "Charger plus de produits",
       "noMoreProducts": "Plus aucun produit à charger.",

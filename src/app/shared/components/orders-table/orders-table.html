@@ -1,6 +1,6 @@
-<div class="border border-[#e2e8f0] rounded-lg shadow-xs p-8">
+<div class="border border-[#e2e8f0] rounded-lg shadow-xs p-8 h-[500px] flex flex-col">
   <h3 class="text-lg font-bold mb-4">{{ 'admin.dashboardPage.order.recentOrders' | translate }}</h3>
-  <p-table [value]="orders$">
+  <p-table [value]="orders$" class="flex-1 overflow-y-auto">
     <ng-template #header>
       <tr>
         <th>{{ 'admin.dashboardPage.customers.orderId' | translate }}</th>
@@ -8,7 +8,6 @@
         <th>{{ 'admin.dashboardPage.order.orderAmount' | translate }}</th>
         <th>{{ 'admin.dashboardPage.order.quantity' | translate }}</th>
         <th>{{ 'admin.dashboardPage.order.date' | translate }}</th>
-        <th class="flex justify-center">Actions</th>
       </tr>
     </ng-template>
     <ng-template #body let-order>
@@ -25,13 +24,6 @@
         </td>
         <td>
           {{ order.date | date: 'shortDate' }}
-        </td>
-        <td class="flex justify-center">
-          <button
-            class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
-          >
-            {{ 'admin.dashboardPage.utils.detailsButton' | translate }}
-          </button>
         </td>
       </tr>
     </ng-template>

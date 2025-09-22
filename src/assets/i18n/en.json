@@ -45,7 +45,8 @@
       }
     },
     "catalogPage": {
-      "title": "Edit Catalog",
+      "mainTitle": "Product List",
+      "addProductTitle": "Add Product",
       "description": "Manage your product",
       "loadMore": "Load More products",
       "noMoreProducts": "No more products to load.",

@@ -2,16 +2,29 @@
   class="bg-[#f8fafc] rounded-[0.8rem] p-4 shadow-xs border border-[#e2e8f0] h-full flex flex-col"
 >
   <ul class="flex flex-col gap-4 flex-1">
-    <app-admin-nav-link link="/admin/dashboard" name="hugeDashboardBrowsing"></app-admin-nav-link>
-    <app-admin-nav-link link="/admin/catalog" name="hugeCatalogue"></app-admin-nav-link>
-    <app-admin-nav-link
-      *appAdminOnly
-      link="/admin/users"
-      name="hugeUserMultiple"
-    ></app-admin-nav-link>
+    <div class="flex justify-center mb-6 bg-black text-white rounded-[0.6rem] w-full">
+      <ng-icon size="30" [name]="'hugeDeliveryBox01'" class="m-2"></ng-icon>
+    </div>
+    <div class="flex flex-col gap-4">
+      <app-admin-nav-link link="/admin/dashboard" name="hugeDashboardBrowsing"></app-admin-nav-link>
+      <app-admin-nav-link link="/admin/catalog" name="hugeCatalogue"></app-admin-nav-link>
+      <app-admin-nav-link
+        *appAdminOnly
+        link="/admin/users"
+        name="hugeUserMultiple"
+      ></app-admin-nav-link>
+    </div>
   </ul>
 
-  <div class="mt-auto">
+  <div class="mt-auto flex flex-col gap-4 items-center">
+    <div class="border-b border-gray-200 py-2">
+      <button
+        (click)="logout()"
+        class="relative hover:text-black px-2 py-2 hover:bg-gray-200 rounded-[0.6rem] transition-colors duration-200 flex justify-center items-center w-full"
+      >
+        <ng-icon size="24" [name]="hugeLogin02"></ng-icon>
+      </button>
+    </div>
     <app-translate-buttons [direction]="'col'"></app-translate-buttons>
   </div>
 </nav>
