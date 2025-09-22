@@ -89,4 +89,8 @@ export class ShopServices {
     const updated = [...this.products(), { ...product, id: crypto.randomUUID() }];
     this.saveProducts(updated);
   }
+  removeProduct(id: string): void {
+    const updated = this.products().filter((p) => p.id !== id);
+    this.saveProducts(updated);
+  }
 }

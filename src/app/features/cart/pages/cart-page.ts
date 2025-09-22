@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { BaseComponent } from '../../../shared/components/base-translate/base-translate';
 import { TRANSLATE_IMPORTS } from '../../../shared/imports/translate-imports';
 import { ShopLayout } from '../../../shared/components/layout/shop-layout/shop-layout';
@@ -9,12 +9,13 @@ import { OrdersService } from '../../../core/services/orders/orders.services';
 import { ulid } from 'ulid';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthServices } from '../../auth/services/auth';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 import { CartItemsList } from '../components/cart-items-list/cart-items-list';
 import { EmptyCartDirective } from '../../../shared/directives/empty-cart/empty-cart.directive';
 import { NotEmptyCartDirective } from '../../../shared/directives/not-empty-cart/not-empty-cart.directive';
 import { EmptyCart } from '../components/empty-cart/empty-cart';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+
 @Component({
   selector: 'app-cart-page',
   imports: [
@@ -26,8 +27,8 @@ import { EmptyCart } from '../components/empty-cart/empty-cart';
     EmptyCartDirective,
     NotEmptyCartDirective,
   ],
+  host: { hostID: crypto.randomUUID().toString() },
   templateUrl: './cart-page.html',
-  providers: [MessageService],
 })
 export class CartPage extends BaseComponent {
   salesServices = inject(SalesService);
@@ -38,54 +39,48 @@ export class CartPage extends BaseComponent {
 
   orderId = ulid();
   salesId = uuidv4();
+  uuid = uuidv4();
 
-  getCartItems(): CartItem[] {
-    const cart = this.cartServices.getItemsByUser(this.authServices.getCurrentUser().id);
+  cartItems = computed<CartItem[]>(() =>
+    this.cartServices.getItemsByUser(this.authServices.getCurrentUser().id),
+  );
 
-    const uniqueCart = cart.reduce((acc: CartItem[], curr: CartItem) => {
-      if (!acc.find((item) => item.id === curr.id)) {
-        acc.push(curr);
-      }
-      return acc;
-    }, []);
-
-    return uniqueCart;
-  }
+  totalAmount = computed<number>(() =>
+    this.cartItems().reduce((total, item) => total + Number(item.price), 0),
+  );
 
   getItemQuantity(item: CartItem): number {
-    return this.cartServices
-      .getItemsByUser(this.authServices.getCurrentUser().id)
-      .filter((i: CartItem) => i.id === item.id).length;
+    return this.cartItems().filter((i) => i.id === item.id).length;
   }
 
-  totalAmount(): number {
-    return this.cartServices
-      .getItemsByUser(this.authServices.getCurrentUser().id)
-      .reduce((total: number, item: CartItem) => total + Number(item.price), 0);
+  removeItem(item: CartItem) {
+    this.cartServices.removeItem(item);
   }
-
   showAuthToast() {
     this.messageService.add({
+      id: this.uuid,
       severity: 'info',
       summary: 'Sticky',
-      detail: 'productElement.toast.loginToAddProducts',
+      detail: 'cartPage.successfullyPurchased',
       sticky: true,
       styleClass: 'custom-toast',
     });
   }
-
   buy() {
+    // Create the sale
     this.salesServices.postSales({
       id: this.salesId,
       date: new Date(),
       amount: this.totalAmount(),
-      items: [
-        this.cartServices
-          .getItemsByUser(this.authServices.getCurrentUser().id)
-          .map((item: CartItem) => ({ id: item.id, name: item.name, price: item.price })),
-      ],
+      items: this.cartItems().map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+      })),
       saleType: 'sale',
     });
+
+    // Create the order
     this.ordersServices.postOrder({
       id: `ORDER_${this.orderId}`,
       customerId: this.authServices.getCurrentUser().id,
@@ -93,15 +88,13 @@ export class CartPage extends BaseComponent {
       customerEmail: this.authServices.getCurrentUser().email,
       customerAddress: '123 Main St, City, Country',
       date: new Date(),
-      items: this.cartServices
-        .getItemsByUser(this.authServices.getCurrentUser().id)
-        .map((item: CartItem) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: this.getItemQuantity(item),
-          userId: item.userId,
-        })),
+      items: this.cartItems().map((item) => ({
+        productId: item.id,
+        productName: item.name,
+        price: item.price,
+        quantity: this.getItemQuantity(item),
+        userId: item.userId,
+      })),
       amount: this.totalAmount(),
       type: 'purchase',
     });

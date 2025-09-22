@@ -1,4 +1,4 @@
-import { Directive, inject, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, inject, TemplateRef, ViewContainerRef, effect } from '@angular/core';
 import { AuthServices } from '../../../features/auth/services/auth';
 import { CartServices } from '../../../features/cart/services/cart.services';
 
@@ -11,15 +11,19 @@ export class EmptyCartDirective {
   private templateRef = inject(TemplateRef<unknown>);
   private authService = inject(AuthServices);
   private cartService = inject(CartServices);
+
   constructor() {
-    this.updateView();
-  }
-  updateView() {
-    const cartItems = this.cartService.getItemsByUser(this.authService.getCurrentUser().id);
-    if (cartItems.length === 0) {
-      this.viewContainer.createEmbeddedView(this.templateRef);
-    } else {
+    effect(() => {
+      const userId = this.authService.getCurrentUser()?.id;
+      // ⚡ lire le signal directement
+      const cartItems = userId
+        ? this.cartService.cart().filter((item) => item.userId === userId)
+        : [];
+
       this.viewContainer.clear();
-    }
+      if (cartItems.length === 0) {
+        this.viewContainer.createEmbeddedView(this.templateRef);
+      }
+    });
   }
 }

@@ -11,18 +11,19 @@ import { ToastModule } from 'primeng/toast';
 import { Product } from '../../models/products.model';
 import { AuthServices } from '../../../auth/services/auth';
 import { CartServices } from '../../../cart/services/cart.services';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.html',
-  imports: [RouterLink, ...TRANSLATE_IMPORTS, NgIcon, ToastModule],
+  host: { hostID: crypto.randomUUID().toString() },
+  imports: [...TRANSLATE_IMPORTS, NgIcon, ToastModule, RouterLink],
   viewProviders: [
     provideIcons({
       hugeArrowRight01,
       hugeArrowDown01,
     }),
   ],
-  providers: [MessageService],
 })
 export class ProductDetails extends BaseComponent implements OnInit {
   productId!: string;
@@ -35,7 +36,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
   isDeliveryAndReturnsOpen = false;
   hugeArrowDown01 = 'hugeArrowDown01';
   hugeArrowRight01 = 'hugeArrowRight01';
-
+  uuid = uuidv4();
   messageService = inject(MessageService);
 
   ngOnInit(): void {
@@ -47,7 +48,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
       severity: 'info',
       summary: 'Sticky',
       detail: 'productElement.toast.loginToAddProducts',
-      sticky: true,
+      life: 5000,
       styleClass: 'custom-toast',
     });
   }
@@ -75,6 +76,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
       price,
       imageUrl,
       userId: this.authServices.getCurrentUser().id,
+      cartItemId: this.uuid,
     });
   }
 

@@ -10,7 +10,7 @@ export const ADMIN_ROUTES: Routes = [
     component: AdminPage,
     children: [
       {
-        path: '',
+        path: 'dashboard',
         component: DashboardPage,
       },
       {

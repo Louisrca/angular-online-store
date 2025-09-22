@@ -8,6 +8,15 @@
   </p-toast>
 
   <div>
+    <div class="mb-8">
+      <a
+        [routerLink]="'/admin/catalog'"
+        class="w-fit flex flex-row items-center justify-center hover:bg-[#f8fafc] p-1 pr-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        ><ng-icon size="16" name="hugeArrowLeft01" class="mr-2" color="#4B5563" />{{
+          'admin.catalogPage.backButton' | translate
+        }}</a
+      >
+    </div>
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="mx-auto">
       @if (getImageUrl() !== '') {
         <img
@@ -26,7 +35,7 @@
         <input
           type="text"
           placeholder="Image URL"
-          class="border border-black px-2 py-1 w-full mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full mb-4"
           formControlName="imageUrl"
         />
       </div>
@@ -34,7 +43,7 @@
         <input
           type="text"
           placeholder="Product Name"
-          class="border border-black px-2 py-1 w-full mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full mb-4"
           formControlName="name"
         />
       </div>
@@ -42,7 +51,7 @@
         <input
           type="text"
           placeholder="Sub Name"
-          class="border border-black px-2 py-1 w-full mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full mb-4"
           formControlName="subName"
         />
       </div>
@@ -50,7 +59,7 @@
         <input
           type="number"
           placeholder="Product Price"
-          class="border border-black px-2 py-1 w-full mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full mb-4"
           formControlName="price"
         />
       </div>
@@ -58,13 +67,13 @@
         <input
           type="number"
           placeholder="Product Quantity"
-          class="border border-black px-2 py-1 w-full mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full mb-4"
           formControlName="quantity"
         />
       </div>
       <div>
         <select
-          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
           formControlName="type"
           id="type"
         >
@@ -78,7 +87,7 @@
       </div>
       <div>
         <select
-          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
           formControlName="gender"
         >
           <option value="" disabled selected>Select Gender</option>
@@ -91,7 +100,7 @@
       </div>
       <div>
         <select
-          class="border border-black px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
+          class="border border-gray-200 rounded-lg px-2 py-1 w-full cursor-pointer uppercase font-medium mb-4"
           formControlName="color"
         >
           <option value="" disabled selected>Select Color</option>
@@ -103,7 +112,7 @@
         </select>
       </div>
       <button
-        class="py-3 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
+        class="py-3 w-fit bg-[#47fc00] text-center hover:bg-[#C5FFAD] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm uppercase font-medium w-full transition duration-300"
         type="submit"
       >
         ajouter le produit

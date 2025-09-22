@@ -15,25 +15,37 @@ import { ShopServices } from '@Features/shop/services/shop.services';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { provideIcons, NgIcon } from '@ng-icons/core';
-import { hugeImage02 } from '@ng-icons/huge-icons';
+import { hugeArrowLeft01, hugeImage02 } from '@ng-icons/huge-icons';
+import { v4 as uuidV4 } from 'uuid';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.html',
-  imports: [...TRANSLATE_IMPORTS, FormsModule, ReactiveFormsModule, ToastModule, NgIcon],
-  viewProviders: [provideIcons({ hugeImage02 })],
-  providers: [MessageService],
+  imports: [
+    ...TRANSLATE_IMPORTS,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastModule,
+    NgIcon,
+    RouterLink,
+  ],
+  host: { hostID: crypto.randomUUID().toString() },
+  viewProviders: [provideIcons({ hugeImage02, hugeArrowLeft01 })],
 })
 export class AddProduct extends BaseComponent implements OnInit {
   private fb = inject(FormBuilder);
   shopService = inject(ShopServices);
   messageService = inject(MessageService);
 
+  uuid = uuidV4;
+
   authService = inject(AuthServices);
   productField = productField;
   productForm: FormGroup;
 
   hugeImage02 = 'hugeImage02';
+  hugeArrowLeft01 = 'hugeArrowLeft01';
 
   currentUser = this.authService.getCurrentUser();
 
@@ -94,6 +106,8 @@ export class AddProduct extends BaseComponent implements OnInit {
 
   showAddProductToast() {
     this.messageService.add({
+      id: this.uuid(),
+
       severity: 'info',
       detail: 'productElement.toast.productAdded',
       life: 3000,
@@ -104,7 +118,6 @@ export class AddProduct extends BaseComponent implements OnInit {
   onSubmit(): void {
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
-      console.log('Form is invalid');
       return;
     }
     this.showAddProductToast();

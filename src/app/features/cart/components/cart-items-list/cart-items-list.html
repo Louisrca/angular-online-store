@@ -1,6 +1,6 @@
 <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[80vh]">
-  <div class="flex-1 overflow-y-auto md:border-b lg:border-b-0 lg:border-r pr-4">
-    @for (item of itemCount; track $index) {
+  <div class="flex-1 overflow-y-auto lg:border-r">
+    @for (item of items; track $index) {
       <div class="flex flex-row justify-between items-center mb-4 border-b pb-4">
         <img
           [src]="item.imageUrl"
@@ -10,18 +10,19 @@
         <div class="flex flex-col flex-grow ml-4">
           <span class="font-semibold">{{ item.name }} - {{ item.type | translate }}</span>
           <span class="text-sm text-gray-600 uppercase">{{ item.color | translate }}</span>
-          <span class="text-sm">{{ item.price }} € x {{ itemQuantity(item) }}</span>
+          <span class="text-sm">{{ item.price }} € </span>
+          <button (click)="removeItem(item)">Supprimer</button>
         </div>
       </div>
     }
   </div>
 
   <div class="w-full lg:w-80 flex flex-col justify-between">
-    <div class="sticky top-0 p-4 border bg-white">
+    <div class="sticky top-0 p-6 border bg-white">
       <h3 class="font-[300] mb-4">{{ 'cartPage.amount' | translate }}: {{ totalAmount }} €</h3>
       <button
         class="py-2 px-4 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
-        (click)="buy()"
+        (click)="buyItems()"
       >
         {{ 'cartPage.buyButton' | translate }}
       </button>

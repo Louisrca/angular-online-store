@@ -48,7 +48,7 @@ export class AuthServices {
 
         localStorage.setItem('user', JSON.stringify(authUser));
 
-        if (user.role !== 'customer') this.route.navigate(['/admin']);
+        if (user.role !== 'customer') this.route.navigate(['/admin/dashboard']);
         else this.route.navigate(['/']);
 
         return true;

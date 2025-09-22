@@ -19,12 +19,12 @@ export class CartDetails extends BaseComponent {
       .getItemsByUser(this.authServices.getCurrentUser().id)
       .filter(
         (item: CartItem, index: number, self: CartItem[]) =>
-          index === self.findIndex((i) => i.id === item.id),
+          index === self.findIndex((itemIndex) => itemIndex.id === item.id),
       );
   }
   getItemQuantity(item: CartItem): number {
     return this.cartServices
       .getItemsByUser(this.authServices.getCurrentUser().id)
-      .filter((i: CartItem) => i.id === item.id).length;
+      .filter((itemIndex: CartItem) => itemIndex.id === item.id).length;
   }
 }

@@ -9,8 +9,12 @@ import { CartItem } from '../../models/cart.model';
   imports: [...TRANSLATE_IMPORTS],
 })
 export class CartItemsList extends BaseComponent {
-  @Input() itemCount: CartItem[] = [];
-  @Input() itemQuantity: (item: CartItem) => number = () => 0;
+  @Input() items: CartItem[] = [];
   @Input() totalAmount = 0;
   @Input() buy!: () => void;
+  @Input() removeItem!: (item: CartItem) => void;
+
+  buyItems() {
+    this.buy();
+  }
 }

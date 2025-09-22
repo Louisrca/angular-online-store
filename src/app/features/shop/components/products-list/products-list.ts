@@ -9,18 +9,20 @@ import { AuthServices } from '../../../auth/services/auth';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.html',
+  host: { hostID: crypto.randomUUID().toString() },
   imports: [RouterLink, ...TRANSLATE_IMPORTS, ToastModule],
-  providers: [MessageService],
 })
 export class ProductsList extends BaseComponent implements OnInit {
   productsServices = inject(ShopServices);
   cartServices = inject(CartServices);
   authServices = inject(AuthServices);
   products = signal<Product[]>([]);
+  uuid = uuidv4;
   limit = 8;
 
   private route = inject(ActivatedRoute);
@@ -59,10 +61,11 @@ export class ProductsList extends BaseComponent implements OnInit {
 
   showAuthToast() {
     this.messageService.add({
+      id: this.uuid(),
       severity: 'info',
       summary: 'Sticky',
       detail: 'productElement.toast.loginToAddProducts',
-      sticky: true,
+      life: 5000,
       styleClass: 'custom-toast',
     });
   }
@@ -73,6 +76,7 @@ export class ProductsList extends BaseComponent implements OnInit {
       return;
     }
     const { id, name, type, color, price, imageUrl } = product;
+
     this.cartServices.addItem({
       id,
       name,
@@ -81,6 +85,7 @@ export class ProductsList extends BaseComponent implements OnInit {
       price,
       imageUrl,
       userId: this.authServices.getCurrentUser().id,
+      cartItemId: this.uuid(),
     });
   }
 }

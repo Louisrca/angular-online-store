@@ -13,29 +13,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { ShopServices } from '../../../shop/services/shop.services';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
 import { provideIcons, NgIcon } from '@ng-icons/core';
 import { hugeImage02 } from '@ng-icons/huge-icons';
 
 @Component({
   selector: 'app-catalog-page',
   templateUrl: './catalog-page.html',
-  imports: [
-    ...TRANSLATE_IMPORTS,
-    RouterLink,
-    FormsModule,
-    ReactiveFormsModule,
-    ToastModule,
-    NgIcon,
-  ],
+  imports: [...TRANSLATE_IMPORTS, RouterLink, FormsModule, ReactiveFormsModule, NgIcon],
   viewProviders: [provideIcons({ hugeImage02 })],
-  providers: [MessageService],
 })
 export class CatalogPage extends BaseComponent implements OnInit {
   private fb = inject(FormBuilder);
   shopService = inject(ShopServices);
-  messageService = inject(MessageService);
 
   authService = inject(AuthServices);
   productField = productField;
@@ -100,22 +89,11 @@ export class CatalogPage extends BaseComponent implements OnInit {
     return productColorKeys;
   }
 
-  showAddProductToast() {
-    this.messageService.add({
-      severity: 'info',
-      detail: 'productElement.toast.productAdded',
-      life: 3000,
-      styleClass: 'custom-toast',
-    });
-  }
-
   onSubmit(): void {
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
-      console.log('Form is invalid');
       return;
     }
-    this.showAddProductToast();
     this.shopService.addProduct(this.productForm.value);
     this.productForm.reset();
   }

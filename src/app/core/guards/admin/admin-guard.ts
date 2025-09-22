@@ -12,7 +12,7 @@ export class AdminGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/admin/dahsboard']);
     return false;
   }
 }

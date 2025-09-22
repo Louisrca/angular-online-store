@@ -7,6 +7,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss',
   standalone: true,
+  host: {
+    '[attr.data-fix-primeng]': 'true',
+  },
 })
 export class App {
   constructor() {

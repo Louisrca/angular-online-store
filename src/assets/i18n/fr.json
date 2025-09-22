@@ -45,12 +45,16 @@
     "catalogPage": {
       "title": "Modifier le catalogue",
       "description": "Gérez vos produits",
+      "loadMore": "Charger plus de produits",
+      "noMoreProducts": "Plus aucun produit à charger.",
       "filters": {
         "men": "Hommes",
         "women": "Femmes",
         "sneakers": "Sneakers"
       },
-      "filterBy": "Filtrer par"
+      "backButton": "Retour",
+      "filterBy": "Filtrer par",
+      "addProduct": "Ajouter un produit"
     },
 
     "userPage": {
@@ -93,7 +97,8 @@
     "amount": "Montant",
     "buyButton": "Acheter maintenant",
     "emptyCartMessage": "Votre panier est vide.",
-    "continueShopping": "Continuer vos achats"
+    "continueShopping": "Continuer vos achats",
+    "successfullyPurchased": "Achat effectué avec succès ! 🎉"
   },
   "product": {
     "type": {

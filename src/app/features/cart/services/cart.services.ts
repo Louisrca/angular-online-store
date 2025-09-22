@@ -1,36 +1,46 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { CartItem } from '../models/cart.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartServices {
-  private items: CartItem[] = [];
+  private items = signal<CartItem[]>([]);
+
+  constructor() {
+    this.loadCart();
+  }
+
+  private loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cartItems') || '[]') as CartItem[];
+    this.items.set(cart);
+  }
+
+  get cart() {
+    return this.items.asReadonly();
+  }
 
   addItem(item: CartItem) {
-    const items = localStorage.getItem('cartItems');
-    if (items) {
-      this.items = JSON.parse(items);
-    }
-    this.items.push(item);
-    localStorage.setItem('cartItems', JSON.stringify(this.items));
+    const updated = [...this.items(), item];
+    this.items.set(updated);
+    localStorage.setItem('cartItems', JSON.stringify(updated));
   }
 
   removeItem(item: CartItem) {
-    const index = localStorage.getItem('cartItems')?.indexOf(JSON.stringify(item)) as number;
-    if (index > -1) {
-      this.items.splice(index, 1);
-      localStorage.setItem('cartItems', JSON.stringify(this.items));
-    }
+    const updated = this.items().filter(
+      (i) => !(i.cartItemId === item.cartItemId && i.userId === item.userId),
+    );
+    this.items.set(updated);
+    localStorage.setItem('cartItems', JSON.stringify(updated));
   }
 
-  getItemsByUser(userId: string) {
-    const allItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    return allItems.filter((item: CartItem) => item.userId === userId);
+  getItemsByUser(userId: string): CartItem[] {
+    return this.items().filter((item) => item.userId === userId);
   }
 
   clearCart(userId: string) {
-    this.items = this.items.filter((item) => item.userId !== userId);
-    localStorage.setItem('cartItems', JSON.stringify(this.items));
+    const updated = this.items().filter((item) => item.userId !== userId);
+    this.items.set(updated);
+    localStorage.setItem('cartItems', JSON.stringify(updated));
   }
 }

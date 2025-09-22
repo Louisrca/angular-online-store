@@ -36,4 +36,31 @@ export class CatalogList extends BaseComponent implements OnInit {
       this.products.set(this.catalogServices.productsByFilter(this.limit, typeFilter)());
     });
   }
+
+  loadMore() {
+    this.limit += 10;
+    this.products.set(
+      this.catalogServices.productsByFilter(
+        this.limit,
+        this.route.snapshot.queryParamMap.get('filter') || '',
+      )(),
+    );
+  }
+
+  hasMoreProducts(): boolean {
+    return (
+      this.products().length <
+      this.catalogServices.productsLength(this.route.snapshot.queryParamMap.get('filter') || '')()
+    );
+  }
+
+  removeProduct(id: string) {
+    this.catalogServices.removeProduct(id);
+    this.products.set(
+      this.catalogServices.productsByFilter(
+        this.limit,
+        this.route.snapshot.queryParamMap.get('filter') || '',
+      )(),
+    );
+  }
 }

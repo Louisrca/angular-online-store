@@ -26,7 +26,7 @@ export class OrdersService {
       : [];
   }
 
-  getOrdersByCustomer(customerId: number) {
+  getOrdersByCustomer(customerId: string) {
     return this.getOrders().filter((o) => o.customerId === customerId);
   }
 
