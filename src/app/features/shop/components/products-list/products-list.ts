@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ShopServices } from '../../services/shop.services';
 import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
 import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -10,6 +9,7 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 
 @Component({
   selector: 'app-products-list',
@@ -18,7 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
   imports: [RouterLink, ...TRANSLATE_IMPORTS, ToastModule],
 })
 export class ProductsList extends BaseComponent implements OnInit {
-  productsServices = inject(ShopServices);
+  catalogServices = inject(CatalogServices);
   cartServices = inject(CartServices);
   authServices = inject(AuthServices);
   products = signal<Product[]>([]);
@@ -35,17 +35,17 @@ export class ProductsList extends BaseComponent implements OnInit {
     this.queryParams$.subscribe((params) => {
       const typeFilter = params['filter'];
       if (typeFilter) {
-        this.products.set(this.productsServices.productsByFilter(this.limit, typeFilter)());
+        this.products.set(this.catalogServices.productsByFilter(this.limit, typeFilter)());
         return;
       }
-      this.products.set(this.productsServices.productsByFilter(this.limit, typeFilter)());
+      this.products.set(this.catalogServices.productsByFilter(this.limit, typeFilter)());
     });
   }
 
   loadMore() {
     this.limit += 10;
     this.products.set(
-      this.productsServices.productsByFilter(
+      this.catalogServices.productsByFilter(
         this.limit,
         this.route.snapshot.queryParamMap.get('filter') || '',
       )(),
@@ -55,7 +55,7 @@ export class ProductsList extends BaseComponent implements OnInit {
   hasMoreProducts(): boolean {
     return (
       this.products().length <
-      this.productsServices.productsLength(this.route.snapshot.queryParamMap.get('filter') || '')()
+      this.catalogServices.productsLength(this.route.snapshot.queryParamMap.get('filter') || '')()
     );
   }
 

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ShopServices } from '../../services/shop.services';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
 import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
 import { NgIcon } from '@ng-icons/core';
@@ -8,7 +8,6 @@ import { hugeArrowRight01, hugeArrowDown01 } from '@ng-icons/huge-icons';
 import { provideIcons } from '@ng-icons/core';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { Product } from '../../models/products.model';
 import { AuthServices } from '../../../auth/services/auth';
 import { CartServices } from '../../../cart/services/cart.services';
 import { v4 as uuidv4 } from 'uuid';
@@ -28,7 +27,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class ProductDetails extends BaseComponent implements OnInit {
   productId!: string;
 
-  shopServices = inject(ShopServices);
+  catalogServices = inject(CatalogServices);
   route = inject(ActivatedRoute);
   authServices = inject(AuthServices);
   cartServices = inject(CartServices);
@@ -36,7 +35,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
   isDeliveryAndReturnsOpen = false;
   hugeArrowDown01 = 'hugeArrowDown01';
   hugeArrowRight01 = 'hugeArrowRight01';
-  uuid = uuidv4();
+  uuid = uuidv4;
   messageService = inject(MessageService);
 
   ngOnInit(): void {
@@ -54,7 +53,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
   }
 
   getProductDetails() {
-    return this.shopServices.getProductById(this.productId);
+    return this.catalogServices.getProductById(this.productId);
   }
   addToCart() {
     if (!this.authServices.isLoggedIn()) {
@@ -63,11 +62,11 @@ export class ProductDetails extends BaseComponent implements OnInit {
     }
 
     const product = this.getProductDetails();
-    if (!product) {
+    if (product === undefined) {
       return;
     }
+    const { id, name, type, color, price, imageUrl } = product;
 
-    const { id, name, type, color, price, imageUrl } = product as Product & { imageUrl: string };
     this.cartServices.addItem({
       id,
       name,
@@ -76,7 +75,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
       price,
       imageUrl,
       userId: this.authServices.getCurrentUser().id,
-      cartItemId: this.uuid,
+      cartItemId: this.uuid(),
     });
   }
 

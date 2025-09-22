@@ -10,6 +10,4 @@ import { Carousel } from '../../../shared/components/carousel/carousel';
   templateUrl: './shop-page.html',
   imports: [...TRANSLATE_IMPORTS, ProductsList, ShopLayout, Carousel],
 })
-export class ShopPage extends BaseComponent {
-  name = 'Louis';
-}
+export class ShopPage extends BaseComponent {}

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ShopServices } from '@Features/shop/services/shop.services';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 import { TRANSLATE_IMPORTS } from '@Shared/imports/translate-imports';
 import { BaseComponent } from '@Shared/components/base-translate/base-translate';
 
@@ -9,7 +9,7 @@ import { BaseComponent } from '@Shared/components/base-translate/base-translate'
   imports: [...TRANSLATE_IMPORTS],
 })
 export class CatalogList extends BaseComponent {
-  products = inject(ShopServices);
+  catalogService = inject(CatalogServices);
 
-  allProducts = this.products.allProducts();
+  allProducts = this.catalogService.allProducts();
 }

@@ -1,7 +1,7 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '@Features/shop/models/products.model';
-import { ShopServices } from '@Features/shop/services/shop.services';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 import { provideIcons, NgIcon } from '@ng-icons/core';
 import { hugeDelete02 } from '@ng-icons/huge-icons';
 import { BaseComponent } from '@Shared/components/base-translate/base-translate';
@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
   viewProviders: [provideIcons({ hugeDelete02 })],
 })
 export class CatalogList extends BaseComponent implements OnInit {
-  catalogServices = inject(ShopServices);
+  catalogServices = inject(CatalogServices);
 
   products = signal<Product[]>([]);
 

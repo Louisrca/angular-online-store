@@ -1,33 +1,33 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { Product } from '@Features/shop/models/products.model';
-import { Products } from '@Infrastructures/mocks/products';
+import { Products } from '../../../infrastructures/mocks/products';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ShopServices {
-  private products = signal<Product[]>([]);
+export class CatalogServices {
+  private catalog = signal<Product[]>([]);
 
   constructor() {
     const stored = localStorage.getItem('products');
     if (stored) {
-      this.products.set(JSON.parse(stored));
+      this.catalog.set(JSON.parse(stored));
     } else {
       localStorage.setItem('products', JSON.stringify(Products));
-      this.products.set(Products);
+      this.catalog.set(Products);
     }
   }
 
   private saveProducts(products: Product[]): void {
     localStorage.setItem('products', JSON.stringify(products));
-    this.products.set(products);
+    this.catalog.set(products);
   }
 
-  allProducts = computed(() => this.products());
+  allProducts = computed(() => this.catalog());
 
   productsByFilter = (limit: number, typeFilter?: string) =>
     computed(() => {
-      let products = this.products();
+      let products = this.catalog();
 
       if (typeFilter) {
         switch (typeFilter) {
@@ -56,7 +56,7 @@ export class ShopServices {
 
   productsLength = (typeFilter?: string) =>
     computed(() => {
-      let products = this.products();
+      let products = this.catalog();
       if (typeFilter) {
         switch (typeFilter) {
           case 'men':
@@ -82,11 +82,15 @@ export class ShopServices {
     });
 
   getProductById(id: string): Product | undefined {
-    return this.products().find((p) => p.id === id);
+    return this.catalog().find((p) => p.id === id);
   }
 
   addProduct(product: Product): void {
-    const updated = [...this.products(), { ...product, id: crypto.randomUUID() }];
+    const updated = [...this.catalog(), { ...product, id: crypto.randomUUID() }];
+    this.saveProducts(updated);
+  }
+  removeProduct(id: string): void {
+    const updated = this.catalog().filter((p) => p.id !== id);
     this.saveProducts(updated);
   }
 }

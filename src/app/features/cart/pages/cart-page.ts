@@ -38,8 +38,8 @@ export class CartPage extends BaseComponent {
   messageService = inject(MessageService);
 
   orderId = ulid();
-  salesId = uuidv4();
-  uuid = uuidv4();
+  salesId = uuidv4;
+  uuid = uuidv4;
 
   cartItems = computed<CartItem[]>(() =>
     this.cartServices.getItemsByUser(this.authServices.getCurrentUser().id),
@@ -58,7 +58,7 @@ export class CartPage extends BaseComponent {
   }
   showAuthToast() {
     this.messageService.add({
-      id: this.uuid,
+      id: this.uuid(),
       severity: 'info',
       summary: 'Sticky',
       detail: 'cartPage.successfullyPurchased',
@@ -69,7 +69,7 @@ export class CartPage extends BaseComponent {
   buy() {
     // Create the sale
     this.salesServices.postSales({
-      id: this.salesId,
+      id: this.salesId(),
       date: new Date(),
       amount: this.totalAmount(),
       items: this.cartItems().map((item) => ({

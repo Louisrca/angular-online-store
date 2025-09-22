@@ -11,7 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ShopServices } from '@Features/shop/services/shop.services';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { provideIcons, NgIcon } from '@ng-icons/core';
@@ -35,7 +35,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AddProduct extends BaseComponent implements OnInit {
   private fb = inject(FormBuilder);
-  shopService = inject(ShopServices);
+  catalogService = inject(CatalogServices);
   messageService = inject(MessageService);
 
   uuid = uuidV4;
@@ -121,7 +121,7 @@ export class AddProduct extends BaseComponent implements OnInit {
       return;
     }
     this.showAddProductToast();
-    this.shopService.addProduct(this.productForm.value);
+    this.catalogService.addProduct(this.productForm.value);
     this.productForm.reset();
   }
 }
