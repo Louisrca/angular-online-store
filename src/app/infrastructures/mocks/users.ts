@@ -23,7 +23,7 @@ export const Users: User[] = [
     id: '8eb415ed-6b18-4a42-9d22-57199d8957f3',
     email: 'user3@example.com',
     password: 'password3',
-    firstName: 'Jim',
+    firstName: 'Bob',
     lastName: 'Beam',
     token: 'token3',
     role: 'worker',
