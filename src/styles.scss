@@ -10,6 +10,7 @@
   html {
     font-family: var(--font-roboto);
   }
+
   ::selection {
     @apply text-white; // couleur du texte
     background-color: #47fc00; // couleur du surlignage
