@@ -27,6 +27,13 @@
         "email": "Mail",
         "orderId": "ID Commande"
       },
+      "infoCard": {
+        "totalSales": "Ventes",
+        "annualSubtitle": "Annuel",
+        "customerSubtitle": "Clients",
+        "usersRegistered": "Utilisateurs inscrits",
+        "orderSent": "Commandes envoyées"
+      },
       "order": {
         "recentOrders": "Commandes récentes",
         "orderId": "ID Commande",

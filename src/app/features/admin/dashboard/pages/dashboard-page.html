@@ -18,6 +18,23 @@
     </div>
   </div>
   <div class="flex flex-col gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <app-card-info
+        title="admin.dashboardPage.infoCard.totalSales"
+        subtitle="admin.dashboardPage.infoCard.annualSubtitle"
+        content="{{ sales() }} €"
+      ></app-card-info>
+      <app-card-info
+        title="admin.dashboardPage.infoCard.orderSent"
+        subtitle="admin.dashboardPage.infoCard.annualSubtitle"
+        content="{{ orders() }}"
+      ></app-card-info>
+      <app-card-info
+        title="admin.dashboardPage.infoCard.usersRegistered"
+        subtitle="admin.dashboardPage.infoCard.customerSubtitle"
+        content="{{ users() }}"
+      ></app-card-info>
+    </div>
     <app-bar-chart></app-bar-chart>
     <app-orders-table></app-orders-table>
   </div>

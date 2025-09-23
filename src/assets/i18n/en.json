@@ -30,6 +30,13 @@
         "email": "Email",
         "orderId": "Order ID"
       },
+      "infoCard": {
+        "totalSales": "Sales",
+        "annualSubtitle": "Annual",
+        "customerSubtitle": "Customers",
+        "usersRegistered": "Users Registered",
+        "orderSent": "Orders Sent"
+      },
       "order": {
         "recentOrders": "Recent Orders",
         "orderId": "Order ID",

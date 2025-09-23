@@ -18,9 +18,11 @@ export class OrdersService {
   }
 
   getOrders() {
-    const local = localStorage.getItem('orders');
+    const local = JSON.parse(localStorage.getItem('orders') || '[]').filter(
+      (order: Order) => order.type === 'purchase',
+    );
     return local
-      ? (JSON.parse(local).sort(
+      ? (local.sort(
           (a: Order, b: Order) => new Date(b.date).getTime() - new Date(a.date).getTime(),
         ) as Order[])
       : [];

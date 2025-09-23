@@ -19,14 +19,14 @@ export const SALES: Sale[] = [
     date: new Date('2025-01-10'),
     amount: 150,
     items: [{ id: '1', name: 'Sneakers', price: 150 }],
-    saleType: 'sale',
+    saleType: 'return',
   },
   {
     id: 'sale-q1-2',
     date: new Date('2025-02-15'),
     amount: 50,
     items: [{ id: '1', name: 'Sneakers', price: 50 }],
-    saleType: 'sale',
+    saleType: 'return',
   },
   {
     id: 'sale-q1-3',
@@ -43,7 +43,7 @@ export const SALES: Sale[] = [
     date: new Date('2025-03-12'),
     amount: 100,
     items: [],
-    saleType: 'sale',
+    saleType: 'expense',
   },
 
   // Q2
@@ -73,7 +73,7 @@ export const SALES: Sale[] = [
     date: new Date('2025-06-10'),
     amount: 45,
     items: [{ id: '5', name: 'Belt', price: 45 }],
-    saleType: 'sale',
+    saleType: 'expense',
   },
 
   // Q3
@@ -105,14 +105,14 @@ export const SALES: Sale[] = [
     date: new Date('2025-10-05'),
     amount: 500,
     items: [{ id: '7', name: 'Boots', price: 500 }],
-    saleType: 'sale',
+    saleType: 'expense',
   },
   {
     id: 'sale-q4-2',
     date: new Date('2025-11-12'),
     amount: 80,
     items: [{ id: '7', name: 'Boots', price: 80 }],
-    saleType: 'sale',
+    saleType: 'return',
   },
   {
     id: 'sale-q4-expense',

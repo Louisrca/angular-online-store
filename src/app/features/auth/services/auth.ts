@@ -119,4 +119,12 @@ export class AuthServices {
     const foundUser = this.users.find((u) => u.email === user.email);
     return foundUser ? foundUser.role === 'admin' : false;
   }
+
+  getUsers() {
+    const local = localStorage.getItem('users');
+    return local ? (JSON.parse(local) as typeof Users) : [];
+  }
+  getCustomers() {
+    return this.getUsers().filter((user) => user.role === 'customer');
+  }
 }
