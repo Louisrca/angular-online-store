@@ -27,6 +27,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'shop',
+    redirectTo: '/',
   },
 ];
