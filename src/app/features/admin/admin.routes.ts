@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdminPage } from './admin-page';
 import { DashboardPage } from './dashboard/pages/dashboard-page';
-import { UsersPage } from './users/pages/users-page';
 import { AdminGuard } from '@Core/guards/admin/admin-guard';
 
 export const ADMIN_ROUTES: Routes = [
@@ -20,7 +19,7 @@ export const ADMIN_ROUTES: Routes = [
       },
       {
         path: 'users',
-        component: UsersPage,
+        loadChildren: () => import('./users/users.routes').then((m) => m.USERS_ROUTES),
         canActivate: [AdminGuard],
       },
     ],

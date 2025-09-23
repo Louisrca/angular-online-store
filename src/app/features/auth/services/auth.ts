@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Users } from '../../../infrastructures/mocks/users';
-import { LoginCredentials, RegisterCredentials } from '../models/auth.model';
+import { LoginCredentials, RegisterCredentials, User } from '../models/auth.model';
 import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
 
@@ -8,14 +8,27 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthServices {
-  users = Users;
+  users: User[] = this.loadUsers();
   route = inject(Router);
+
   constructor() {
+    // Assure que localStorage contient toujours des users
     if (!localStorage.getItem('users')) {
       localStorage.setItem('users', JSON.stringify(this.users));
     }
   }
 
+  private loadUsers() {
+    const storedUsers = localStorage.getItem('users');
+    if (storedUsers) {
+      return JSON.parse(storedUsers);
+    }
+    return Users; // fallback si pas d'utilisateur en localStorage
+  }
+
+  private saveUsers() {
+    localStorage.setItem('users', JSON.stringify(this.users));
+  }
   isLoggedIn(): boolean {
     const user = localStorage.getItem('user');
     if (!user) {
@@ -126,5 +139,10 @@ export class AuthServices {
   }
   getCustomers() {
     return this.getUsers().filter((user) => user.role === 'customer');
+  }
+
+  removeUser(userId: string) {
+    this.users = this.users.filter((user) => user.id !== userId);
+    this.saveUsers();
   }
 }

@@ -67,7 +67,16 @@
 
     "userPage": {
       "title": "Gestion des utilisateurs",
-      "description": "Gérez vos utilisateurs"
+      "description": "Gérez vos utilisateurs",
+      "tableName": "Liste des utilisateurs",
+      "columns": {
+        "id": "ID",
+        "email": "Mail",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "name": "Nom",
+        "role": "Rôle"
+      }
     }
   },
 

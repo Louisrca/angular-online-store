@@ -1,0 +1,50 @@
+<div>
+  <div class="ml-auto">
+    <a
+      [routerLink]="'/admin/users/add-user'"
+      class="flex flex-row justify-center items-center text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+      ><ng-icon size="16" name="hugeAdd01" class="mr-2" color="#4B5563" />
+      {{ 'admin.catalogPage.addProduct' | translate }}</a
+    >
+  </div>
+  <div class="border border-[#e2e8f0] rounded-lg shadow-xs p-8 max-h-[500px] flex flex-col">
+    <h3 class="text-lg font-bold mb-4">
+      {{ 'admin.userPage.tableName' | translate }}
+    </h3>
+    <p-table [value]="users()" class="flex-1 overflow-y-auto">
+      <ng-template #header>
+        <tr>
+          <th>{{ 'admin.userPage.columns.id' | translate }}</th>
+          <th>{{ 'admin.userPage.columns.email' | translate }}</th>
+          <th>{{ 'admin.userPage.columns.name' | translate }}</th>
+          <th>{{ 'admin.userPage.columns.role' | translate }}</th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-user>
+        <tr cl>
+          <td>
+            {{ user.id }}
+          </td>
+          <td>
+            {{ user.email }}
+          </td>
+          <td>{{ user.firstName | capitalize }} {{ user.lastName | capitalize }}</td>
+          <td>
+            <span [appRoleTag]="user.role" class="text-sm font-semibold">
+              {{ user.role }}
+            </span>
+          </td>
+          <td>
+            <button
+              (click)="deleteUser(user.id)"
+              class="flex justify-center items-center text-black hover:bg-red-500 hover:text-white transition duration-300 rounded-lg p-2 cursor-pointer"
+            >
+              <ng-icon name="hugeUserMinus01" size="24" />
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -69,7 +69,16 @@
 
     "userPage": {
       "title": "User Management",
-      "description": "Manage your users"
+      "description": "Manage your users",
+      "tableName": "Users List",
+      "columns": {
+        "id": "ID",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "name": "Name",
+        "role": "Role"
+      }
     }
   },
 
