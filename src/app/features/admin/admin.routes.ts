@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AdminPage } from './admin-page';
 import { DashboardPage } from './dashboard/pages/dashboard-page';
 import { AdminGuard } from '@Core/guards/admin/admin-guard';
+import { WorkerGuard } from '@Core/guards/worker/worker-guard';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -15,7 +16,7 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'catalog',
         loadChildren: () => import('./catalog/catalog.routes').then((m) => m.CATALOG_ROUTES),
-        canActivate: [AdminGuard],
+        canActivate: [WorkerGuard],
       },
       {
         path: 'users',
