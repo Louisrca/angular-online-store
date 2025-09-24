@@ -82,12 +82,21 @@
     }
   },
 
-  "payementPage": {
-    "title": "Payment",
-    "description": "Enter your payment details below.",
+  "paymentPage": {
+    "title": "Payment process",
+    "description": "Please enter your payment information below.",
     "cardHolderLabel": "Cardholder Name",
+    "cardHolderPlaceholder": "John Doe",
     "cardNumberLabel": "Card Number",
-    "expiryDateLabel": "Expiry Date",
+    "expirationDateLabel": "Expiration Date",
+    "expiryDateLabel": "MM/YY",
+    "nameLabel": "Name",
+    "phoneLabel": "Phone",
+    "streetLabel": "Street",
+    "cityLabel": "City",
+    "countryLabel": "Country",
+    "contactSummary": "Contact Summary",
+    "descriptionSummary": "Review your contact information before proceeding to the payment.",
     "cvvLabel": "CVV",
     "payButton": "Pay Now",
     "successMessage": "Payment successful! Thank you for your purchase. 🎉",

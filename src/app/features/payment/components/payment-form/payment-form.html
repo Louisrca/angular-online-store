@@ -3,8 +3,10 @@
     <div class="flex flex-col gap-4">
       <div>
         <div>
-          <h3 class="text-xl font-semibold mb-2">Payment details</h3>
-          <p class="text-sm text-gray-600 mb-4">Please enter your payment information below.</p>
+          <h3 class="text-xl font-semibold mb-2">{{ 'paymentPage.title' | translate }}</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            {{ 'paymentPage.description' | translate }}
+          </p>
         </div>
 
         <form
@@ -14,10 +16,10 @@
           class="flex flex-col border p-6"
         >
           <app-input
-            label="Name on card"
+            label="{{ 'paymentPage.cardHolderLabel' | translate }}"
             type="text"
             id="name-on-card"
-            placeholder="Jane Doe"
+            placeholder="{{ 'paymentPage.cardHolderPlaceholder' | translate }}"
             class="mb-4"
             formControlName="nameCard"
             [hasError]="nameCardHasError()"
@@ -26,10 +28,9 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
             <app-input
-              label="Card details"
+              label="{{ 'paymentPage.cardNumberLabel' | translate }}"
               type="text"
               id="card-details"
-              placeholder="Card details"
               [cardNumberFormatter]="true"
               class="mb-4"
               formControlName="number"
@@ -38,12 +39,12 @@
               [errorMessage]="numberErrorMessage()"
             ></app-input>
             <app-input
-              label="Expiration date"
+              label="{{ 'paymentPage.expirationDateLabel' | translate }}"
               type="text"
               [expirationMask]="true"
               id="expiration-date"
               formControlName="expiration"
-              placeholder="MM/YY"
+              placeholder="{{ 'paymentPage.expiryDateLabel' | translate }}"
               class="mb-4"
               [hasError]="expirationHasError()"
               [errorMessage]="expirationErrorMessage()"
@@ -54,7 +55,7 @@
               id="cvc"
               [digitsOnly]="true"
               formControlName="cvv"
-              placeholder="CVC"
+              placeholder="{{ 'paymentPage.cvvLabel' | translate }}"
               class="mb-4"
               [hasError]="cvvHasError()"
               [errorMessage]="cvvErrorMessage()"
@@ -63,13 +64,15 @@
         </form>
       </div>
       <div>
-        <h3 class="text-xl font-semibold mb-2 mt-2">Contact summary</h3>
+        <h3 class="text-xl font-semibold mb-2 mt-2">
+          {{ 'paymentPage.contactSummary' | translate }}
+        </h3>
         <p class="text-sm text-gray-600 mb-4">
-          Review your contact information before proceeding to payment.
+          {{ 'paymentPage.descriptionSummary' | translate }}
         </p>
         <div class="grid grid-cols-2 gap-4 border p-6 text-sm">
           <div>
-            <p class="text-sm uppercase font-semibold">Name</p>
+            <p class="text-sm uppercase font-semibold">{{ 'paymentPage.nameLabel' | translate }}</p>
             <span class=""
               >{{ this.authServices.getCurrentUser().firstName }}
               {{ this.authServices.getCurrentUser().lastName }}</span
@@ -77,20 +80,30 @@
           </div>
 
           <div>
-            <p class="text-sm uppercase font-semibold">Phone</p>
-            <span class="">{{ this.authServices.getCurrentUser().phone }}</span>
+            <p class="text-sm uppercase font-semibold">
+              {{ 'paymentPage.phoneLabel' | translate }}
+            </p>
+            <span class="">{{
+              this.authServices.getCurrentUser().phone
+                ? this.authServices.getCurrentUser().phone
+                : '-'
+            }}</span>
           </div>
 
           <div>
-            <p class="text-sm uppercase font-semibold">Street</p>
+            <p class="text-sm uppercase font-semibold">
+              {{ 'paymentPage.streetLabel' | translate }}
+            </p>
             <span class=""> {{ this.authServices.getCurrentUser().street }}</span>
           </div>
           <div>
-            <p class="text-sm uppercase font-semibold">City</p>
+            <p class="text-sm uppercase font-semibold">{{ 'paymentPage.cityLabel' | translate }}</p>
             <span class=""> {{ this.authServices.getCurrentUser().city }} </span>
           </div>
           <div>
-            <p class="text-sm uppercase font-semibold">Country</p>
+            <p class="text-sm uppercase font-semibold">
+              {{ 'paymentPage.countryLabel' | translate }}
+            </p>
             <span class=""> {{ this.authServices.getCurrentUser().country }}</span>
           </div>
         </div>
@@ -130,10 +143,12 @@
         </div>
         <button
           class="mt-4 py-2 px-4 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
+          [ngClass]="{ 'opacity-50 !cursor-not-allowed': isLoading }"
           type="submit"
           form="paymentForm"
+          [disabled]="isLoading"
         >
-          Pay Now
+          {{ isLoading ? 'Processing...' : 'Pay Now' }}
         </button>
       </div>
     </div>

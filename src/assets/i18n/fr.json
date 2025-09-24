@@ -80,17 +80,25 @@
     }
   },
 
-  "payementPage": {
-    "title": "Détails du paiement",
-    "description": "Finalisez votre achat en toute sécurité.",
-    "cardDetails": "Détails de la carte",
-    "nameOnCard": "Nom sur la carte",
-    "cardNumber": "Numéro de carte",
-    "expiryDate": "Date d'expiration",
-    "cvv": "CVV",
+  "paymentPage": {
+    "title": "Processus de paiement",
+    "description": "Veuillez entrer vos informations de paiement ci-dessous.",
+    "cardHolderLabel": "Nom du titulaire",
+    "cardHolderPlaceholder": "Jean Dupont",
+    "cardNumberLabel": "Numéro de carte",
+    "expirationDateLabel": "Date d'expiration",
+    "expiryDateLabel": "MM/AA",
+    "nameLabel": "Nom",
+    "phoneLabel": "Téléphone",
+    "streetLabel": "Rue",
+    "cityLabel": "Ville",
+    "countryLabel": "Pays",
+    "contactSummary": "Résumé du contact",
+    "descriptionSummary": "Vérifiez vos informations de contact avant de procéder au paiement.",
+    "addressSummary": "Résumé de l'adresse",
+    "cvvLabel": "CVV",
     "payButton": "Payer maintenant",
-    "successMessage": "Paiement réussi ! Merci pour votre achat.",
-    "errorMessage": "Le paiement a échoué. Veuillez réessayer."
+    "successMessage": "Paiement réussi ! Merci pour votre achat. 🎉"
   },
 
   "connexionPage": {

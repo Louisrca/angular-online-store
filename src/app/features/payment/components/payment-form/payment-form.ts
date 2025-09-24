@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import {
   FormBuilder,
@@ -28,7 +29,7 @@ import { v4 as uuidv4 } from 'uuid';
   selector: 'app-payment-form',
   templateUrl: './payment-form.html',
   standalone: true,
-  imports: [...TRANSLATE_IMPORTS, InputComponent, ReactiveFormsModule],
+  imports: [...TRANSLATE_IMPORTS, InputComponent, ReactiveFormsModule, NgClass],
 })
 export class PaymentForm extends BaseComponent {
   private cartService = inject(CartServices);
@@ -48,6 +49,9 @@ export class PaymentForm extends BaseComponent {
   orderId = ulid();
   salesId = uuidv4;
   uuid = uuidv4;
+
+  isLoading = false;
+  globalErrorMessage = '';
 
   constructor() {
     super();
@@ -128,43 +132,55 @@ export class PaymentForm extends BaseComponent {
       return;
     }
 
-    this.salesServices.postSales({
-      id: this.salesId(),
-      date: new Date(),
-      amount: this.totalAmount(),
-      items: this.cartItems().map((item) => ({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-      })),
-      saleType: 'sale',
-    });
+    this.isLoading = true;
+    this.globalErrorMessage = '';
 
-    this.catalogServices.updateProductQuantities(
-      this.cartItems().map((item) => ({
-        id: item.id,
-        quantity: this.getItemQuantity(item),
-      })),
-    );
+    setTimeout(() => {
+      try {
+        this.salesServices.postSales({
+          id: this.salesId(),
+          date: new Date(),
+          amount: this.totalAmount(),
+          items: this.cartItems().map((item) => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+          })),
+          saleType: 'sale',
+        });
 
-    this.ordersServices.postOrder({
-      id: `ORDER_${this.orderId}`,
-      customerId: this.authServices.getCurrentUser().id,
-      customerName: this.authServices.getCurrentUser().name,
-      customerEmail: this.authServices.getCurrentUser().email,
-      customerAddress: '123 Main St, City, Country',
-      date: new Date(),
-      items: this.cartItems().map((item) => ({
-        productId: item.id,
-        productName: item.name,
-        price: item.price,
-        quantity: this.getItemQuantity(item),
-        userId: item.userId,
-      })),
-      amount: this.totalAmount(),
-      type: 'purchase',
-    });
-    this.cartServices.clearCart(this.authServices.getCurrentUser().id);
-    this.router.navigate(['/']);
+        this.catalogServices.updateProductQuantities(
+          this.cartItems().map((item) => ({
+            id: item.id,
+            quantity: this.getItemQuantity(item),
+          })),
+        );
+
+        this.ordersServices.postOrder({
+          id: `ORDER_${this.orderId}`,
+          customerId: this.authServices.getCurrentUser().id,
+          customerName: this.authServices.getCurrentUser().name,
+          customerEmail: this.authServices.getCurrentUser().email,
+          customerAddress: '123 Main St, City, Country',
+          date: new Date(),
+          items: this.cartItems().map((item) => ({
+            productId: item.id,
+            productName: item.name,
+            price: item.price,
+            quantity: this.getItemQuantity(item),
+            userId: item.userId,
+          })),
+          amount: this.totalAmount(),
+          type: 'purchase',
+        });
+        this.cartServices.clearCart(this.authServices.getCurrentUser().id);
+        this.router.navigate(['/']);
+      } catch (err) {
+        this.globalErrorMessage = 'An error occurred during payment.';
+        console.error(err);
+      } finally {
+        this.isLoading = false;
+      }
+    }, 2000);
   }
 }
