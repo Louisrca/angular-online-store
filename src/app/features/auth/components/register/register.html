@@ -4,52 +4,99 @@
   [formGroup]="registerForm"
   (ngSubmit)="onSubmit()"
 >
-  <app-input
-    name="firstName"
-    [label]="'connexionPage.registerPage.label.firstName' | translate"
-    formControlName="firstName"
-    [required]="true"
-    [hasError]="isFieldInvalid('firstName')"
-    [errorMessage]="getFormError('firstName') | translate"
-  ></app-input>
+  <div class="flex flex-col border-b pb-8 gap-4">
+    <h3 class="font-bold">{{ 'connexionPage.registerPage.titlePersonnalInfo' | translate }}</h3>
 
-  <app-input
-    name="lastName"
-    [label]="'connexionPage.registerPage.label.lastName' | translate"
-    formControlName="lastName"
-    [required]="true"
-    [hasError]="isFieldInvalid('lastName')"
-    [errorMessage]="getFormError('lastName') | translate"
-  ></app-input>
+    <app-input
+      name="firstName"
+      [label]="'connexionPage.registerPage.label.firstName' | translate"
+      formControlName="firstName"
+      [required]="true"
+      [hasError]="isFieldInvalid('firstName')"
+      [errorMessage]="getFormError('firstName') | translate"
+    ></app-input>
 
-  <app-input
-    name="email"
-    [label]="'connexionPage.registerPage.label.email' | translate"
-    formControlName="email"
-    [required]="true"
-    [hasError]="isFieldInvalid('email')"
-    [errorMessage]="getFormError('email') | translate"
-  ></app-input>
+    <app-input
+      name="lastName"
+      [label]="'connexionPage.registerPage.label.lastName' | translate"
+      formControlName="lastName"
+      [required]="true"
+      [hasError]="isFieldInvalid('lastName')"
+      [errorMessage]="getFormError('lastName') | translate"
+    ></app-input>
+  </div>
 
-  <app-input
-    name="password"
-    type="password"
-    [label]="'connexionPage.registerPage.label.password' | translate"
-    [required]="true"
-    formControlName="password"
-    [hasError]="isFieldInvalid('password')"
-    [errorMessage]="getFormError('password') | translate"
-  ></app-input>
+  <div class="flex flex-col gap-4 border-b pt-2 pb-8">
+    <h3 class="font-bold">{{ 'connexionPage.registerPage.titleAddressDetails' | translate }}</h3>
+    <app-input
+      name="street"
+      [label]="'connexionPage.registerPage.label.street' | translate"
+      formControlName="street"
+      [required]="true"
+      [hasError]="isFieldInvalid('lastName')"
+      [errorMessage]="getFormError('lastName') | translate"
+    ></app-input>
+    <div class="flex justify-between gap-4">
+      <app-input
+        name="city"
+        [label]="'connexionPage.registerPage.label.city' | translate"
+        formControlName="city"
+        [required]="true"
+        [hasError]="isFieldInvalid('lastName')"
+        [errorMessage]="getFormError('lastName') | translate"
+      ></app-input>
+      <app-input
+        name="country"
+        [label]="'connexionPage.registerPage.label.country' | translate"
+        formControlName="country"
+        [required]="true"
+        [hasError]="isFieldInvalid('lastName')"
+        [errorMessage]="getFormError('lastName') | translate"
+      ></app-input>
+    </div>
+  </div>
 
-  <app-input
-    name="confirmPassword"
-    type="password"
-    [label]="'connexionPage.registerPage.label.confirmPassword' | translate"
-    [required]="true"
-    formControlName="confirmPassword"
-    [hasError]="isFieldInvalid('confirmPassword') || registerForm.hasError('passwordMismatch')"
-    [errorMessage]="getFormError('confirmPassword') | translate"
-  ></app-input>
+  <div class="flex flex-col pt-2 pb-8 gap-4">
+    <h3 class="font-bold">{{ 'connexionPage.registerPage.titleContactDetails' | translate }}</h3>
+    <app-input
+      name="email"
+      [label]="'connexionPage.registerPage.label.email' | translate"
+      formControlName="email"
+      [required]="true"
+      [hasError]="isFieldInvalid('email')"
+      [errorMessage]="getFormError('email') | translate"
+    ></app-input>
+
+    <app-input
+      name="phone"
+      [label]="'connexionPage.registerPage.label.phone' | translate"
+      formControlName="phone"
+      [phoneFormatter]="true"
+      [required]="true"
+      [hasError]="isFieldInvalid('phone')"
+      [errorMessage]="getFormError('phone') | translate"
+    ></app-input>
+
+    <app-input
+      name="password"
+      type="password"
+      [label]="'connexionPage.registerPage.label.password' | translate"
+      [required]="true"
+      formControlName="password"
+      [hasError]="isFieldInvalid('password')"
+      [errorMessage]="getFormError('password') | translate"
+    ></app-input>
+
+    <app-input
+      name="confirmPassword"
+      type="password"
+      [label]="'connexionPage.registerPage.label.confirmPassword' | translate"
+      [required]="true"
+      formControlName="confirmPassword"
+      [hasError]="isFieldInvalid('confirmPassword') || registerForm.hasError('passwordMismatch')"
+      [errorMessage]="getFormError('confirmPassword') | translate"
+    ></app-input>
+  </div>
 
   <button
     type="submit"

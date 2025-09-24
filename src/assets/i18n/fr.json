@@ -94,10 +94,17 @@
       "title": "Créer un compte",
       "description": "Créez un nouveau compte en remplissant les informations ci-dessous.",
       "button": "Créer votre compte",
+      "titlePersonnalInfo": "Informations Personnelles",
+      "titleAddressDetails": "Détails de l'adresse",
+      "titleContactDetails": "Détails de contact",
       "label": {
         "firstName": "Prénom",
         "lastName": "Nom",
         "email": "Mail",
+        "street": "Rue",
+        "city": "Ville",
+        "country": "Pays",
+        "phone": "Téléphone",
         "password": "Mot de passe",
         "confirmPassword": "Confirmer le mot de passe"
       }

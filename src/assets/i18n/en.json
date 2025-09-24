@@ -97,10 +97,17 @@
       "title": "Create An Account",
       "description": "Create a new account by filling in the details below.",
       "button": "Create your account",
+      "titlePersonnalInfo": "Personal Info",
+      "titleAddressDetails": "Address Details",
+      "titleContactDetails": "Contact Details",
       "label": {
         "firstName": "First Name",
         "lastName": "Last Name",
         "email": "Email",
+        "street": "Street",
+        "city": "City",
+        "phone": "Phone",
+        "country": "Country",
         "password": "Password",
         "confirmPassword": "Confirm Password"
       }

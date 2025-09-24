@@ -20,12 +20,14 @@
   <div class="w-full lg:w-80 flex flex-col justify-between">
     <div class="sticky top-0 p-6 border bg-white">
       <h3 class="font-[300] mb-4">{{ 'cartPage.amount' | translate }}: {{ totalAmount }} €</h3>
-      <button
+      <a
         class="py-2 px-4 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
-        (click)="buyItems()"
+        [routerLink]="[`/payment`]"
+        [queryParams]="{ transactionId: uuid }"
+        routerLinkActive="active"
       >
         {{ 'cartPage.buyButton' | translate }}
-      </button>
+      </a>
     </div>
   </div>
 </div>

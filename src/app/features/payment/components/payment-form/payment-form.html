@@ -1,31 +1,141 @@
-<div>
-  <h2 class="text-2xl font-bold mb-4">Payment</h2>
-  <div>
-    <div id="payment-element">
-      <form>
-        <input
-          placeholder="Cardholder name"
-          id="name"
-          class="border border-gray-300 rounded-md p-2 w-full mb-4"
-        />
-        <div id="payment-element">
-          <input
-            placeholder="Card details"
-            id="card-details"
-            class="border border-gray-300 rounded-md p-2 w-full mb-4"
-          />
-          <input
-            placeholder="Expiration date"
-            id="expiration-date"
-            class="border border-gray-300 rounded-md p-2 w-full mb-4"
-          />
-          <input
-            placeholder="CVC"
-            id="cvc"
-            class="border border-gray-300 rounded-md p-2 w-full mb-4"
-          />
+<div class="px-4">
+  <div class="flex flex-col justify-center md:flex-row md:justify-center items-center md:gap-10">
+    <div class="flex flex-col gap-4">
+      <div>
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Payment details</h3>
+          <p class="text-sm text-gray-600 mb-4">Please enter your payment information below.</p>
         </div>
-      </form>
+
+        <form
+          [formGroup]="purchaseForm"
+          id="paymentForm"
+          (ngSubmit)="buy()"
+          class="flex flex-col border p-6"
+        >
+          <app-input
+            label="Name on card"
+            type="text"
+            id="name-on-card"
+            placeholder="Jane Doe"
+            class="mb-4"
+            formControlName="nameCard"
+            [hasError]="nameCardHasError()"
+            [errorMessage]="nameCardErrorMessage()"
+          ></app-input>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <app-input
+              label="Card details"
+              type="text"
+              id="card-details"
+              placeholder="Card details"
+              [cardNumberFormatter]="true"
+              class="mb-4"
+              formControlName="number"
+              placeholder="1234 5678 9012 3456"
+              [hasError]="numberHasError()"
+              [errorMessage]="numberErrorMessage()"
+            ></app-input>
+            <app-input
+              label="Expiration date"
+              type="text"
+              [expirationMask]="true"
+              id="expiration-date"
+              formControlName="expiration"
+              placeholder="MM/YY"
+              class="mb-4"
+              [hasError]="expirationHasError()"
+              [errorMessage]="expirationErrorMessage()"
+            ></app-input>
+            <app-input
+              label="CVC"
+              type="text"
+              id="cvc"
+              [digitsOnly]="true"
+              formControlName="cvv"
+              placeholder="CVC"
+              class="mb-4"
+              [hasError]="cvvHasError()"
+              [errorMessage]="cvvErrorMessage()"
+            ></app-input>
+          </div>
+        </form>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2 mt-2">Contact summary</h3>
+        <p class="text-sm text-gray-600 mb-4">
+          Review your contact information before proceeding to payment.
+        </p>
+        <div class="grid grid-cols-2 gap-4 border p-6 text-sm">
+          <div>
+            <p class="text-sm uppercase font-semibold">Name</p>
+            <span class=""
+              >{{ this.authServices.getCurrentUser().firstName }}
+              {{ this.authServices.getCurrentUser().lastName }}</span
+            >
+          </div>
+
+          <div>
+            <p class="text-sm uppercase font-semibold">Phone</p>
+            <span class="">{{ this.authServices.getCurrentUser().phone }}</span>
+          </div>
+
+          <div>
+            <p class="text-sm uppercase font-semibold">Street</p>
+            <span class=""> {{ this.authServices.getCurrentUser().street }}</span>
+          </div>
+          <div>
+            <p class="text-sm uppercase font-semibold">City</p>
+            <span class=""> {{ this.authServices.getCurrentUser().city }} </span>
+          </div>
+          <div>
+            <p class="text-sm uppercase font-semibold">Country</p>
+            <span class=""> {{ this.authServices.getCurrentUser().country }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col h-full border mt-6 md:mt-13 lg:mt-13">
+      <div class="flex-1 max-h-96 overflow-y-auto p-4 pb-0">
+        <div>
+          @for (product of products(); track $index) {
+            <div
+              class="flex flex-row justify-between items-center pb-5 pt-5 first:pt-1 border-b last:border-b-0 last:pb-3"
+            >
+              <img
+                [src]="product.imageUrl"
+                [alt]="product.name | translate"
+                class="w-24 h-24 sm:w-24 sm:h-24 object-cover"
+              />
+              <div class="flex flex-col flex-grow ml-4">
+                <span class="font-semibold">
+                  {{ product.name }} - {{ product.type | translate }}
+                </span>
+                <span class="text-sm text-gray-600 uppercase">
+                  {{ product.color | translate }}
+                </span>
+                <span class="text-sm">{{ product.price }} € </span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col p-4 pt-2">
+        <div class="flex flex-row border-t justify-between font-bold text-lg pt-2">
+          <span>Order Total</span>
+          <span class="font-bold">{{ total }} €</span>
+        </div>
+        <button
+          class="mt-4 py-2 px-4 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
+          type="submit"
+          form="paymentForm"
+        >
+          Pay Now
+        </button>
+      </div>
     </div>
   </div>
 </div>

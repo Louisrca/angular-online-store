@@ -4,6 +4,10 @@ export interface User {
   password: string;
   firstName: string;
   lastName: string;
+  street: string;
+  city: string;
+  country: string;
+  phone: string;
   token: string;
   role?: 'customer' | 'worker' | 'admin';
 }
@@ -12,7 +16,7 @@ export type LoginCredentials = Pick<User, 'email' | 'password'>;
 
 export type RegisterCredentials = Pick<
   User,
-  'firstName' | 'lastName' | 'email' | 'password' | 'role'
+  'firstName' | 'lastName' | 'email' | 'password' | 'role' | 'street' | 'city' | 'country' | 'phone'
 > & {
   confirmPassword: string;
 };

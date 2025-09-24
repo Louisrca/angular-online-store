@@ -1,47 +1,11 @@
-<style>
-  ::ng-deep .p-toast-message {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border-radius: 0 !important;
-    border: 2px solid #000000 !important;
-  }
-
-  ::ng-deep .p-toast-message-content {
-    gap: 0 !important;
-    display: flex;
-  }
-
-  ::ng-deep .p-toast-close-icon {
-    color: #000000 !important;
-  }
-
-  ::ng-deep .p-toast-close-button {
-    background: #ffffff !important;
-    border-radius: 0;
-    border: 1px solid #000000 !important;
-  }
-
-  ::ng-deep .p-toast-close-button:hover {
-    background: #47fc00 !important;
-    border-radius: 0;
-    outline: 2px solid #000000 !important;
-  }
-</style>
-
 <div>
   <app-shop-layout>
-    <p-toast>
-      <ng-template let-message pTemplate="message">
-        <div class="flex-1 w-full m-6">{{ message.detail | translate }}</div>
-      </ng-template>
-    </p-toast>
     <div class="mb-8" *appNotEmptyCart>
       <h2>{{ 'cartPage.title' | translate }}</h2>
     </div>
     <app-cart-items-list
       [items]="cartItems()"
       [totalAmount]="totalAmount()"
-      [buy]="buy.bind(this)"
       [removeItem]="removeItem.bind(this)"
       *appNotEmptyCart
     ></app-cart-items-list>

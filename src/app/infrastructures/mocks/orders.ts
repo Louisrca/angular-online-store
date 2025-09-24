@@ -168,7 +168,7 @@ export const ORDERS: Order[] = [
   },
   {
     id: `ORDER_${ulid()}`,
-    date: new Date('2025-12-01'),
+    date: new Date('2025-09-01'),
     amount: 150,
     items: [],
     type: 'purchase',

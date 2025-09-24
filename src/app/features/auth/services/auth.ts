@@ -55,6 +55,10 @@ export class AuthServices {
           firstName: user?.firstName,
           lastName: user?.lastName,
           id: user?.id,
+          street: user?.street,
+          city: user?.city,
+          country: user?.country,
+          phone: user?.phone,
           token: user?.token,
           role: user?.role,
         };
@@ -80,11 +84,25 @@ export class AuthServices {
     firstName,
     lastName,
     password,
+    street,
+    city,
+    country,
+    phone,
     confirmPassword,
     email,
     role,
   }: RegisterCredentials): boolean {
-    if (firstName && lastName && password && confirmPassword && email) {
+    if (
+      firstName &&
+      lastName &&
+      password &&
+      confirmPassword &&
+      email &&
+      street &&
+      city &&
+      country &&
+      phone
+    ) {
       if (password !== confirmPassword) {
         throw new Error('Passwords do not match');
       }
@@ -100,6 +118,10 @@ export class AuthServices {
         password,
         firstName,
         lastName,
+        street,
+        city,
+        phone,
+        country,
         token: `token${this.users.length + 1}`,
         role: role || 'customer',
       };

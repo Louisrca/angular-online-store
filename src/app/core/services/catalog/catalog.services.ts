@@ -107,7 +107,7 @@ export class CatalogServices {
             break;
         }
       }
-      return products.length;
+      return products.filter((p) => (p.quantity ? p.quantity > 0 : false)).length;
     });
 
   getProductById(id: string): Product | undefined {
