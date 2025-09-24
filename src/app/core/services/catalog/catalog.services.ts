@@ -54,6 +54,35 @@ export class CatalogServices {
       return products.filter((p) => (p.quantity ? p.quantity > 0 : false)).slice(0, limit);
     });
 
+  productswithoutQuantityFilter = (limit: number, typeFilter?: string) =>
+    computed(() => {
+      let products = this.catalog();
+
+      if (typeFilter) {
+        switch (typeFilter) {
+          case 'men':
+            products = products.filter(
+              (p) =>
+                (p.gender === 'product.gender.male' || p.gender === 'product.gender.unisex') &&
+                p.type !== 'product.type.shoes',
+            );
+            break;
+          case 'women':
+            products = products.filter(
+              (p) =>
+                (p.gender === 'product.gender.female' || p.gender === 'product.gender.unisex') &&
+                p.type !== 'product.type.shoes',
+            );
+            break;
+          case 'sneakers':
+            products = products.filter((p) => p.type === 'product.type.shoes');
+            break;
+        }
+      }
+
+      return products.slice(0, limit);
+    });
+
   productsLength = (typeFilter?: string) =>
     computed(() => {
       let products = this.catalog();
@@ -97,8 +126,15 @@ export class CatalogServices {
   updateProductQuantities(updates: { id: string; quantity: number }[]): void {
     const updated = this.catalog().map((product) => {
       const update = updates.find((u) => u.id === product.id);
+
       if (update) {
-        return { ...product, quantity: (product.quantity ?? 0) - update.quantity };
+        return {
+          ...product,
+          quantity:
+            (product.quantity ?? 0) - update.quantity < 0
+              ? 0
+              : (product.quantity ?? 0) - update.quantity,
+        };
       }
       return product;
     });

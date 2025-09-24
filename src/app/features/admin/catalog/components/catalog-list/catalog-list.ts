@@ -30,17 +30,21 @@ export class CatalogList extends BaseComponent implements OnInit {
     this.queryParams$.subscribe((params) => {
       const typeFilter = params['filter'];
       if (typeFilter) {
-        this.products.set(this.catalogServices.productsByFilter(this.limit, typeFilter)());
+        this.products.set(
+          this.catalogServices.productswithoutQuantityFilter(this.limit, typeFilter)(),
+        );
         return;
       }
-      this.products.set(this.catalogServices.productsByFilter(this.limit, typeFilter)());
+      this.products.set(
+        this.catalogServices.productswithoutQuantityFilter(this.limit, typeFilter)(),
+      );
     });
   }
 
   loadMore() {
     this.limit += 10;
     this.products.set(
-      this.catalogServices.productsByFilter(
+      this.catalogServices.productswithoutQuantityFilter(
         this.limit,
         this.route.snapshot.queryParamMap.get('filter') || '',
       )(),
@@ -57,7 +61,7 @@ export class CatalogList extends BaseComponent implements OnInit {
   removeProduct(id: string) {
     this.catalogServices.removeProduct(id);
     this.products.set(
-      this.catalogServices.productsByFilter(
+      this.catalogServices.productswithoutQuantityFilter(
         this.limit,
         this.route.snapshot.queryParamMap.get('filter') || '',
       )(),
