@@ -1,3 +1,12 @@
+<style>
+  .active {
+    background-color: #e0f2fe;
+    border-color: #ce000033;
+    border-color: #008ba7c0;
+    font-weight: 600;
+  }
+</style>
+
 <div>
   <div class="flex flex-row items-center gap-6 mb-8">
     <div class="font-semibold">{{ 'admin.catalogPage.filterBy' | translate }} :</div>
@@ -6,7 +15,7 @@
         [routerLink]="['/admin/catalog']"
         [queryParams]="{ filter: 'men' }"
         routerLinkActive="active"
-        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm transition duration-300"
         >{{ 'admin.catalogPage.filters.men' | translate }}</a
       >
     </div>
@@ -15,7 +24,7 @@
         [routerLink]="['/admin/catalog']"
         [queryParams]="{ filter: 'women' }"
         routerLinkActive="active"
-        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm transition duration-300"
         >{{ 'admin.catalogPage.filters.women' | translate }}</a
       >
     </div>
@@ -24,14 +33,14 @@
         [routerLink]="['/admin/catalog']"
         [queryParams]="{ filter: 'sneakers' }"
         routerLinkActive="active"
-        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm transition duration-300"
         >{{ 'admin.catalogPage.filters.sneakers' | translate }}</a
       >
     </div>
     <div class="ml-auto">
       <a
         [routerLink]="'/admin/catalog/add-product'"
-        class="flex flex-row justify-center items-center text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm"
+        class="flex flex-row justify-center items-center text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm transition duration-300"
         ><ng-icon size="16" name="hugeAdd01" class="mr-2" color="#4B5563" />
         {{ 'admin.catalogPage.addProduct' | translate }}</a
       >
@@ -58,8 +67,16 @@
       </div>
       <div>
         <button
+          (click)="addProductQuantity(product.id, 1)"
+          class="flex justify-center items-center hover:bg-[#f8fafc] p-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm cursor-pointer transition duration-300"
+        >
+          <ng-icon name="hugeAddCircle" size="24" />
+        </button>
+      </div>
+      <div>
+        <button
           (click)="removeProduct(product.id)"
-          class="flex justify-center items-center bg-red-500 text-white rounded-lg p-2 cursor-pointer"
+          class="flex justify-center items-center bg-[#ce000033] hover:bg-red-400 hover:border-red-800 p-2 rounded-lg cursor-pointer border border-red-300 text-sm cursor-pointer text-red-700 hover:text-white transition duration-300"
         >
           <ng-icon name="hugeDelete02" size="24" />
         </button>

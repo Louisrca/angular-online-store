@@ -8,6 +8,13 @@
         {{ 'admin.userPage.title' | translate }}
       </h2>
     </div>
+    <div>
+      <a
+        [routerLink]="'/'"
+        class="w-fit text-left hover:bg-[#f8fafc] p-1 px-2 rounded-lg cursor-pointer border border-[#e2e8f0] text-sm transition duration-300"
+        >{{ 'admin.dashboardPage.utils.goBackToShop' | translate }}</a
+      >
+    </div>
   </div>
   <router-outlet></router-outlet>
 </div>

@@ -123,6 +123,18 @@ export class CatalogServices {
     this.saveProducts(updated);
   }
 
+  addQuantity(id: string, quantity: number): void {
+    const updated = this.catalog().map((product) =>
+      product.id === id
+        ? {
+            ...product,
+            quantity: (product.quantity ?? 0) + quantity,
+          }
+        : product,
+    );
+    this.saveProducts(updated);
+  }
+
   updateProductQuantities(updates: { id: string; quantity: number }[]): void {
     const updated = this.catalog().map((product) => {
       const update = updates.find((u) => u.id === product.id);
