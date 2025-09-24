@@ -12,6 +12,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/cart/cart.routes').then((m) => m.CART_ROUTES),
   },
   {
+    path: 'payment',
+    loadChildren: () => import('./features/payment/payment.routes').then((m) => m.PAYMENT_ROUTES),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },

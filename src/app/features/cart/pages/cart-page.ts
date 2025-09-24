@@ -15,6 +15,7 @@ import { NotEmptyCartDirective } from '../../../shared/directives/not-empty-cart
 import { EmptyCart } from '../components/empty-cart/empty-cart';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { CatalogServices } from '@Core/services/catalog/catalog.services';
 
 @Component({
   selector: 'app-cart-page',
@@ -34,6 +35,7 @@ export class CartPage extends BaseComponent {
   salesServices = inject(SalesService);
   cartServices = inject(CartServices);
   ordersServices = inject(OrdersService);
+  catalogServices = inject(CatalogServices);
   authServices = inject(AuthServices);
   messageService = inject(MessageService);
 
@@ -79,6 +81,13 @@ export class CartPage extends BaseComponent {
       })),
       saleType: 'sale',
     });
+
+    this.catalogServices.updateProductQuantities(
+      this.cartItems().map((item) => ({
+        id: item.id,
+        quantity: this.getItemQuantity(item),
+      })),
+    );
 
     // Create the order
     this.ordersServices.postOrder({

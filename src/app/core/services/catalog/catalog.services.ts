@@ -51,7 +51,7 @@ export class CatalogServices {
         }
       }
 
-      return products.slice(0, limit);
+      return products.filter((p) => (p.quantity ? p.quantity > 0 : false)).slice(0, limit);
     });
 
   productsLength = (typeFilter?: string) =>
@@ -91,6 +91,17 @@ export class CatalogServices {
   }
   removeProduct(id: string): void {
     const updated = this.catalog().filter((p) => p.id !== id);
+    this.saveProducts(updated);
+  }
+
+  updateProductQuantities(updates: { id: string; quantity: number }[]): void {
+    const updated = this.catalog().map((product) => {
+      const update = updates.find((u) => u.id === product.id);
+      if (update) {
+        return { ...product, quantity: (product.quantity ?? 0) - update.quantity };
+      }
+      return product;
+    });
     this.saveProducts(updated);
   }
 }
