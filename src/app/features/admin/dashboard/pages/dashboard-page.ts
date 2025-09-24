@@ -9,11 +9,20 @@ import { TRANSLATE_IMPORTS } from '@Shared/imports/translate-imports';
 import { CardInfo } from '@Shared/components/design-system/card-info/card-info';
 import { SalesService } from '@Core/services/sales/sales.services';
 import { OrdersService } from '@Core/services/orders/orders.services';
+import { provideIcons } from '@ng-icons/core';
+import { hugeDeliveryBox01, hugeSaleTag02, hugeUserFullView } from '@ng-icons/huge-icons';
 
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.html',
   imports: [BarChart, OrdersTable, RouterLink, ...TRANSLATE_IMPORTS, CardInfo],
+  viewProviders: [
+    provideIcons({
+      hugeSaleTag02,
+      hugeDeliveryBox01,
+      hugeUserFullView,
+    }),
+  ],
 })
 export class DashboardPage extends BaseComponent implements OnInit {
   private authService = inject(AuthServices);
@@ -24,6 +33,9 @@ export class DashboardPage extends BaseComponent implements OnInit {
   sales = signal(0);
   orders = signal(0);
   users = signal(0);
+  hugeSaleTag02 = 'hugeSaleTag02';
+  hugeDeliveryBox01 = 'hugeDeliveryBox01';
+  hugeUserFullView = 'hugeUserFullView';
 
   ngOnInit() {
     this.currentUser = this.authService.getCurrentUser();

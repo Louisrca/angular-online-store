@@ -1,12 +1,13 @@
 <style>
   .active {
-    background-color: #47fc00;
+    background-color: #47fc0057;
     color: black;
+    border: 1px solid #39ca008a;
   }
 </style>
 
 <li
-  class="hover:text-black hover:bg-[#47fc00] rounded-[0.6rem] transition-colors duration-200"
+  class="hover:text-black hover:bg-[#47fc0057] border border-transparent hover:border hover:border-[#39ca008a] rounded-[0.6rem] transition-colors duration-200"
   [class.active]="isActiveLink(link)"
 >
   <a routerLink="{{ link }}" class="flex items-center justify-center p-3 py-3">

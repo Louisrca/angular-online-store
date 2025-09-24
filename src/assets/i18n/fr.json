@@ -18,7 +18,7 @@
       "saleOverviewTitle": "Aperçu des ventes",
       "totalOrders": "Total des commandes",
       "returns": "Retours",
-      "sales": "Ventes",
+      "sales": "Revenus",
       "expenses": "Dépenses",
       "customers": {
         "customerId": "ID Client",
@@ -28,7 +28,7 @@
         "orderId": "ID Commande"
       },
       "infoCard": {
-        "totalSales": "Ventes",
+        "totalSales": "Revenus",
         "annualSubtitle": "Annuel",
         "customerSubtitle": "Clients",
         "usersRegistered": "Utilisateurs inscrits",
@@ -78,6 +78,19 @@
         "role": "Rôle"
       }
     }
+  },
+
+  "payementPage": {
+    "title": "Détails du paiement",
+    "description": "Finalisez votre achat en toute sécurité.",
+    "cardDetails": "Détails de la carte",
+    "nameOnCard": "Nom sur la carte",
+    "cardNumber": "Numéro de carte",
+    "expiryDate": "Date d'expiration",
+    "cvv": "CVV",
+    "payButton": "Payer maintenant",
+    "successMessage": "Paiement réussi ! Merci pour votre achat.",
+    "errorMessage": "Le paiement a échoué. Veuillez réessayer."
   },
 
   "connexionPage": {

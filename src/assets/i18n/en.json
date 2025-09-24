@@ -21,7 +21,7 @@
       "saleOverviewTitle": "Sales Overview",
       "totalOrders": "Total Orders",
       "returns": "Returns",
-      "sales": "Sales",
+      "sales": "Revenue",
       "expenses": "Expenses",
       "customers": {
         "customerId": "Customer ID",
@@ -31,10 +31,10 @@
         "orderId": "Order ID"
       },
       "infoCard": {
-        "totalSales": "Sales",
+        "totalSales": "Revenue",
         "annualSubtitle": "Annual",
         "customerSubtitle": "Customers",
-        "usersRegistered": "Users Registered",
+        "usersRegistered": "Registered Users",
         "orderSent": "Orders Sent"
       },
       "order": {
@@ -80,6 +80,18 @@
         "role": "Role"
       }
     }
+  },
+
+  "payementPage": {
+    "title": "Payment",
+    "description": "Enter your payment details below.",
+    "cardHolderLabel": "Cardholder Name",
+    "cardNumberLabel": "Card Number",
+    "expiryDateLabel": "Expiry Date",
+    "cvvLabel": "CVV",
+    "payButton": "Pay Now",
+    "successMessage": "Payment successful! Thank you for your purchase. 🎉",
+    "errorMessage": "Payment failed. Please check your details and try again."
   },
 
   "connexionPage": {
