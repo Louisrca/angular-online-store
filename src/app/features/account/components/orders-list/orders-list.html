@@ -1,0 +1,43 @@
+<h1>Orders</h1>
+<div>
+  @for (order of customerOrders(); track $index) {
+    <div class="border p-4 my-4">
+      <h2 class="text-2xl font-bold mb-2">
+        {{ 'billingPage.orderNumber' | translate }} : #{{ order.id }}
+      </h2>
+      <p>
+        <span class="font-semibold uppercase">{{ 'billingPage.date' | translate }} :</span>
+        {{ order.date | date }}
+      </p>
+
+      <div class="mb-4 border-b mt-4">
+        <h3 class="text-xl font-semibold mb-2">{{ 'billingPage.itemsPurchased' | translate }}:</h3>
+        <ul class="mb-4">
+          @for (item of order.items; track $index) {
+            <li>
+              <div class="flex items-center">
+                <img
+                  src="{{ item.productImgUrl }}"
+                  alt="{{ item.productName }}"
+                  class="inline-block mr-2 h-18 w-18 object-cover my-4"
+                />
+                <div class="flex flex-col">
+                  <span class="font-bold"> {{ item.productName }} </span>
+                  <span> {{ 'billingPage.item.quantity' | translate }} : {{ item.quantity }} </span>
+                  <span> {{ 'billingPage.item.price' | translate }} : {{ item.price }} € </span>
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <p>
+        <span class="font-semibold uppercase text-xl"
+          >{{ 'billingPage.totalAmount' | translate }} :
+        </span>
+        <span class="font-bold text-xl">{{ order.amount }} €</span>
+      </p>
+    </div>
+  }
+</div>

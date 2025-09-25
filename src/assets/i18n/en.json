@@ -99,8 +99,19 @@
     "descriptionSummary": "Review your contact information before proceeding to the payment.",
     "cvvLabel": "CVV",
     "payButton": "Pay Now",
+    "payProcessing": "Processing...",
     "successMessage": "Payment successful! Thank you for your purchase. 🎉",
     "errorMessage": "Payment failed. Please check your details and try again."
+  },
+
+  "accountPage": {
+    "title": "Welcome",
+    "description": "Manage your account and view your orders",
+    "logoutButton": "Logout",
+    "order": "Orders",
+    "noOrders": "You have no orders yet.",
+    "customerInfo": "Customer Information",
+    "continueShopping": "Continue Shopping"
   },
 
   "connexionPage": {
@@ -137,6 +148,30 @@
     "invalidEmailFormat": "Invalid email format",
     "minimumCharacters": "Minimum 6 characters required",
     "passwordMismatch": "Passwords do not match"
+  },
+
+  "billingPage": {
+    "title": "Billing",
+    "thankYouMessage": "Thank you for your purchase! Here are your order details 🎉",
+    "orderConfirmation": "You will receive an email confirmation shortly with your order details.",
+    "orderDetails": "Order Details",
+    "orderNumber": "Order Number",
+    "date": "Date",
+    "totalAmount": "Total Amount",
+    "itemsPurchased": "Items Purchased",
+    "item": {
+      "productName": "Product Name",
+      "quantity": "Quantity",
+      "price": "Price"
+    },
+    "billingInformation": "Billing Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "street": "Street",
+    "city": "City",
+    "country": "Country"
   },
 
   "cartPage": {

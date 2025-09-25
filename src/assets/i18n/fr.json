@@ -98,7 +98,42 @@
     "addressSummary": "Résumé de l'adresse",
     "cvvLabel": "CVV",
     "payButton": "Payer maintenant",
+    "payProcessing": "Paiement en cours...",
     "successMessage": "Paiement réussi ! Merci pour votre achat. 🎉"
+  },
+
+  "billingPage": {
+    "title": "Facture",
+    "thankYouMessage": "Merci pour votre achat ! Voici les détails de votre commande 🎉",
+    "emailConfirmation": "Vous recevrez bientôt une confirmation par e-mail avec les détails de votre commande.",
+    "orderDetails": "Détails de la commande",
+    "orderNumber": "Numéro de commande",
+    "date": "Date",
+    "totalAmount": "Montant total",
+    "itemsPurchased": "Articles achetés",
+    "item": {
+      "productName": "Nom du produit",
+      "quantity": "Quantité",
+      "price": "Prix"
+    },
+    "billingInformation": "Informations de facturation",
+    "name": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "street": "Rue",
+    "city": "Ville",
+    "country": "Pays"
+  },
+
+  "accountPage": {
+    "title": "Bienvenue",
+    "description": "Gérez votre compte et consultez vos commandes",
+    "logoutButton": "Se déconnecter",
+    "order": "Commandes",
+    "noOrders": "Vous n'avez pas encore de commandes.",
+    "customerInfo": "Informations client",
+    "continueShopping": "Continuer vos achats"
   },
 
   "connexionPage": {

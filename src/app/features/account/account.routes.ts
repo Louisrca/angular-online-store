@@ -1,4 +1,4 @@
-import { AccountPage } from './account';
+import { AccountPage } from './page/account';
 
 import { Routes } from '@angular/router';
 

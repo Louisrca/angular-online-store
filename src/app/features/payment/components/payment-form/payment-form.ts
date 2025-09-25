@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -31,7 +31,7 @@ import { v4 as uuidv4 } from 'uuid';
   standalone: true,
   imports: [...TRANSLATE_IMPORTS, InputComponent, ReactiveFormsModule, NgClass],
 })
-export class PaymentForm extends BaseComponent {
+export class PaymentForm extends BaseComponent implements OnInit {
   private cartService = inject(CartServices);
   private salesServices = inject(SalesService);
   private ordersServices = inject(OrdersService);
@@ -52,6 +52,12 @@ export class PaymentForm extends BaseComponent {
 
   isLoading = false;
   globalErrorMessage = '';
+
+  ngOnInit(): void {
+    if (this.cartItems().length <= 0) {
+      this.router.navigate(['/cart']);
+    }
+  }
 
   constructor() {
     super();
@@ -158,15 +164,23 @@ export class PaymentForm extends BaseComponent {
 
         this.ordersServices.postOrder({
           id: `ORDER_${this.orderId}`,
-          customerId: this.authServices.getCurrentUser().id,
-          customerName: this.authServices.getCurrentUser().name,
-          customerEmail: this.authServices.getCurrentUser().email,
-          customerAddress: '123 Main St, City, Country',
           date: new Date(),
+          user: {
+            id: this.authServices.getCurrentUser().id,
+            firstName: this.authServices.getCurrentUser().firstName,
+            lastName: this.authServices.getCurrentUser().lastName,
+            email: this.authServices.getCurrentUser().email,
+            street: this.authServices.getCurrentUser().street,
+            phone: this.authServices.getCurrentUser().phone,
+            city: this.authServices.getCurrentUser().city,
+            country: this.authServices.getCurrentUser().country,
+            role: this.authServices.getCurrentUser().role,
+          },
           items: this.cartItems().map((item) => ({
             productId: item.id,
             productName: item.name,
             price: item.price,
+            productImgUrl: item.imageUrl,
             quantity: this.getItemQuantity(item),
             userId: item.userId,
           })),
@@ -174,7 +188,7 @@ export class PaymentForm extends BaseComponent {
           type: 'purchase',
         });
         this.cartServices.clearCart(this.authServices.getCurrentUser().id);
-        this.router.navigate(['/']);
+        this.router.navigate(['/billing'], { queryParams: { orderId: `ORDER_${this.orderId}` } });
       } catch (err) {
         this.globalErrorMessage = 'An error occurred during payment.';
         console.error(err);

@@ -148,7 +148,11 @@
           form="paymentForm"
           [disabled]="isLoading"
         >
-          {{ isLoading ? 'Processing...' : 'Pay Now' }}
+          {{
+            isLoading
+              ? ('paymentPage.payProcessing' | translate)
+              : ('paymentPage.payButton' | translate)
+          }}
         </button>
       </div>
     </div>

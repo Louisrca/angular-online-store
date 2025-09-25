@@ -30,6 +30,10 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'billing',
+    loadChildren: () => import('./features/billing/billing.routes').then((m) => m.BILLING_ROUTES),
+  },
+  {
     path: '**',
     redirectTo: '/',
   },

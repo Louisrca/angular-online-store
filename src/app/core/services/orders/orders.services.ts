@@ -29,7 +29,11 @@ export class OrdersService {
   }
 
   getOrdersByCustomer(customerId: string) {
-    return this.getOrders().filter((o) => o.customerId === customerId);
+    return this.getOrders().filter((o) => o.user.id === customerId);
+  }
+
+  getOrderById(orderId: string) {
+    return this.getOrders().find((o) => o.id === orderId);
   }
 
   postOrder(order: Order) {
