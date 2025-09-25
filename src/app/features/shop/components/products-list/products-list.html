@@ -7,50 +7,9 @@
   .image:hover {
     transform: scale(1.01);
   }
-  ::ng-deep .p-toast-message {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border-radius: 0 !important;
-    border: 2px solid #000000 !important;
-  }
-
-  ::ng-deep .p-toast-message-content {
-    gap: 0 !important;
-  }
-
-  ::ng-deep .p-toast-close-icon {
-    color: #000000 !important;
-  }
-
-  ::ng-deep .p-toast-close-button {
-    background: #ffffff !important;
-    border-radius: 0 !important;
-    border: 1px solid #000000 !important;
-  }
-
-  ::ng-deep .p-toast-close-button:hover {
-    background: #47fc00 !important;
-    border-radius: 0;
-    outline: 2px solid #000000 !important;
-  }
 </style>
 
 <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-  <p-toast>
-    <ng-template let-message pTemplate="message" class="w-full">
-      <div class="flex flex-col gap-4 justify-end items-end w-full pl-4">
-        <div class="flex-1 w-full mt-4">{{ message.detail | translate }}</div>
-        <a
-          [routerLink]="'/auth/login'"
-          type="button"
-          class="border bg-[#47fc00] w-auto text-center text-sm py-2 px-3 mb-4 hover:outline hover:outline-black cursor-pointer uppercase font-medium"
-        >
-          {{ 'productElement.toast.goToLogin' | translate }}
-        </a>
-      </div>
-    </ng-template>
-  </p-toast>
-
   @for (product of products(); track $index) {
     <li class="flex flex-col gap-2">
       <a [routerLink]="'/product/' + product.id">
@@ -66,19 +25,19 @@
       <div class="flex flex-row overflow-hidden gap-2">
         @for (size of product.availabledSize; track $index) {
           <a
-            class="border border-black text-xs px-2 py-1 w-content w-fit cursor-pointer hover:bg-black hover:text-white"
+            class="flex flex-row justify-center items-center border border-black text-xs px-2 py-1 w-content w-fit cursor-pointer hover:bg-black hover:text-white"
             [routerLink]="'/product/' + product.id"
           >
             {{ size }}
           </a>
         }
       </div>
-      <button
-        class="py-3 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium"
-        (click)="addToCart(product)"
+      <a
+        class="py-3 bg-[#47fc00] text-center border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium"
+        [routerLink]="'/product/' + product.id"
       >
         {{ 'productElement.add' | translate }}
-      </button>
+      </a>
     </li>
   }
   @if (hasMoreProducts()) {

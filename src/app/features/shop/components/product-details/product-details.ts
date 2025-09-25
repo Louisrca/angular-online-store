@@ -11,18 +11,20 @@ import { ToastModule } from 'primeng/toast';
 import { AuthServices } from '../../../auth/services/auth';
 import { CartServices } from '../../../cart/services/cart.services';
 import { v4 as uuidv4 } from 'uuid';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.html',
   host: { hostID: crypto.randomUUID().toString() },
-  imports: [...TRANSLATE_IMPORTS, NgIcon, ToastModule, RouterLink],
+  imports: [...TRANSLATE_IMPORTS, NgIcon, ToastModule, RouterLink, ReactiveFormsModule],
   viewProviders: [
     provideIcons({
       hugeArrowRight01,
       hugeArrowDown01,
     }),
   ],
+  providers: [MessageService],
 })
 export class ProductDetails extends BaseComponent implements OnInit {
   productId!: string;
@@ -35,8 +37,20 @@ export class ProductDetails extends BaseComponent implements OnInit {
   isDeliveryAndReturnsOpen = false;
   hugeArrowDown01 = 'hugeArrowDown01';
   hugeArrowRight01 = 'hugeArrowRight01';
+  productForm: FormGroup;
+  private fb = inject(FormBuilder);
   uuid = uuidv4;
   messageService = inject(MessageService);
+
+  selectedSizeError = false;
+  selectedSizeErrorMessage = '';
+
+  constructor() {
+    super();
+    this.productForm = this.fb.group({
+      size: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id')!;
@@ -61,6 +75,12 @@ export class ProductDetails extends BaseComponent implements OnInit {
       return;
     }
 
+    if (this.productForm.invalid) {
+      this.selectedSizeError = true;
+      this.selectedSizeErrorMessage = 'requis';
+      return;
+    }
+
     const product = this.getProductDetails();
     if (product === undefined) {
       return;
@@ -74,6 +94,7 @@ export class ProductDetails extends BaseComponent implements OnInit {
       color,
       price,
       imageUrl,
+      selectedSize: this.productForm.value.size,
       userId: this.authServices.getCurrentUser().id,
       cartItemId: this.uuid(),
     });

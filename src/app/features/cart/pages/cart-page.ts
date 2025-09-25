@@ -30,6 +30,7 @@ import { CatalogServices } from '@Core/services/catalog/catalog.services';
   ],
   host: { hostID: crypto.randomUUID().toString() },
   templateUrl: './cart-page.html',
+  providers: [MessageService],
 })
 export class CartPage extends BaseComponent {
   salesServices = inject(SalesService);

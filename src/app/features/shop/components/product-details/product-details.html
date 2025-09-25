@@ -70,11 +70,20 @@
       <p class="text-xl">{{ getProductDetails()?.price }} €</p>
     </div>
     <!-- Size Selection -->
-    <div class="flex flex-col gap-2 uppercase font-medium md:w-[18rem] lg:w-[18rem] w-full">
+    <form
+      (ngSubmit)="addToCart()"
+      id="product-form"
+      [formGroup]="productForm"
+      class="flex flex-col gap-2 uppercase font-medium md:w-[18rem] lg:w-[18rem] w-full"
+    >
       <label for="size-select" class="w-full">{{ 'productDetails.size' | translate }} :</label>
+      @if (selectedSizeError) {
+        <span class="text-red-600 text-sm">* {{ selectedSizeErrorMessage }}</span>
+      }
       <select
         id="size-select"
         class="border border-black px-2 py-1 cursor-pointer uppercase font-medium w-full"
+        formControlName="size"
       >
         <option value="" disabled selected>
           {{ 'productDetails.selectSize' | translate }}
@@ -85,12 +94,13 @@
           </option>
         }
       </select>
-    </div>
+    </form>
     <!-- Add to Cart Button -->
     <div class="flex flex-col">
       <button
         class="py-3 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium md:w-[18rem] lg:w-[18rem] w-full"
-        (click)="addToCart()"
+        type="submit"
+        form="product-form"
       >
         {{ 'productElement.add' | translate }}
       </button>

@@ -1,12 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { BaseComponent } from '../../../../shared/components/base-translate/base-translate';
-import { TRANSLATE_IMPORTS } from '../../../../shared/imports/translate-imports';
+import { BaseComponent } from '@Shared/components/base-translate/base-translate';
+import { TRANSLATE_IMPORTS } from '@Shared/imports/translate-imports';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '../../models/products.model';
 import { CartServices } from '../../../cart/services/cart.services';
 import { AuthServices } from '../../../auth/services/auth';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { CatalogServices } from '@Core/services/catalog/catalog.services';
@@ -14,8 +12,7 @@ import { CatalogServices } from '@Core/services/catalog/catalog.services';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.html',
-  host: { hostID: crypto.randomUUID().toString() },
-  imports: [RouterLink, ...TRANSLATE_IMPORTS, ToastModule],
+  imports: [RouterLink, ...TRANSLATE_IMPORTS],
 })
 export class ProductsList extends BaseComponent implements OnInit {
   catalogServices = inject(CatalogServices);
@@ -28,8 +25,6 @@ export class ProductsList extends BaseComponent implements OnInit {
   private route = inject(ActivatedRoute);
 
   queryParams$: Observable<Record<string, string>> = this.route.queryParams;
-
-  messageService = inject(MessageService);
 
   ngOnInit() {
     this.queryParams$.subscribe((params) => {
@@ -57,35 +52,5 @@ export class ProductsList extends BaseComponent implements OnInit {
       this.products().length <
       this.catalogServices.productsLength(this.route.snapshot.queryParamMap.get('filter') || '')()
     );
-  }
-
-  showAuthToast() {
-    this.messageService.add({
-      id: this.uuid(),
-      severity: 'info',
-      summary: 'Sticky',
-      detail: 'productElement.toast.loginToAddProducts',
-      life: 5000,
-      styleClass: 'custom-toast',
-    });
-  }
-
-  addToCart(product: Product) {
-    if (!this.authServices.isLoggedIn()) {
-      this.showAuthToast();
-      return;
-    }
-    const { id, name, type, color, price, imageUrl } = product;
-
-    this.cartServices.addItem({
-      id,
-      name,
-      type,
-      color,
-      price,
-      imageUrl,
-      userId: this.authServices.getCurrentUser().id,
-      cartItemId: this.uuid(),
-    });
   }
 }

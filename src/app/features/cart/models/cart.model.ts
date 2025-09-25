@@ -7,4 +7,5 @@ export interface CartItem {
   imageUrl: string;
   userId: string;
   cartItemId: string;
+  selectedSize?: string;
 }
