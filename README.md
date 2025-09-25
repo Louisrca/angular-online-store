@@ -13,6 +13,7 @@ Une application e-commerce moderne développée avec Angular 20.3.1, déployée 
 - **Validation du panier** : Récapitulatif avant commande
 - **Système de paiement** : Processus de paiement
 - **Historique des commandes** : Consultation des commandes passées
+- **Multilingue** : Interface disponible en français et anglais
 
 ### 👨‍💼 Partie Admin
 
@@ -20,7 +21,7 @@ Une application e-commerce moderne développée avec Angular 20.3.1, déployée 
   - Nombre total de commandes passées
   - Nombre d'utilisateurs enregistrés
   - Revenus générés par les commandes
-- **Gestionnaire de catalogue** : Ajout, suppression et modification de la quantité des produits 
+- **Gestionnaire de catalogue** : Ajout, suppression et modification de la quantité des produits
 - **Gestionnaire d'utilisateurs** : Administration des comptes utilisateurs
 
 ### ⚡ Technologies utilisées
@@ -28,6 +29,7 @@ Une application e-commerce moderne développée avec Angular 20.3.1, déployée 
 - **Framework** : [Angular CLI](https://github.com/angular/angular-cli) v20.3.1
 - **Composants UI** : [PrimeNG](https://primeng.org/) - Bibliothèque de composants riche et moderne
 - **Icônes** : [ng-icons](https://ng-icons.github.io/ng-icons/#/) - Collection d'icônes pour Angular
+- **Internationalisation** : [ngx-translate](https://ngx-translate.org/) - Système de traduction français/anglais
 - **PWA** : Progressive Web App pour une expérience mobile
 - **Déploiement** : [Vercel](https://vercel.com/) pour un déploiement continu
 
@@ -97,6 +99,7 @@ L'application est automatiquement déployée sur Vercel à chaque push sur la br
 - [Documentation Angular CLI](https://angular.dev/tools/cli)
 - [Guide PrimeNG](https://primeng.org/installation)
 - [Documentation ng-icons](https://ng-icons.github.io/ng-icons/#/)
+- [Documentation ngx-translate](https://ngx-translate.org/)
 - [Guide PWA Angular](https://angular.dev/guide/service-workers)
 
 ## 🤝 Contribution
