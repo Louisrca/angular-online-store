@@ -11,8 +11,10 @@ export interface Order {
     productImgUrl: string;
     productName: string;
     quantity: number;
+    selectedSize?: string;
     price: number;
   }[];
+  deliveryDate?: Date;
   type: 'purchase' | 'return' | 'expense';
 }
 

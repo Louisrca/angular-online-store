@@ -11,7 +11,11 @@
           <span class="font-semibold">{{ item.name }} - {{ item.type | translate }}</span>
           <span class="text-sm text-gray-600 uppercase">{{ item.color | translate }}</span>
           <span class="text-sm">{{ item.price }} € </span>
-          <button (click)="removeItem(item)">Supprimer</button>
+          <div class="flex flex-row gap-2 mt-2 justify-end mr-10 hover:underline">
+            <button (click)="removeItem(item)" class="cursor-pointer">
+              {{ 'cartPage.removeButton' | translate }}
+            </button>
+          </div>
         </div>
       </div>
     }

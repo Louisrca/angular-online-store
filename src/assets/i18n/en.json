@@ -85,10 +85,15 @@
   "paymentPage": {
     "title": "Payment process",
     "description": "Please enter your payment information below.",
+    "standardDeliveryLabel": "Standard Delivery (5-7 business days) - Free",
+    "premiumDeliveryLabel": "Premium Delivery (1-2 business days) - 9.99 €",
     "cardHolderLabel": "Cardholder Name",
     "cardHolderPlaceholder": "John Doe",
     "cardNumberLabel": "Card Number",
     "expirationDateLabel": "Expiration Date",
+    "deliveryLabel": "Delivery",
+    "tvaLabel": "VAT 20%",
+    "orderTotal": "Total",
     "expiryDateLabel": "MM/YY",
     "nameLabel": "Name",
     "phoneLabel": "Phone",
@@ -178,9 +183,10 @@
     "title": "Your Cart",
     "moreItems": "...and {{count}} more items",
     "amount": "Amount",
-    "buyButton": "Buy Now",
+    "buyButton": "Validate My Cart",
     "emptyCartMessage": "Your cart is empty.",
     "continueShopping": "Continue Shopping",
+    "removeButton": "Remove",
     "successfullyPurchased": "Purchase completed successfully! 🎉"
   },
   "product": {

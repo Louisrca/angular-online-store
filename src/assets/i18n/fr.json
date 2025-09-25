@@ -83,10 +83,15 @@
   "paymentPage": {
     "title": "Processus de paiement",
     "description": "Veuillez entrer vos informations de paiement ci-dessous.",
+    "standardDeliveryLabel": "Livraison standard (5-7 jours ouvrables) - Gratuite",
+    "premiumDeliveryLabel": "Livraison premium (1-2 jours ouvrables) - 9,99 €",
     "cardHolderLabel": "Nom du titulaire",
     "cardHolderPlaceholder": "Jean Dupont",
     "cardNumberLabel": "Numéro de carte",
     "expirationDateLabel": "Date d'expiration",
+    "deliveryLabel": "Livraison",
+    "tvaLabel": "TVA 20%",
+    "orderTotal": "Total",
     "expiryDateLabel": "MM/AA",
     "nameLabel": "Nom",
     "phoneLabel": "Téléphone",
@@ -175,9 +180,10 @@
     "title": "Votre Panier",
     "moreItems": "...et {{count}} articles supplémentaires",
     "amount": "Montant",
-    "buyButton": "Acheter maintenant",
+    "buyButton": "Valider mon panier",
     "emptyCartMessage": "Votre panier est vide.",
     "continueShopping": "Continuer vos achats",
+    "removeButton": "Supprimer",
     "successfullyPurchased": "Achat effectué avec succès ! 🎉"
   },
   "product": {

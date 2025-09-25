@@ -41,6 +41,16 @@ export class PaymentForm extends BaseComponent implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   purchaseForm: FormGroup;
+  deliveryOptionForm: FormGroup;
+
+  standardDeliveryCost = 0;
+  premiumDeliveryCost = 9.99;
+
+  get deliveryCost(): number {
+    return this.deliveryOptionForm.get('deliveryOption')?.value === 'premium'
+      ? this.premiumDeliveryCost
+      : this.standardDeliveryCost;
+  }
 
   products = this.cartService.cart;
   total = this.cartService.cart().reduce((acc, item) => acc + item.price, 0);
@@ -66,6 +76,10 @@ export class PaymentForm extends BaseComponent implements OnInit {
       number: new FormControl('', [Validators.required, cardNumberValidator()]),
       expiration: new FormControl('', [Validators.required, expirationDateValidator()]),
       cvv: new FormControl('', [Validators.required, cvvValidator()]),
+    });
+
+    this.deliveryOptionForm = this.fb.group({
+      deliveryOption: new FormControl('standard', [Validators.required]),
     });
   }
 
@@ -146,7 +160,7 @@ export class PaymentForm extends BaseComponent implements OnInit {
         this.salesServices.postSales({
           id: this.salesId(),
           date: new Date(),
-          amount: this.totalAmount(),
+          amount: this.totalAmount() + this.deliveryCost + this.totalAmount() * 0.2,
           items: this.cartItems().map((item) => ({
             id: item.id,
             name: item.name,
@@ -181,10 +195,11 @@ export class PaymentForm extends BaseComponent implements OnInit {
             productName: item.name,
             price: item.price,
             productImgUrl: item.imageUrl,
+            productSize: item.selectedSize,
             quantity: this.getItemQuantity(item),
             userId: item.userId,
           })),
-          amount: this.totalAmount(),
+          amount: this.totalAmount() + this.deliveryCost + this.totalAmount() * 0.2,
           type: 'purchase',
         });
         this.cartServices.clearCart(this.authServices.getCurrentUser().id);

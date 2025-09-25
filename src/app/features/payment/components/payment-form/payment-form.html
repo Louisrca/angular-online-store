@@ -1,5 +1,11 @@
+<style>
+  input[type='radio'] {
+    accent-color: #000000;
+  }
+</style>
+
 <div class="px-4">
-  <div class="flex flex-col justify-center md:flex-row md:justify-center items-center md:gap-10">
+  <div class="flex flex-col justify-center md:flex-row md:justify-center items-start md:gap-10">
     <div class="flex flex-col gap-4">
       <div>
         <div>
@@ -50,7 +56,7 @@
               [errorMessage]="expirationErrorMessage()"
             ></app-input>
             <app-input
-              label="CVC"
+              label="CVV"
               type="text"
               id="cvc"
               [digitsOnly]="true"
@@ -71,6 +77,36 @@
           {{ 'paymentPage.descriptionSummary' | translate }}
         </p>
         <div class="grid grid-cols-2 gap-4 border p-6 text-sm">
+          <form [formGroup]="deliveryOptionForm" class="col-span-2 flex flex-row gap-2">
+            <label
+              class="text-xs uppercase font-normal underline cursor-pointer"
+              for="standard-delivery"
+            >
+              {{ 'paymentPage.standardDeliveryLabel' | translate }}
+            </label>
+            <input
+              type="radio"
+              id="standard-delivery"
+              class="mr-2 cursor-pointer"
+              name="deliveryOption"
+              value="standard"
+              formControlName="deliveryOption"
+              checked
+            />
+            <label
+              class="text-xs uppercase font-normal underline cursor-pointer"
+              for="premium-delivery"
+              >{{ 'paymentPage.premiumDeliveryLabel' | translate }}</label
+            >
+            <input
+              type="radio"
+              id="premium-delivery"
+              class="mr-2 cursor-pointer"
+              name="deliveryOption"
+              value="premium"
+              formControlName="deliveryOption"
+            />
+          </form>
           <div>
             <p class="text-sm uppercase font-semibold">{{ 'paymentPage.nameLabel' | translate }}</p>
             <span class=""
@@ -110,7 +146,9 @@
       </div>
     </div>
 
-    <div class="flex flex-col h-full border mt-6 md:mt-13 lg:mt-13">
+    <div
+      class="flex flex-col h-full border mt-6 w-full md:mt-[4.45rem] md:mt-[4.45rem] md:w-[22rem] lg:w-[22rem]"
+    >
       <div class="flex-1 max-h-96 overflow-y-auto p-4 pb-0">
         <div>
           @for (product of products(); track $index) {
@@ -137,9 +175,25 @@
       </div>
 
       <div class="flex flex-col p-4 pt-2">
-        <div class="flex flex-row border-t justify-between font-bold text-lg pt-2">
-          <span>Order Total</span>
-          <span class="font-bold">{{ total }} €</span>
+        <div class="flex flex-col border-t justify-between font-bold text-lg pt-2">
+          <div class="flex flex-col text-right pb-4 pt-2 gap-2">
+            <div class="flex flex-row justify-between text-right">
+              <span class="text-sm">{{ 'paymentPage.tvaLabel' | translate }}</span>
+              <span class="text-sm"> {{ total * 0.2 }} € </span>
+            </div>
+            <div class="flex flex-row justify-between text-right">
+              <span class="text-sm">{{ 'paymentPage.deliveryLabel' | translate }}</span>
+              <span class="text-sm">{{ deliveryCost }} €</span>
+            </div>
+          </div>
+          <div class="flex flex-row border-t justify-between py-4">
+            <span class="flex justify-start uppercase font-semibold text-2xl">{{
+              'paymentPage.orderTotal' | translate
+            }}</span>
+            <span class="uppercase font-semibold text-2xl"
+              >{{ total + total * 0.2 + deliveryCost }} €</span
+            >
+          </div>
         </div>
         <button
           class="mt-4 py-2 px-4 bg-[#47fc00] border border-black hover:outline hover:outline-black cursor-pointer uppercase font-medium w-full"
