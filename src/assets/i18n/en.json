@@ -248,7 +248,8 @@
     "productSize": "Product Size",
     "modelHeight": "Model Height",
     "fit": "Fit",
-    "compositionAndCare": "Composition and Care"
+    "compositionAndCare": "Composition and Care",
+    "sizeRequired": "Please select a size."
   },
 
   "footer": {

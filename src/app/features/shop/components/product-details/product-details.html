@@ -78,7 +78,7 @@
     >
       <label for="size-select" class="w-full">{{ 'productDetails.size' | translate }} :</label>
       @if (selectedSizeError) {
-        <span class="text-red-600 text-sm">* {{ selectedSizeErrorMessage }}</span>
+        <span class="text-red-600 text-sm">* {{ 'productDetails.sizeRequired' | translate }}</span>
       }
       <select
         id="size-select"

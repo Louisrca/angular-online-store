@@ -50,8 +50,10 @@
                     />
                     <div class="flex flex-col">
                       <span class="font-bold"> {{ item.productName }} </span>
-                      <span> {{ 'product.quantity' | translate }} : {{ item.quantity }} </span>
-                      <span> {{ 'product.price' | translate }} : {{ item.price }} € </span>
+                      <span>
+                        {{ 'billingPage.item.quantity' | translate }} : {{ item.quantity }}
+                      </span>
+                      <span> {{ 'billingPage.item.price' | translate }} : {{ item.price }} € </span>
                     </div>
                   </div>
                 </li>
